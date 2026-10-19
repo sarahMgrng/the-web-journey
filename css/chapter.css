@@ -60,11 +60,12 @@
 
 /* ---------- 2. Kopfbereich ---------- */
 .kapitel-kopf {
-  margin: 4rem 0 3rem;
+  margin: 3rem 0 2.5rem;
 }
 
+/* Kleiner als die Hero-Überschrift der Startseite: lange Titel bleiben gut lesbar */
 .kapitel-kopf h1 {
-  font-size: clamp(2.5rem, 7vw, 4.25rem);
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
   font-weight: 700;
   letter-spacing: -0.04em;
 }
