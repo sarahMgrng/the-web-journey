@@ -1,0 +1,218 @@
+/* ==========================================================
+   style.css – gemeinsame Grundlage für ALLE Seiten
+   1. Design-Tokens (Farben, Schriften, Abstände)
+   2. Reset & Basis
+   3. Header, Footer, Skip-Link
+   4. Kleine wiederverwendbare Bausteine
+   5. Reduzierte Bewegung
+   ========================================================== */
+
+/* ---------- 1. Design-Tokens ----------
+   Zentrale Variablen: Wer eine Farbe ändern will, ändert sie nur hier. */
+:root {
+  --farbe-hintergrund: #fbfbfd;
+  --farbe-flaeche: #ffffff;
+  --farbe-text: #1d1d1f;
+  --farbe-text-leise: #6e6e73;
+  --farbe-linie: #d2d2d7;
+  --farbe-akzent: #2563eb;
+  --farbe-akzent-hell: #e8efff;
+
+  --schrift: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --schrift-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --breite-max: 1120px;   /* maximale Inhaltsbreite */
+  --rand: clamp(1rem, 4vw, 2rem);   /* seitlicher Abstand: mind. 16px, max. 32px */
+  --radius: 20px;
+  --header-hoehe: 52px;
+  --schatten: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.18);
+  --uebergang: 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);   /* weiche "Apple-artige" Kurve */
+}
+
+/* ---------- 2. Reset & Basis ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-hoehe);   /* Anker landen nicht unter dem Header */
+}
+
+body {
+  margin: 0;
+  font-family: var(--schrift);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background: var(--farbe-hintergrund);
+  color: var(--farbe-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--farbe-akzent);
+}
+
+code,
+pre {
+  font-family: var(--schrift-code);
+}
+
+pre {
+  margin: 1.25rem 0;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #f5f5f7;
+  background: #1d1d1f;
+  border-radius: 14px;
+}
+
+/* Sichtbarer Fokusrahmen für Tastaturbedienung */
+:focus-visible {
+  outline: 3px solid var(--farbe-akzent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- 3. Header, Footer, Skip-Link ---------- */
+
+/* Skip-Link: unsichtbar, bis man mit Tab hineinspringt */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--rand);
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  background: var(--farbe-text);
+  border-radius: 8px;
+}
+
+.skip-link:focus {
+  top: 0.6rem;
+}
+
+/* Header bleibt oben stehen; halbtransparent mit Unschärfe wie bei Apple */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-hoehe);
+  padding: 0 var(--rand);
+  background: rgba(251, 251, 253, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.site-header__logo {
+  font-weight: 600;
+  color: var(--farbe-text);
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-header nav a {
+  font-size: 0.9rem;
+  color: var(--farbe-text-leise);
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  color: var(--farbe-text);
+}
+
+.site-footer {
+  padding: 2.5rem var(--rand);
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--farbe-text-leise);
+  border-top: 1px solid var(--farbe-linie);
+}
+
+/* ---------- 4. Kleine Bausteine ---------- */
+
+/* Kleine farbige Zeile über Überschriften */
+.eyebrow {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--farbe-akzent);
+}
+
+/* Status-Etikett: "Demo-Inhalt" oder "Platzhalter" */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--farbe-akzent);
+  background: var(--farbe-akzent-hell);
+  border-radius: 999px;
+}
+
+.badge--platzhalter {
+  color: var(--farbe-text-leise);
+  background: #ececf0;
+}
+
+.lade-hinweis {
+  color: var(--farbe-text-leise);
+  list-style: none;
+}
+
+.fehler-hinweis {
+  padding: 1.25rem 1.5rem;
+  color: #8a1c1c;
+  background: #fff1f1;
+  border-radius: 14px;
+  list-style: none;
+}
+
+/* Nur für Screenreader sichtbar */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- 5. Reduzierte Bewegung ----------
+   Wer im Betriebssystem "Bewegung reduzieren" eingestellt hat,
+   bekommt alle Inhalte sofort und ohne Animation. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Der Titel wird von chapter.js durch den Vorlesungstitel ersetzt -->
+  <title>Vorlesung · The Web Journey</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chapter.css">
+
+  <!-- marked: wandelt Markdown in HTML um (einzige externe Bibliothek) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+  <script src="js/content.js" defer></script>
+  <script src="js/chapter.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#kapitel">Direkt zum Inhalt</a>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html">The Web Journey</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="index.html#scrollytelling">Scrollytelling</a>
+      <a href="index.html#kapitel">Kapitel</a>
+    </nav>
+  </header>
+
+  <!-- EIN Template für alle acht Vorlesungen.
+       Welche Vorlesung angezeigt wird, steht in der Adresse: kapitel.html?nr=2 -->
+  <main class="kapitel-seite">
+    <div class="kapitel-leiste">
+      <a class="zurueck" href="index.html#kapitel">← Alle Vorlesungen</a>
+      <nav aria-label="Zu Vorlesung springen">
+        <ol class="sprung-liste" id="sprung-liste"></ol>
+      </nav>
+    </div>
+
+    <article id="kapitel">
+      <p class="lade-hinweis">Inhalt wird geladen …</p>
+    </article>
+
+    <nav class="blaettern" id="blaettern" aria-label="Vorherige und nächste Vorlesung"></nav>
+  </main>
+
+  <footer class="site-footer">
+    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+  </footer>
+</body>
+</html>

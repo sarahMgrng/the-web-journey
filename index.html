@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Web Journey</title>
+  <meta name="description" content="Interaktive Lernwebsite zum Modul Webprogrammierung – mit Scrollytelling als Schwerpunkt.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+
+  <!-- Markiert sofort, dass JavaScript läuft. Nur dann werden Elemente
+       für die Einblend-Animation zunächst versteckt (siehe home.css). -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- defer = Skripte erst ausführen, wenn das HTML fertig gelesen ist -->
+  <script src="js/content.js" defer></script>
+  <script src="js/home.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#kapitel">Direkt zur Kapitelübersicht</a>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html">The Web Journey</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#scrollytelling">Scrollytelling</a>
+      <a href="#kapitel">Kapitel</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ======================================================
+         HERO – animierter Einstieg
+         ====================================================== -->
+    <section class="hero">
+      <div class="hero__inhalt">
+        <p class="eyebrow">Portfolio · Webprogrammierung</p>
+        <h1 class="hero__titel">The Web Journey</h1>
+        <p class="hero__lead">Acht Vorlesungen. Von der ersten Zeile HTML bis zur Website, die auf deine Bewegung reagiert.</p>
+        <p class="hero__hinweis" aria-hidden="true">Scrollen <span>↓</span></p>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         DEMO 1 – Was ist Scrollytelling? (Fade-in)
+         ====================================================== -->
+    <section class="abschnitt" id="scrollytelling">
+      <p class="demo-label">Demo 01 · Fade-in beim Scrollen</p>
+      <h2 class="abschnitt__titel reveal">Was ist Scrollytelling?</h2>
+      <p class="abschnitt__lead reveal">
+        Eine Erzähl- und Gestaltungstechnik, bei der Inhalte und Animationen
+        durch Scrollbewegungen schrittweise sichtbar oder verändert werden.
+      </p>
+
+      <div class="punkte">
+        <div class="punkt reveal" style="--verzoegerung: 0">
+          <h3>Schritt für Schritt</h3>
+          <p>Inhalte erscheinen genau dann, wenn sie gebraucht werden.</p>
+        </div>
+        <div class="punkt reveal" style="--verzoegerung: 1">
+          <h3>Du bestimmst das Tempo</h3>
+          <p>Die Scrollbewegung steuert die Geschichte – nicht ein Video.</p>
+        </div>
+        <div class="punkt reveal" style="--verzoegerung: 2">
+          <h3>Bewegung mit Bedeutung</h3>
+          <p>Animation lenkt den Blick auf das Wesentliche, statt nur zu dekorieren.</p>
+        </div>
+      </div>
+
+      <details class="erklaerung">
+        <summary>Wie funktioniert das Fade-in?</summary>
+        <p>
+          CSS versteckt die Elemente zunächst (<code>opacity: 0</code>). JavaScript beobachtet
+          sie mit dem <strong>Intersection Observer</strong>. Sobald ein Element in den sichtbaren
+          Bereich kommt, bekommt es die Klasse <code>is-visible</code> – und CSS blendet es weich ein.
+        </p>
+<pre><code>// JavaScript: Element beobachten
+const beobachter = new IntersectionObserver((eintraege) =&gt; {
+  for (const eintrag of eintraege) {
+    if (eintrag.isIntersecting) {
+      eintrag.target.classList.add("is-visible");
+    }
+  }
+});
+
+/* CSS: Ausgangs- und Endzustand */
+.reveal            { opacity: 0; transform: translateY(40px); }
+.reveal.is-visible { opacity: 1; transform: none; }</code></pre>
+      </details>
+    </section>
+
+    <!-- ======================================================
+         DEMO 2 – Sticky Section mit wechselnden Inhalten
+         ====================================================== -->
+    <section class="abschnitt" aria-labelledby="story-titel">
+      <p class="demo-label">Demo 02 · Sticky Section</p>
+      <h2 class="abschnitt__titel reveal" id="story-titel">Drei Sprachen.<br>Ein Erlebnis.</h2>
+
+      <div class="story">
+        <!-- Die Grafik bleibt stehen (sticky), während rechts/unten die Texte vorbeiziehen.
+             aria-hidden: Die Grafik ist reine Illustration, die Infos stehen im Text. -->
+        <div class="story__visual" aria-hidden="true">
+          <div class="browser" data-schritt="1">
+            <div class="browser__leiste"><span></span><span></span><span></span></div>
+            <div class="browser__seite">
+              <div class="mini mini--titel" data-tag="h1">Hallo, Web!</div>
+              <div class="mini mini--text" data-tag="p">Eine Seite entsteht in Schichten.</div>
+              <div class="mini mini--button" data-tag="button">Los geht's</div>
+              <div class="mini-toast">✓ Klick erkannt</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__schritte">
+          <article class="story__schritt" data-schritt="1">
+            <p class="demo-label">01 · HTML</p>
+            <h3>Alles beginnt mit Struktur.</h3>
+            <p>HTML definiert die semantische Struktur und die Inhalte einer Webseite: Überschriften, Absätze, Buttons.</p>
+          </article>
+          <article class="story__schritt" data-schritt="2">
+            <p class="demo-label">02 · CSS</p>
+            <h3>Dann kommt Gestaltung.</h3>
+            <p>CSS gestaltet Layout, Typografie und Animationen. Scrollbasierte Animationen lassen sich teilweise direkt mit modernen CSS-Funktionen umsetzen.</p>
+          </article>
+          <article class="story__schritt" data-schritt="3">
+            <p class="demo-label">03 · JavaScript</p>
+            <h3>Dann kommt Verhalten.</h3>
+            <p>JavaScript ermöglicht Interaktionen und steuert komplexere Abläufe – zum Beispiel über die Intersection Observer API.</p>
+          </article>
+          <article class="story__schritt" data-schritt="4">
+            <p class="demo-label">04 · Zusammenspiel</p>
+            <h3>Und gerade passiert es.</h3>
+            <p>Dieser Abschnitt ist selbst Scrollytelling: HTML liefert die Texte, CSS hält die Grafik fest, JavaScript merkt, welcher Schritt gerade sichtbar ist.</p>
+          </article>
+        </div>
+      </div>
+
+      <details class="erklaerung">
+        <summary>Wie funktioniert die Sticky Section?</summary>
+        <p>
+          Die Grafik hat <code>position: sticky</code> und bleibt deshalb stehen, solange ihr
+          Abschnitt sichtbar ist. JavaScript beobachtet die Textschritte. Erreicht ein Schritt die
+          Bildschirmmitte, schreibt es dessen Nummer in das Attribut <code>data-schritt</code> der
+          Grafik. Was sich dann ändert, legt allein CSS fest.
+        </p>
+<pre><code>/* CSS: Grafik festhalten */
+.story__visual { position: sticky; top: 0; }
+
+// JavaScript: aktiven Schritt an die Grafik weitergeben
+browser.dataset.schritt = eintrag.target.dataset.schritt;
+
+/* CSS: Aussehen je Schritt */
+.browser[data-schritt="2"] .mini--button { background: blue; }</code></pre>
+      </details>
+    </section>
+
+    <!-- ======================================================
+         DEMO 3 – Element verschiebt & skaliert sich (reines CSS)
+         ====================================================== -->
+    <section class="abschnitt">
+      <p class="demo-label">Demo 03 · Bewegen &amp; Skalieren</p>
+      <h2 class="abschnitt__titel reveal">Der Scrollbalken als Regler.</h2>
+      <p class="abschnitt__lead reveal">
+        Hier steuert deine Scrollposition direkt die Animation: Scrolle langsam hoch und runter –
+        die Form wächst, dreht sich und schrumpft wieder. Ganz ohne JavaScript.
+      </p>
+
+      <div class="skalier-demo">
+        <div class="skalier-demo__objekt">view()</div>
+        <p class="skalier-demo__hinweis">
+          Dein Browser unterstützt scrollgesteuerte CSS-Animationen noch nicht –
+          du siehst deshalb die statische Variante. Genau so funktioniert
+          <em>Progressive Enhancement</em>: Die Seite bleibt nutzbar, nur ohne Effekt.
+        </p>
+      </div>
+
+      <details class="erklaerung">
+        <summary>Wie funktioniert das?</summary>
+        <p>
+          Normalerweise läuft eine CSS-Animation über eine Zeitdauer (z.&nbsp;B. 1 Sekunde).
+          Mit <code>animation-timeline: view()</code> ersetzt der Browser die Zeit durch die Position
+          des Elements im sichtbaren Bereich: 0&nbsp;% = es kommt gerade herein, 100&nbsp;% = es ist
+          gerade verschwunden. <code>@supports</code> prüft vorher, ob der Browser das kann.
+        </p>
+<pre><code>@supports (animation-timeline: view()) {
+  .skalier-demo__objekt {
+    animation: wachsen linear both;
+    animation-timeline: view();
+  }
+}
+
+@keyframes wachsen {
+  from { transform: scale(0.4) rotate(-20deg); }
+  to   { transform: scale(1)   rotate(0); }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- ======================================================
+         DEMO 4 – Vergleich statisch vs. scrollgesteuert
+         ====================================================== -->
+    <section class="abschnitt">
+      <p class="demo-label">Demo 04 · Vergleich</p>
+      <h2 class="abschnitt__titel reveal">Statisch oder gesteuert?</h2>
+      <p class="abschnitt__lead reveal">
+        Gleicher Inhalt, zwei Darstellungen. Links ist alles sofort da. Rechts erscheint jeder Punkt
+        erst, wenn du ihn erreichst – das lenkt den Blick, kostet aber auch Zeit.
+      </p>
+
+      <div class="vergleich">
+        <div class="vergleich__spalte">
+          <h3>Statisch</h3>
+          <ul>
+            <li>Struktur mit HTML</li>
+            <li>Gestaltung mit CSS</li>
+            <li>Verhalten mit JavaScript</li>
+          </ul>
+        </div>
+        <div class="vergleich__spalte vergleich__spalte--gesteuert">
+          <h3>Scrollgesteuert</h3>
+          <ul>
+            <li class="reveal" style="--verzoegerung: 0">Struktur mit HTML</li>
+            <li class="reveal" style="--verzoegerung: 2">Gestaltung mit CSS</li>
+            <li class="reveal" style="--verzoegerung: 4">Verhalten mit JavaScript</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="fazit reveal">
+        Faustregel: Animation nur dort, wo sie etwas <strong>erklärt</strong>. Wer in den
+        Systemeinstellungen „Bewegung reduzieren“ aktiviert hat, sieht diese Seite deshalb ganz ohne Animationen.
+      </p>
+    </section>
+
+    <!-- ======================================================
+         KAPITELÜBERSICHT – wird von home.js aus den Markdown-Dateien gefüllt
+         ====================================================== -->
+    <section class="abschnitt" id="kapitel" aria-labelledby="kapitel-titel">
+      <p class="eyebrow">Kapitelübersicht</p>
+      <h2 class="abschnitt__titel" id="kapitel-titel">Acht Vorlesungen.<br>Eine Reise.</h2>
+
+      <!-- Darstellung umstellen: "kapitel-liste--raster" durch "kapitel-liste--liste" ersetzen -->
+      <ol class="kapitel-liste kapitel-liste--raster" id="kapitel-liste">
+        <li class="lade-hinweis">Vorlesungen werden geladen …</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+  </footer>
+</body>
+</html>

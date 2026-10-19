@@ -1,0 +1,221 @@
+/* ==========================================================
+   chapter.css – nur für die Kapitelansicht (kapitel.html)
+   1. Seitenrahmen & obere Leiste
+   2. Kopfbereich der Vorlesung
+   3. Fließtext aus Markdown (.prose)
+   4. Blättern (vorherige / nächste Vorlesung)
+   ========================================================== */
+
+/* ---------- 1. Seitenrahmen ---------- */
+.kapitel-seite {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem var(--rand) 6rem;
+}
+
+.kapitel-leiste {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.zurueck {
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+/* Schnellnavigation 01–08 */
+.sprung-liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sprung-liste a {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--farbe-text-leise);
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.sprung-liste a:hover {
+  background: #ececf0;
+}
+
+/* aria-current="page" markiert die aktuelle Vorlesung – für Screenreader UND für CSS */
+.sprung-liste a[aria-current="page"] {
+  color: #fff;
+  background: var(--farbe-text);
+}
+
+/* ---------- 2. Kopfbereich ---------- */
+.kapitel-kopf {
+  margin: 4rem 0 3rem;
+}
+
+.kapitel-kopf h1 {
+  font-size: clamp(2.5rem, 7vw, 4.25rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.kapitel-kopf__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--farbe-text-leise);
+}
+
+.kapitel-kopf__lead {
+  margin-top: 1.5rem;
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  line-height: 1.45;
+  color: var(--farbe-text-leise);
+}
+
+.demo-banner {
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  color: #6b4e00;
+  background: #fff8e6;
+  border: 1px solid #f3dc9c;
+  border-radius: 14px;
+}
+
+.platzhalter-text {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--farbe-text-leise);
+  border: 1.5px dashed var(--farbe-linie);
+  border-radius: var(--radius);
+}
+
+/* ---------- 3. Fließtext aus Markdown ----------
+   marked erzeugt ganz normale HTML-Elemente (h2, p, ul, pre …).
+   Hier legen wir fest, wie sie innerhalb von .prose aussehen. */
+.prose h2 {
+  margin: 4rem 0 1rem;
+  padding-top: 2rem;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  border-top: 1px solid var(--farbe-linie);
+}
+
+.prose h3 {
+  margin: 2.25rem 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 1rem 0;
+}
+
+.prose li {
+  margin: 0.35rem 0;
+}
+
+.prose :not(pre) > code {
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+  background: #ececf0;
+  border-radius: 6px;
+}
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--farbe-text-leise);
+  border-left: 3px solid var(--farbe-akzent);
+}
+
+.prose table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--farbe-linie);
+}
+
+/* Aufklappbare Lösungen in den Übungen */
+.prose details {
+  margin: 1rem 0;
+  padding: 0.85rem 1.1rem;
+  background: var(--farbe-flaeche);
+  border: 1px solid var(--farbe-linie);
+  border-radius: 12px;
+}
+
+.prose summary {
+  font-weight: 600;
+  color: var(--farbe-akzent);
+  cursor: pointer;
+}
+
+/* ---------- 4. Blättern ---------- */
+.blaettern {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.blaettern a {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  color: var(--farbe-text);
+  text-decoration: none;
+  background: var(--farbe-flaeche);
+  border-radius: 16px;
+  box-shadow: var(--schatten);
+}
+
+.blaettern a:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 20px 40px -20px rgba(0, 0, 0, 0.25);
+}
+
+.blaettern span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--farbe-text-leise);
+}
+
+.blaettern strong {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.blaettern__weiter {
+  grid-column: 2;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .blaettern {
+    grid-template-columns: 1fr;
+  }
+
+  .blaettern__weiter {
+    grid-column: 1;
+  }
+}
