@@ -1,5 +1,7 @@
 # Roadmap
 
+> Aktueller Arbeitsstand und nächste Schritte: [STATUS.md](STATUS.md)
+
 ## ✅ MVP v0.1 – Technisches Fundament
 
 - [x] Animierte Startseite (Hero mit Einstiegs- und Scroll-Animation)

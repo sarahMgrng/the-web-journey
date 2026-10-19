@@ -47,6 +47,10 @@ Regeln: eine Angabe pro Zeile, Doppelpunkt nach dem Feldnamen, keine Listen.
 Die fünf `##`-Abschnitte sind das einheitliche Schema für alle Vorlesungen. Unterpunkte mit `###`.
 Im ganzen Semester gibt es insgesamt 6 Übungen. Jede Übung steht in der Datei der Vorlesung, zu der sie gehört, und ist durchgehend nummeriert (z. B. `### Übung 3 – Titel` in `02.md`). Hat eine Vorlesung keine Übung, entfällt der Abschnitt `## Übungen`.
 
+**Herkunft kennzeichnen:** Absätze beginnen mit 📘 Skript (Folie n) · ✏️ meine Notiz · 🤖 KI-Erklärung · ❓ offen.
+KI-Erklärungen und offene Punkte stehen am besten als Zitat (`> 🤖 …`). Lücken und Fragen sammelt ein
+zusätzlicher letzter Abschnitt `## Offene Fragen & Lücken` (optional). Vorbild: `03.md`.
+
 **Lösungen zum Aufklappen:**
 ```markdown
 <details>
