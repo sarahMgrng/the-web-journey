@@ -61,6 +61,62 @@ function zeigeVorlesung(vorlesung) {
   }
 
   artikel.innerHTML = html;
+  macheCodeAusfuehrbar();
+}
+
+
+// ---------- 3b. JavaScript-Beispiele ausführbar machen ----------
+// Unter jeden ```js-Block kommt ein Button „▶ Ausführen“ und ein Terminal-Fenster.
+// Der Code ist bearbeitbar – man kann also direkt ausprobieren, was passiert.
+function macheCodeAusfuehrbar() {
+  for (const code of artikel.querySelectorAll(".prose pre > code.language-js")) {
+    const block = code.parentElement;
+    code.contentEditable = "true";
+    code.spellcheck = false;
+
+    const leiste = document.createElement("div");
+    leiste.className = "code-leiste";
+    leiste.innerHTML = `<button type="button" class="code-knopf">▶ Ausführen</button>`;
+
+    const terminal = document.createElement("pre");
+    terminal.className = "code-terminal";
+    terminal.hidden = true;
+    terminal.setAttribute("aria-live", "polite");   // Screenreader lesen die Ausgabe vor
+
+    block.after(leiste, terminal);
+    leiste.querySelector("button").addEventListener("click", () => {
+      terminal.hidden = false;
+      terminal.textContent = fuehreAus(code.textContent);
+    });
+  }
+}
+
+// Führt den Code aus und gibt alles zurück, was er mit console.log ausgibt.
+function fuehreAus(quelltext) {
+  const zeilen = [];
+  const originalLog = console.log;
+  // console.log kurz "umleiten": Funktionen sind Werte, also können wir sie austauschen
+  console.log = (...werte) => zeilen.push("> " + werte.map(w => formatiereWert(w)).join(" "));
+
+  try {
+    new Function(quelltext)();   // Code als eigene Funktion ausführen (nur eigene Inhalte, siehe ARCHITECTURE.md)
+  } catch (fehler) {
+    zeilen.push(`✖ ${fehler.name}: ${fehler.message}`);
+  } finally {
+    console.log = originalLog;   // immer zurücksetzen – auch nach einem Fehler
+  }
+
+  return zeilen.length ? zeilen.join("\n") : "(keine Ausgabe – probier mal console.log(…))";
+}
+
+// Werte ähnlich wie in der Browser-Konsole anzeigen: [8, 9, 12] · {name: "Peter", hasCar: true}
+function formatiereWert(wert, verschachtelt = false) {
+  if (typeof wert === "string") return verschachtelt ? `"${wert}"` : wert;
+  if (Array.isArray(wert)) return "[" + wert.map(w => formatiereWert(w, true)).join(", ") + "]";
+  if (wert && typeof wert === "object") {
+    return "{" + Object.entries(wert).map(([k, w]) => `${k}: ${formatiereWert(w, true)}`).join(", ") + "}";
+  }
+  return String(wert);
 }
 
 

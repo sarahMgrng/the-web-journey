@@ -66,3 +66,6 @@ Die Metadaten sind einfache `schluessel: wert`-Zeilen. Dafür reichen ~15 Zeilen
 Markdown und Metadaten werden ungefiltert als HTML eingefügt (`innerHTML`). Das ist in Ordnung,
 solange nur eigene Dateien geladen werden. Würden Inhalte später von Dritten kommen, müsste man
 sie vorher bereinigen (z. B. mit DOMPurify).
+
+Dasselbe gilt für die ausführbaren JS-Beispiele: `chapter.js` führt ```js-Blöcke per `new Function()`
+aus. Unbedenklich, weil nur eigener Code aus `content/` läuft – fremde Inhalte dürften so nie ausgeführt werden.

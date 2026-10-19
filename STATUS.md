@@ -40,8 +40,10 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 
 | Übung | Code | Stand |
 |---|---|---|
-| KopfüBar mit Ordnern (HTML2) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | fertig; Pfade korrigiert (`../`), Ordner `getränke` → `getraenke` |
-| Bohnen zählen (vorl3, Folie 35, **Abgabe**) | `CODE_WP_Aufgaben/19.10_aufgabe2_bohnen-zaehlen/` | Code fertig und lauffähig. Abgabe ohne feste Frist: im Übungsteil zeigen oder als Bildschirmaufnahme schicken. |
+| KopfüBar mit Ordnern (HTML2, S. 9–13, 24, 31, 48) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | ✅ bearbeitet und getestet. Korrigiert: `getränke/` → `getraenke/`, Bildpfade → `../bilder/…`, Rücklinks → `../bar.html`, doppelte Altdateien mit `.. /bilder` (Leerzeichen) und `bar/bar.html` entfernt. **Bilddateien vollständig** (`getraenke.gif`, `gruen/hellblau/blau/rot.jpg`), es fehlt keine. Linktext „Elexiere“ ist ein Tippfehler im Original und noch offen. |
+| Bohnen zählen (vorl3, Folie 35, **Abgabe**) | `CODE_WP_Aufgaben/19.10_aufgabe2_bohnen-zaehlen/` | ✅ **bearbeitet**, mit 4 Testfällen getestet (`BBC`→2, `Bohnen & Bananen`→2, `bbb`→0, `kakkerlak`/k→4). ⏳ **Nicht eingereicht.** Einreichung (vorzeigen oder Bildschirmaufnahme per Mail) erst nach Bestätigung durch Sarah, keine feste Frist. |
+
+**HTML2-Übungen ohne Bearbeitung:** Rückverlinkung/`href`-Tabelle (S. 24–25), Pfad-Übung + Kopfnuss (S. 38, 44), Relativität `musik/` (S. 51–52), Kreuzworträtsel (S. 53–55).
 
 ## Was noch fehlt
 
@@ -120,3 +122,17 @@ Bitte:
 6. Kläre mit mir die Übungsnummerierung über das Semester und aktualisiere danach STATUS.md.
 Keine neue Infrastruktur, keine neuen Demos. Erkläre schwierige Stellen so, dass ich sie wirklich verstehe.
 ```
+
+## PM-Abnahme (Übergabe Pappaccina, 19.10.)
+
+| Erwartet | Stand | Wo |
+|---|---|---|
+| Konsolidierte Doku Vorlesung 3 | ✅ beide Skripte vollständig, Herkunft gekennzeichnet (📘 ✏️ 🤖 ❓) | `content/vorlesungen/03.md` |
+| Geprüfte, ausführbare Lösung „Bohnen zählen“ | ✅ 4 Testfälle, im Browser geprüft; **bearbeitet, nicht eingereicht** | Aufgaben-Repo + `aufgaben/` + ▶ in Kapitel 03 |
+| Stand der HTML-Übungen | ✅ KopfüBar korrigiert und getestet, offene Übungen gelistet | Abschnitt „Übungen“ oben |
+| Folgeprompts Vorlesung 1 und 2 | ✅ mit Seitenangaben im GoodNotes-Export | Abschnitt „Wie es weitergeht“ |
+| Statusbericht | ✅ diese Datei | – |
+
+**Abweichung von der Übergabe (auf Wunsch der PO):** Statt „kein Demo-Bau“ haben wir die
+JS-Beispiele auf der Kapitelseite **ausführbar** gemacht: „▶ Ausführen“ + Terminal-Fenster,
+der Code ist bearbeitbar. Kein Framework, nur ca. 50 Zeilen in `js/chapter.js` und Stil in `css/chapter.css`.

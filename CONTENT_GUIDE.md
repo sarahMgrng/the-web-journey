@@ -62,6 +62,8 @@ Hier normales Markdown. Die Leerzeilen davor und danach sind wichtig!
 ```
 
 **Code-Beispiele:** drei Backticks plus Sprache (`html`, `css`, `js`).
+`js`-Blöcke bekommen automatisch einen Button „▶ Ausführen“. Alles, was der Code mit `console.log` ausgibt,
+erscheint im Terminal-Fenster darunter. Darum jedes Beispiel mit mindestens einem `console.log` abschließen.
 
 **Übungscode live einbinden:**
 1. Den Aufgabenordner aus dem Aufgaben-Repo (`CODE_WP_Aufgaben/`) unverändert nach `aufgaben/` kopieren (ohne `.DS_Store`),

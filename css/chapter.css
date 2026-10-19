@@ -172,6 +172,51 @@
   cursor: pointer;
 }
 
+/* Ausführbare JavaScript-Beispiele (chapter.js → macheCodeAusfuehrbar) */
+.prose pre:has(> code[contenteditable]) {
+  margin-bottom: 0;
+  border-radius: 14px 14px 0 0;
+}
+
+.prose code[contenteditable]:focus {
+  outline: none;
+}
+
+.code-leiste {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.4rem 0.75rem;
+  background: #2c2c2e;
+  border-radius: 0 0 14px 14px;
+}
+
+.code-leiste:has(+ .code-terminal:not([hidden])) {
+  border-radius: 0;
+}
+
+.code-knopf {
+  padding: 0.35rem 0.9rem;
+  font: 600 0.8rem var(--schrift);
+  color: #fff;
+  cursor: pointer;
+  background: var(--farbe-akzent);
+  border: 0;
+  border-radius: 999px;
+}
+
+.code-knopf:hover {
+  filter: brightness(1.1);
+}
+
+.prose .code-terminal {
+  margin-top: 0;
+  min-height: 2.5rem;
+  color: #7ee787;   /* klassisches Terminal-Grün */
+  background: #0d0d0f;
+  border-top: 1px solid #3a3a3c;
+  border-radius: 0 0 14px 14px;
+}
+
 /* ---------- 4. Blättern ---------- */
 .blaettern {
   display: grid;
