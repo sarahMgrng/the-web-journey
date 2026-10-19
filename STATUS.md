@@ -24,6 +24,7 @@ Beide Ordner liegen unter `~/Desktop/Web-Prog_3S/`, die Skripte (PDF) unter `~/D
 | 04–08 | – | – | Platzhalter |
 
 **Aufgaben im Aufgaben-Repo:** 12.10. Aufgaben 1–3, 19.10. Bar, 19.10. Bohnen zählen.
+Die Aufgaben vom 19.10. sind zusätzlich als lauffähige Kopie unter `aufgaben/` im Portfolio und aus Vorlesung 03 verlinkt („▶ live ansehen“).
 
 ## Vorlesung 3 – was gesichert ist
 
@@ -40,7 +41,7 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 | Übung | Code | Stand |
 |---|---|---|
 | KopfüBar mit Ordnern (HTML2) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | fertig; Pfade korrigiert (`../`), Ordner `getränke` → `getraenke` |
-| Bohnen zählen (vorl3, Folie 35, **Abgabe**) | `CODE_WP_Aufgaben/19.10_aufgabe2_bohnen-zaehlen/` | Code fertig und lauffähig. ❓ Ist die Abgabe erledigt (gezeigt oder per Bildschirmaufnahme gemailt)? |
+| Bohnen zählen (vorl3, Folie 35, **Abgabe**) | `CODE_WP_Aufgaben/19.10_aufgabe2_bohnen-zaehlen/` | Code fertig und lauffähig. Abgabe ohne feste Frist: im Übungsteil zeigen oder als Bildschirmaufnahme schicken. |
 
 ## Was noch fehlt
 

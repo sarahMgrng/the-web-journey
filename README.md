@@ -49,6 +49,8 @@ the-web-journey/
 │   ├── _vorlage.md       Kopiervorlage für neue Vorlesungen
 │   └── vorlesungen/
 │       └── 01.md … 08.md Eine Datei pro Vorlesung
+├── aufgaben/            Lauffähige Kopien meiner Übungen (Quelle: Repo wp-aufgaben-3-semester)
+│   └── TT.MM_aufgabeN_name/
 └── *.md                  Dokumentation (siehe unten)
 ```
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aufgabe - Bohnen zählen</title>
+</head>
+<body>
+  <h1>Bohnen zählen</h1>
+  <p>Ergebnisse in der Konsole (F12 → Konsole) und unten auf der Seite.</p>
+  <pre id="ausgabe"></pre>
+
+  <script>
+    // countChar zählt, wie oft ein beliebiges Zeichen in einem Text vorkommt
+    const countChar = (text, zeichen) => {
+      let anzahl = 0;
+
+      for (let i = 0; i < text.length; i++) {   // i läuft von 0 bis text.length - 1
+        if (text[i] === zeichen) {              // text[i] = Zeichen an Position i
+          anzahl++;
+        }
+      }
+
+      return anzahl;
+    };
+
+    // countBs nutzt countChar und zählt nur große B
+    const countBs = text => countChar(text, "B");
+
+    // Testaufrufe
+    const tests = [
+      'countBs("BBC") = ' + countBs("BBC"),                          // 2
+      'countBs("Bohnen & Bananen") = ' + countBs("Bohnen & Bananen"), // 2
+      'countBs("bbb") = ' + countBs("bbb"),                          // 0 (nur große B)
+      'countChar("kakkerlak", "k") = ' + countChar("kakkerlak", "k") // 4
+    ];
+
+    for (const zeile of tests) {
+      console.log(zeile);
+    }
+    document.getElementById("ausgabe").textContent = tests.join("\n");
+  </script>
+</body>
+</html>

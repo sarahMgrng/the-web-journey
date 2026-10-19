@@ -63,6 +63,14 @@ Hier normales Markdown. Die Leerzeilen davor und danach sind wichtig!
 
 **Code-Beispiele:** drei Backticks plus Sprache (`html`, `css`, `js`).
 
+**Übungscode live einbinden:**
+1. Den Aufgabenordner aus dem Aufgaben-Repo (`CODE_WP_Aufgaben/`) unverändert nach `aufgaben/` kopieren (ohne `.DS_Store`),
+   z. B. `aufgaben/19.10_aufgabe1_bar/`.
+2. Bei der Übung verlinken. Der Pfad gilt relativ zu `kapitel.html`:
+   `**▶ [Live ansehen](aufgaben/19.10_aufgabe1_bar/bar.html)**`
+
+Die Quelle bleibt das Aufgaben-Repo. Ändert sich dort etwas, die Kopie erneut übernehmen.
+
 ## Weitere Vorlesungen (mehr als 8)
 
 1. In `js/content.js` den Wert `ANZAHL_VORLESUNGEN` erhöhen.
