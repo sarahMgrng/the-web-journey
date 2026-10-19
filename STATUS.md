@@ -47,6 +47,8 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 
 ## Was noch fehlt
 
+- [ ] **Layout überarbeiten** (Feedback PO 19.10.): Logik passt, Optik der Kapitelseite gefällt noch nicht. Gemeinsam Richtung festlegen.
+- [ ] Vorlesung 03 auf `status: fertig` setzen (Demo-Hinweis entfernen)
 - [ ] **Notizen des Kommilitonen** zum 19.10. besorgen und in `03.md` als ✏️ einarbeiten
 - [x] **GoodNotes-Export** liegt vor: `Skripte/Web-Programming.pdf` (196 S.: Skripte V1 + V2 mit handschriftlichen Notizen; zum 19.10. nichts enthalten)
 - [ ] Klären, welche Folien am 19.10. tatsächlich besprochen wurden (siehe „Offene Fragen“ in `03.md`)
