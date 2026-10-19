@@ -71,7 +71,13 @@ function zeigeVorlesung(vorlesung) {
 function macheCodeAusfuehrbar() {
   for (const code of artikel.querySelectorAll(".prose pre > code.language-js")) {
     const block = code.parentElement;
-    code.contentEditable = "true";
+    // "plaintext-only": Enter erzeugt einen echten Zeilenumbruch statt HTML (<div>, <br>).
+    // Ältere Browser kennen den Wert nicht → dann normales "true".
+    try {
+      code.contentEditable = "plaintext-only";
+    } catch {
+      code.contentEditable = "true";
+    }
     code.spellcheck = false;
 
     const leiste = document.createElement("div");
@@ -86,7 +92,9 @@ function macheCodeAusfuehrbar() {
     block.after(leiste, terminal);
     leiste.querySelector("button").addEventListener("click", () => {
       terminal.hidden = false;
-      terminal.textContent = fuehreAus(code.textContent);
+      // plaintext-only liefert echte "\n" im textContent; beim Ersatzmodus wandelt erst innerText <br>/<div> in "\n" um
+      const quelltext = code.contentEditable === "plaintext-only" ? code.textContent : code.innerText;
+      terminal.textContent = fuehreAus(quelltext);
     });
   }
 }
