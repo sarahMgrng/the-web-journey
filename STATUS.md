@@ -1,4 +1,4 @@
-# Status – Stand 19.10.2026
+# Status – Stand 20.10.2026
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
 Langfristige Planung: [ROADMAP.md](ROADMAP.md).
@@ -40,13 +40,26 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 
 | Übung | Code | Stand |
 |---|---|---|
-| KopfüBar mit Ordnern (HTML2, S. 9–13, 24, 31, 48) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | ✅ bearbeitet und getestet. Korrigiert: `getränke/` → `getraenke/`, Bildpfade → `../bilder/…`, Rücklinks → `../bar.html`, doppelte Altdateien mit `.. /bilder` (Leerzeichen) und `bar/bar.html` entfernt. **Bilddateien vollständig** (`getraenke.gif`, `gruen/hellblau/blau/rot.jpg`), es fehlt keine. Linktext „Elexiere“ ist ein Tippfehler im Original und noch offen. |
+| KopfüBar mit Ordnern (HTML2, S. 9–13, 24, 31, 48) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | ✅ bearbeitet und getestet. Korrigiert: `getränke/` → `getraenke/`, Bildpfade → `../bilder/…`, Rücklinks → `../bar.html`, doppelte Altdateien mit `.. /bilder` (Leerzeichen) und `bar/bar.html` entfernt. **Bilddateien vollständig** (`getraenke.gif`, `gruen/hellblau/blau/rot.jpg`), es fehlt keine. Tippfehler im Linktext („Elixire“) im Aufgaben-Repo behoben (`9241ba6`), Kopie in `aufgaben/` noch nicht neu übernommen. |
 | Bohnen zählen (vorl3, Folie 35, **Abgabe**) | `CODE_WP_Aufgaben/19.10_aufgabe2_bohnen-zaehlen/` | ✅ **bearbeitet**, mit 4 Testfällen getestet (`BBC`→2, `Bohnen & Bananen`→2, `bbb`→0, `kakkerlak`/k→4). ⏳ **Nicht eingereicht.** Einreichung (vorzeigen oder Bildschirmaufnahme per Mail) erst nach Bestätigung durch Sarah, keine feste Frist. |
 
 **HTML2-Übungen ohne Bearbeitung:** Rückverlinkung/`href`-Tabelle (S. 24–25), Pfad-Übung + Kopfnuss (S. 38, 44), Relativität `musik/` (S. 51–52), Kreuzworträtsel (S. 53–55).
 
 ## Was noch fehlt
 
+### Neu am 20.10.
+- [ ] Seite lokal nur über Server testen: `python3 -m http.server 8000` → http://localhost:8000 (per Doppelklick lädt fetch() nichts)
+- [ ] Veröffentlichung klären: GitHub Pages bei privatem Repo nur mit bezahltem Plan → Repo öffentlich machen oder anderer Host?
+- [ ] Neuer fester Abschnitt `## Meine Learnings` (✏️) nach jeder Vorlesung, 5 Leitfragen → in CONTENT_GUIDE aufnehmen
+- [ ] Learnings für V1–V3 schreiben
+- [ ] Struktur entscheiden (Teil von „Layout überarbeiten“): Sprungmarken im Kapitel + Unterseiten learnings.html / uebungen.html / ueber.html
+- [ ] Erste Animation: Request-Ablauf Browser → Server → Card (Demo zu V1)
+- [x] Tippfehler „Elixire“ behoben (Aufgaben-Repo 9241ba6)
+- [ ] Kopie `aufgaben/19.10_aufgabe1_bar/` aus dem Aufgaben-Repo neu übernehmen
+
+**Abweichung (PO-Wunsch 20.10.):** Unterseiten und Server-Animation sind neue Infrastruktur, bewusst entgegen „keine neuen Demos“.
+
+### Seit 19.10.
 - [ ] **Layout überarbeiten** (Feedback PO 19.10.): Logik passt, Optik der Kapitelseite gefällt noch nicht. Gemeinsam Richtung festlegen.
 - [ ] Vorlesung 03 auf `status: fertig` setzen (Demo-Hinweis entfernen)
 - [ ] **Notizen des Kommilitonen** zum 19.10. besorgen und in `03.md` als ✏️ einarbeiten
