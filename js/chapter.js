@@ -2,7 +2,7 @@
 // chapter.js – füllt das Kapitel-Template (kapitel.html)
 // 1. Nummer aus der Adresse lesen   (kapitel.html?nr=2 → 2)
 // 2. Schnellnavigation 01–08
-// 3. Vorlesung anzeigen
+// 3. Vorlesung anzeigen (+ Sprungmarken zu den Abschnitten)
 // 4. Vorherige / nächste Vorlesung
 // ==========================================================
 
@@ -47,8 +47,8 @@ function zeigeVorlesung(vorlesung) {
     </header>`;
 
   if (vorlesung.status === "demo") {
-    html += `<p class="demo-banner"><strong>Demo-Inhalt:</strong> Dieser Text zeigt nur den Aufbau einer Kapitelseite.
-             Er ist noch keine geprüfte Vorlesungszusammenfassung.</p>`;
+    html += `<p class="demo-banner"><strong>Entwurf:</strong> Aus Skript und Notizen zusammengefasst,
+             aber noch nicht abschließend von mir geprüft. Offene Punkte stehen unten unter „Offene Fragen & Lücken“.</p>`;
   }
 
   if (vorlesung.status === "platzhalter") {
@@ -61,7 +61,45 @@ function zeigeVorlesung(vorlesung) {
   }
 
   artikel.innerHTML = html;
+  setzeSprungmarken();
   macheCodeAusfuehrbar();
+}
+
+
+// ---------- 3a. Sprungmarken: Leiste „Auf dieser Seite“ ----------
+// Jede Überschrift bekommt eine id (aus "Meine Learnings" wird "meine-learnings").
+// So kann man direkt hineinspringen: kapitel.html?nr=3#meine-learnings
+function setzeSprungmarken() {
+  const prose = artikel.querySelector(".prose");
+  if (!prose) return;
+
+  const vergeben = new Set();   // falls zwei Überschriften gleich heißen: "-2" anhängen
+  for (const ueberschrift of prose.querySelectorAll("h2, h3")) {
+    let id = alsAnker(ueberschrift.textContent);
+    while (vergeben.has(id)) id += "-2";
+    vergeben.add(id);
+    ueberschrift.id = id;
+  }
+
+  // Leiste nur aus den großen Abschnitten (h2) bauen
+  const abschnitte = [...prose.querySelectorAll("h2")];
+  if (abschnitte.length < 2) return;
+
+  const leiste = document.createElement("nav");
+  leiste.className = "abschnitt-leiste";
+  leiste.setAttribute("aria-label", "Auf dieser Seite");
+  leiste.innerHTML = abschnitte
+    .map(h2 => `<a href="#${h2.id}">${maskiere(h2.textContent)}</a>`)
+    .join("");
+  prose.before(leiste);
+}
+
+// Der Inhalt kommt erst nach dem Laden dazu. Darum springt der Browser bei
+// kapitel.html?nr=3#meine-learnings nicht von selbst – das holen wir am Ende von start() nach.
+// "instant": ohne weiches Scrollen, sonst bricht der Browser den Sprung beim Nachladen ab.
+function springeZumAnker() {
+  if (!location.hash) return;
+  document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({ behavior: "instant" });
 }
 
 
@@ -168,6 +206,7 @@ async function start() {
     const vorlesung = await ladeVorlesung(aktuelleNr);
     zeigeVorlesung(vorlesung);
     await zeigeBlaettern();
+    springeZumAnker();
   } catch (fehler) {
     console.error(fehler);
     artikel.innerHTML = `<p class="fehler-hinweis">${LADEFEHLER_TEXT}</p>`;

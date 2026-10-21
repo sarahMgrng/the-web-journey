@@ -24,6 +24,8 @@ status: fertig
 ## Zusammenfassung
 ## Beispiele
 ## Übungen
+## Meine Learnings          ← kommt nach der Vorlesung dazu (n8n-Formular)
+## Offene Fragen & Lücken
 ```
 
 ### Metadaten (zwischen den `---`)
@@ -37,7 +39,7 @@ status: fertig
 
 **Status-Werte**
 - `fertig` – geprüfter Inhalt, kein Etikett
-- `demo` – Etikett „Demo-Inhalt“ + gelber Hinweis auf der Kapitelseite
+- `demo` – Etikett „Entwurf“ + gelber Hinweis auf der Kapitelseite (zusammengefasst, aber noch nicht geprüft)
 - `platzhalter` – gestrichelte Card, Kapitelseite zeigt „wird ergänzt“
 
 Regeln: eine Angabe pro Zeile, Doppelpunkt nach dem Feldnamen, keine Listen.
@@ -50,6 +52,28 @@ Im ganzen Semester gibt es insgesamt 6 Übungen. Jede Übung steht in der Datei 
 **Herkunft kennzeichnen:** Absätze beginnen mit 📘 Skript (Folie n) · ✏️ meine Notiz · 🤖 KI-Erklärung · ❓ offen.
 KI-Erklärungen und offene Punkte stehen am besten als Zitat (`> 🤖 …`). Lücken und Fragen sammelt ein
 zusätzlicher letzter Abschnitt `## Offene Fragen & Lücken` (optional). Vorbild: `03.md`.
+
+**Meine Learnings (Reflexion):** Nach jeder Vorlesung beantworte ich fünf Leitfragen. Die Antworten stehen im Abschnitt
+`## Meine Learnings`, direkt vor `## Offene Fragen & Lücken`.
+
+1. Was kann ich in zwei Sätzen erklären?
+2. Was hat mich überrascht?
+3. Wo hänge ich noch? (wird zu ❓)
+4. Wie hängt es mit der letzten Vorlesung zusammen?
+5. Welchen Code kann ich jetzt schreiben?
+
+Normalerweise schreibt das n8n-Formular den Abschnitt (Workflow „Learnings eintragen“, Branch `learnings`), von Hand geht es
+genauso. Wichtig: Die Überschriften `## Meine Learnings`, `## Übungen` und `## Offene Fragen & Lücken` **genau so** schreiben.
+Die Seiten [learnings.html](learnings.html) und [uebungen.html](uebungen.html) suchen danach, und der n8n-Workflow setzt die
+Learnings vor `## Offene Fragen & Lücken` ein.
+
+**Übungen auf der Übungsseite:** Jede `### `-Überschrift unter `## Übungen` erscheint automatisch auf `uebungen.html`.
+Steht im Titel „Abgabe“, bekommt die Übung ein Etikett. Ein Link mit „live“ im Text auf `aufgaben/…` wird zum Button „▶ Live ansehen“.
+
+**Sprungmarken:** Jede Überschrift bekommt automatisch eine Adresse zum Hineinspringen. Aus der Überschrift wird
+klein geschrieben, Umlaute werden ersetzt, alles andere wird zu `-`:
+`## Meine Learnings` → `kapitel.html?nr=3#meine-learnings`, `### Teil 1 – Prüfungsform` → `#teil-1-pruefungsform`.
+Die großen Abschnitte (`##`) erscheinen oben in der Leiste „Auf dieser Seite“.
 
 **Lösungen zum Aufklappen:**
 ```markdown

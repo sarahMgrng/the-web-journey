@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Aufgabe 03 - Sternchen-Dreieck</title>
+</head>
+<body>
+  <h1>Sternchen-Dreieck</h1>
+  <button onclick="dreieckZeichnen()">Dreieck zeichnen</button>
+
+   <pre id="ausgabe"></pre>
+
+  <script>
+    function dreieckZeichnen() {
+      // 1. Frage
+      var eingabe = prompt("Anzahl der Zeilen:", "5");
+      if (!eingabe) {
+         alert("Keine Eingabe!");
+         return;
+      }
+      var anzahl = parseInt(eingabe);
+      console.log("Anzahl der Zeilen: " + anzahl);
+
+      var ergebnis = "";
+      // 1. Schleife für die Zeilen
+      for (var zeile = 1; zeile <= anzahl; zeile++) {
+      // 2. Schleife für die Sterne in jeder Zeile
+      for (var stern = 1; stern <= zeile; stern++) {
+      ergebnis = ergebnis + "*";     // Stern direkt ins Gesamtergebnis
+      }
+      ergebnis = ergebnis + "\n";    // Umbruch nach der inneren Schleife
+      }
+
+  console.log(ergebnis);             // ganzes Dreieck auf einmal in die Console
+  document.getElementById("ausgabe").textContent = ergebnis;
+  
+    }
+  </script>
+</body>
+</html>

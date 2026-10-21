@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Über das Projekt · The Web Journey</title>
+  <meta name="description" content="Worum es in diesem Lerntagebuch geht, wie die Seite gebaut ist und wie sie vom Server in den Browser kommt.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chapter.css">
+  <link rel="stylesheet" href="css/seiten.css">
+
+  <script src="js/ueber.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html">The Web Journey</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="index.html#scrollytelling">Scrollytelling</a>
+      <a href="index.html#kapitel">Kapitel</a>
+      <a href="learnings.html">Learnings</a>
+      <a href="uebungen.html">Übungen</a>
+      <a href="ueber.html" aria-current="page">Über</a>
+    </nav>
+  </header>
+
+  <!-- Statische Seite: Der Text steht hier direkt im HTML (nicht in Markdown),
+       weil er sich im Semester kaum ändert. Nur die Animation braucht JavaScript (ueber.js). -->
+  <main class="kapitel-seite" id="inhalt">
+    <header class="kapitel-kopf">
+      <p class="eyebrow">Über das Projekt</p>
+      <h1>Ein Lerntagebuch, das selbst eine Web-Anwendung ist.</h1>
+      <p class="kapitel-kopf__lead">The Web Journey ist mein Portfolio im Modul Web-Programmierung an der DHBW Mannheim,
+        Wintersemester 2026/27. Was ich in der Vorlesung lerne, steckt auch im Code dieser Seite.</p>
+    </header>
+
+    <div class="prose">
+      <h2 id="pruefung">Warum es diese Seite gibt</h2>
+      <p>Geprüft wird das Modul mit einer <strong>Portfolioprüfung</strong>: ein Lerntagebuch mit kritischer Reflexion pro
+        Vorlesung, Programmierübungen und einem eigenen Schwerpunkt. Am Ende stehen eine kurze Präsentation und Fragen zum
+        Verständnis. Mehr dazu in <a href="kapitel.html?nr=1#teil-1-pruefungsform-das-portfolio">Vorlesung 01</a>.</p>
+      <p>Mein Schwerpunkt ist <strong>Scrollytelling</strong>: Inhalte, die sich beim Scrollen aufbauen.
+        Die <a href="index.html#scrollytelling">Startseite</a> zeigt, wie das funktioniert.</p>
+
+      <h2 id="legende">So lese ich die Kapitel</h2>
+      <p>Jeder Absatz verrät, woher er kommt. So bleibt sichtbar, was ich selbst verstanden habe und was erklärt wurde.</p>
+      <ul class="legende">
+        <li><span aria-hidden="true">📘</span> <strong>Skript</strong>, mit Foliennummer</li>
+        <li><span aria-hidden="true">✏️</span> <strong>meine Notiz</strong> aus der Vorlesung oder meine eigene Lösung</li>
+        <li><span aria-hidden="true">🤖</span> <strong>KI-Erklärung</strong>, zum Nachvollziehen, geprüft von mir</li>
+        <li><span aria-hidden="true">❓</span> <strong>offen</strong>: Lücke oder Frage für die nächste Vorlesung</li>
+      </ul>
+
+      <h2 id="so-kommt-die-seite">Wie diese Seite zu dir kommt</h2>
+      <p>Die Kapitel stehen nicht im HTML, sondern in Markdown-Dateien. JavaScript holt sie mit <code>fetch()</code> vom
+        Server, so wie in <a href="kapitel.html?nr=2#teil-1-html-wie-das-web-funktioniert">Vorlesung 02</a>:
+        Der Browser fragt, der Server antwortet. Probier beide Wege aus.</p>
+    </div>
+
+    <!-- Animation: Anfrage und Antwort zwischen Browser und Server.
+         ueber.js setzt data-weg ("server" | "datei") und data-schritt (0–4),
+         alles Sichtbare regelt seiten.css. -->
+    <figure class="anfrage" id="anfrage" data-weg="server" data-schritt="0">
+      <div class="anfrage__knoepfe" role="group" aria-label="Wie wird die Seite geöffnet?">
+        <button type="button" class="anfrage__knopf" data-weg="server" aria-pressed="true">Über http://localhost</button>
+        <button type="button" class="anfrage__knopf" data-weg="datei" aria-pressed="false">Per Doppelklick (file://)</button>
+      </div>
+
+      <div class="anfrage__buehne">
+        <div class="anfrage__rechner anfrage__rechner--browser">
+          <p class="anfrage__rolle">Browser <span>Client</span></p>
+          <div class="anfrage__fenster">
+            <p class="anfrage__adresse" id="anfrage-adresse">localhost:8000</p>
+            <div class="anfrage__card">
+              <span>Vorlesung 03</span>
+              <strong>JavaScript-Funktionen &amp; Links</strong>
+            </div>
+            <p class="anfrage__fehler">✖ Inhalte konnten nicht geladen werden</p>
+          </div>
+        </div>
+
+        <div class="anfrage__leitung" aria-hidden="true">
+          <span class="anfrage__paket anfrage__paket--hin">GET 03.md</span>
+          <span class="anfrage__paket anfrage__paket--zurueck">200 OK</span>
+          <span class="anfrage__sperre">✖</span>
+        </div>
+
+        <div class="anfrage__rechner anfrage__rechner--server">
+          <p class="anfrage__rolle">Server <span>python3 -m http.server</span></p>
+          <ul class="anfrage__dateien">
+            <li>index.html</li>
+            <li>01.md</li>
+            <li>02.md</li>
+            <li class="anfrage__gesucht">03.md</li>
+          </ul>
+        </div>
+      </div>
+
+      <pre class="anfrage__log" id="anfrage-log" aria-live="polite"></pre>
+
+      <figcaption class="anfrage__text" id="anfrage-text">Klick auf einen der beiden Wege.</figcaption>
+
+      <button type="button" class="anfrage__nochmal" id="anfrage-nochmal">↻ Nochmal abspielen</button>
+    </figure>
+
+    <div class="prose">
+      <h2 id="technik">Wie die Seite gebaut ist</h2>
+      <ul>
+        <li><strong>HTML, CSS und JavaScript</strong>, ohne Framework und ohne Build-Schritt. Alles, was hier passiert,
+          kommt in den Vorlesungen vor.</li>
+        <li><strong>Ein Template für alle Kapitel:</strong> <code>kapitel.html?nr=3</code> lädt
+          <code>content/vorlesungen/03.md</code> und wandelt Markdown mit der Bibliothek <em>marked</em> in HTML um.</li>
+        <li><strong>Jeder Inhalt steht genau einmal:</strong> Startseite, Kapitel, <a href="learnings.html">Learnings</a>
+          und <a href="uebungen.html">Übungen</a> lesen alle dieselben Dateien.</li>
+        <li><strong>Ausführbare Beispiele:</strong> JavaScript-Code in den Kapiteln lässt sich mit „▶ Ausführen“ direkt
+          ausprobieren und bearbeiten.</li>
+      </ul>
+
+      <h2 id="kreislauf">Mein Lernkreislauf nach jeder Vorlesung</h2>
+      <ol>
+        <li><strong>Montag, 18 Uhr:</strong> Ein n8n-Workflow auf meinem eigenen Server legt ein GitHub-Issue
+          „Vorlesung NN – Rückblick“ mit Checkliste an.</li>
+        <li><strong>Skript lesen, Übung machen:</strong> Zusammenfassung und Lösung kommen in die Vorlesungsdatei.</li>
+        <li><strong>Fünf Fragen beantworten:</strong> Ein Formular schreibt meine Antworten als „Meine Learnings“ in die
+          Datei. Ein lokales Sprachmodell (Ollama) ergänzt drei 🤖-Kontrollfragen.</li>
+        <li><strong>Prüfen und übernehmen:</strong> Die Änderungen landen auf einem eigenen Git-Branch. Erst nach meiner
+          Durchsicht kommen sie per Merge ins Portfolio.</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+  </footer>
+</body>
+</html>

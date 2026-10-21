@@ -104,6 +104,45 @@
   border-radius: var(--radius);
 }
 
+/* Sprungmarken „Auf dieser Seite“ (chapter.js → setzeSprungmarken)
+   Klebt beim Scrollen unter dem Header; auf schmalen Bildschirmen seitlich wischbar. */
+.abschnitt-leiste {
+  position: sticky;
+  top: var(--header-hoehe);
+  z-index: 10;
+  display: flex;
+  gap: 0.4rem;
+  margin: 0 calc(var(--rand) * -1);
+  padding: 0.6rem var(--rand);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: rgba(251, 251, 253, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.abschnitt-leiste::-webkit-scrollbar {
+  display: none;
+}
+
+.abschnitt-leiste a {
+  flex: none;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--farbe-text-leise);
+  text-decoration: none;
+  white-space: nowrap;
+  background: #ececf0;
+  border-radius: 999px;
+}
+
+.abschnitt-leiste a:hover {
+  color: var(--farbe-text);
+  background: var(--farbe-akzent-hell);
+}
+
 /* ---------- 3. Fließtext aus Markdown ----------
    marked erzeugt ganz normale HTML-Elemente (h2, p, ul, pre …).
    Hier legen wir fest, wie sie innerhalb von .prose aussehen. */
@@ -144,7 +183,11 @@
   border-left: 3px solid var(--farbe-akzent);
 }
 
+/* display: block + overflow: breite Tabellen lassen sich auf dem Handy seitlich wischen,
+   statt die ganze Seite zu verbreitern */
 .prose table {
+  display: block;
+  overflow-x: auto;
   width: 100%;
   margin: 1.5rem 0;
   border-collapse: collapse;

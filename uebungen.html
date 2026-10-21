@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Übungen · The Web Journey</title>
+  <meta name="description" content="Alle Übungen des Semesters auf einen Blick – mit Link zur Vorlesung und zur laufenden Lösung.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chapter.css">
+  <link rel="stylesheet" href="css/seiten.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+  <script src="js/content.js" defer></script>
+  <script src="js/uebungen.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html">The Web Journey</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="index.html#scrollytelling">Scrollytelling</a>
+      <a href="index.html#kapitel">Kapitel</a>
+      <a href="learnings.html">Learnings</a>
+      <a href="uebungen.html" aria-current="page">Übungen</a>
+      <a href="ueber.html">Über</a>
+    </nav>
+  </header>
+
+  <!-- Diese Seite hat keinen eigenen Inhalt: uebungen.js sammelt alle "### Übung …"
+       aus dem Abschnitt "## Übungen" jeder Vorlesungsdatei. -->
+  <main class="kapitel-seite" id="inhalt">
+    <header class="kapitel-kopf">
+      <p class="eyebrow">Praxis</p>
+      <h1>Übungen</h1>
+      <p class="kapitel-kopf__lead">Alle Übungen des Semesters an einem Ort. Die Aufgabenstellung und meine Lösung stehen
+        jeweils in der Vorlesung, die laufende Version lässt sich direkt öffnen.</p>
+    </header>
+
+    <div id="uebungen-liste">
+      <p class="lade-hinweis">Übungen werden geladen …</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meine Learnings · The Web Journey</title>
+  <meta name="description" content="Was ich aus jeder Vorlesung mitnehme – gesammelt aus allen Kapiteln.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chapter.css">
+  <link rel="stylesheet" href="css/seiten.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+  <script src="js/content.js" defer></script>
+  <script src="js/learnings.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html">The Web Journey</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="index.html#scrollytelling">Scrollytelling</a>
+      <a href="index.html#kapitel">Kapitel</a>
+      <a href="learnings.html" aria-current="page">Learnings</a>
+      <a href="uebungen.html">Übungen</a>
+      <a href="ueber.html">Über</a>
+    </nav>
+  </header>
+
+  <!-- Diese Seite hat keinen eigenen Inhalt: learnings.js sammelt den Abschnitt
+       "## Meine Learnings" aus allen Vorlesungsdateien (content/vorlesungen/*.md). -->
+  <main class="kapitel-seite" id="inhalt">
+    <header class="kapitel-kopf">
+      <p class="eyebrow">Reflexion</p>
+      <h1>Meine Learnings</h1>
+      <p class="kapitel-kopf__lead">Nach jeder Vorlesung beantworte ich fünf Fragen: Was kann ich erklären, was hat mich
+        überrascht, wo hänge ich noch? Hier steht alles auf einen Blick.</p>
+    </header>
+
+    <ol class="fortschritt" id="fortschritt" aria-label="Fortschritt pro Vorlesung"></ol>
+
+    <div id="learnings-liste">
+      <p class="lade-hinweis">Learnings werden geladen …</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+  </footer>
+</body>
+</html>

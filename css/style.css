@@ -38,7 +38,8 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-hoehe);   /* Anker landen nicht unter dem Header */
+  /* Anker landen nicht unter dem Header (+ Platz für die Sprungmarken-Leiste der Kapitelseite) */
+  scroll-padding-top: calc(var(--header-hoehe) + 3.5rem);
 }
 
 body {
@@ -139,8 +140,31 @@ pre {
   text-decoration: none;
 }
 
-.site-header nav a:hover {
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
   color: var(--farbe-text);
+}
+
+/* Schmale Bildschirme: Navigation seitlich wischbar statt umbrechen */
+@media (max-width: 640px) {
+  .site-header {
+    gap: 1rem;
+  }
+
+  .site-header__logo {
+    flex: none;
+  }
+
+  .site-header nav {
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-header nav a {
+    flex: none;
+    font-size: 0.85rem;
+  }
 }
 
 .site-footer {
@@ -161,7 +185,7 @@ pre {
   color: var(--farbe-akzent);
 }
 
-/* Status-Etikett: "Demo-Inhalt" oder "Platzhalter" */
+/* Status-Etikett: "Entwurf" oder "Platzhalter" */
 .badge {
   display: inline-block;
   padding: 0.2rem 0.65rem;

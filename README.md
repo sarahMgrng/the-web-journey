@@ -4,7 +4,8 @@ Interaktive Lernwebsite für das Modul **Webprogrammierung** (DHBW).
 Sie fasst acht aufeinander aufbauende Vorlesungen zusammen.
 Technischer Schwerpunkt ist **Scrollytelling**: Die Startseite erklärt die Technik und führt sie gleichzeitig vor.
 
-**Stand:** MVP v0.1, technisches Fundament. Vorlesung 1 und 2 enthalten Demo-Inhalte, Vorlesung 3–8 sind Platzhalter.
+**Stand:** Vorlesung 1–3 aus den Skripten zusammengefasst (noch Status `demo`, bis ich sie geprüft habe), Vorlesung 4–8 sind Platzhalter.
+Dazu drei Unterseiten: Learnings, Übungen und Über das Projekt.
 
 ## Technik
 
@@ -37,14 +38,21 @@ Für die Kapitelseiten wird eine Internetverbindung benötigt (marked kommt vom 
 the-web-journey/
 ├── index.html            Startseite: Hero, 4 Scrollytelling-Demos, Kapitelübersicht
 ├── kapitel.html          EIN Template für alle Vorlesungen (kapitel.html?nr=2)
+├── learnings.html        Sammelt „Meine Learnings“ aus allen Vorlesungen
+├── uebungen.html         Sammelt alle Übungen mit Links zu Lösung und Live-Version
+├── ueber.html            Über das Projekt + Animation „Anfrage und Antwort“
 ├── css/
 │   ├── style.css         Gemeinsame Basis: Farben, Schrift, Header, Footer
 │   ├── home.css          Nur Startseite: Hero, Demos, Cards
-│   └── chapter.css       Nur Kapitelseite: Kopf, Markdown-Text, Blättern
+│   ├── chapter.css       Kapitelseite: Kopf, Markdown-Text, Sprungmarken, Blättern
+│   └── seiten.css        Unterseiten: Einträge, Fortschritt, Animation
 ├── js/
-│   ├── content.js        Lädt & zerlegt die Markdown-Dateien (von beiden Seiten genutzt)
+│   ├── content.js        Lädt & zerlegt die Markdown-Dateien (von allen Seiten genutzt)
 │   ├── home.js           Startseite: Fade-in, Sticky Section, Cards erzeugen
-│   └── chapter.js        Kapitelseite: Template mit Inhalt füllen, Navigation
+│   ├── chapter.js        Kapitelseite: Template füllen, Sprungmarken, Navigation
+│   ├── learnings.js      Learnings-Seite
+│   ├── uebungen.js       Übungs-Seite
+│   └── ueber.js          Animation auf der Über-Seite
 ├── content/
 │   ├── _vorlage.md       Kopiervorlage für neue Vorlesungen
 │   └── vorlesungen/

@@ -24,6 +24,19 @@ Vor/Zurück-Navigation lesen alle dieselbe Datei.
 2. Lädt `content/vorlesungen/02.md`, trennt Metadaten und Inhalt.
 3. Füllt den Kopfbereich mit den Metadaten und wandelt den Inhalt mit `marked` in HTML um.
 4. Lädt die Titel der Nachbarvorlesungen für „Vorherige / Nächste“.
+5. Gibt jeder Überschrift eine `id` (`alsAnker` in `content.js`) und baut daraus die Leiste „Auf dieser Seite“.
+   Weil der Inhalt erst nach dem Laden da ist, springt `chapter.js` danach selbst zum Anker in der Adresse (`#meine-learnings`).
+
+**Unterseiten (`learnings.html`, `uebungen.html`)**
+1. Laden wie die Startseite alle acht Dateien (`ladeAlleVorlesungen`).
+2. Schneiden mit `abschnitt(inhalt, "Meine Learnings")` bzw. `abschnitt(inhalt, "Übungen")` den passenden Teil heraus.
+3. Verlinken zurück in die Kapitelseite, z. B. `kapitel.html?nr=3#meine-learnings`.
+
+Sie haben also keinen eigenen Inhalt: Alles steht weiterhin genau einmal in der Markdown-Datei.
+
+**Über-Seite (`ueber.html`)**
+Statischer Text direkt im HTML, weil er sich kaum ändert. `ueber.js` spielt die Animation „Wie diese Seite zu dir kommt“ ab:
+Es setzt nur `data-weg` und `data-schritt` am `<figure>`, alle Zustände stehen in `seiten.css`, wie bei der Sticky Section der Startseite.
 
 ## Entscheidungen
 
@@ -69,3 +82,7 @@ sie vorher bereinigen (z. B. mit DOMPurify).
 
 Dasselbe gilt für die ausführbaren JS-Beispiele: `chapter.js` führt ```js-Blöcke per `new Function()`
 aus. Unbedenklich, weil nur eigener Code aus `content/` läuft – fremde Inhalte dürften so nie ausgeführt werden.
+
+**Learnings aus dem n8n-Formular** landen ebenfalls als Markdown in `content/` und werden als HTML eingefügt. Das Formular ist
+mit Passwort geschützt, und der Workflow schreibt nur auf den Branch `learnings`. Erst nach meiner Durchsicht kommt der Text per
+Merge auf die Seite. Diese Kontrolle ist der eigentliche Schutz – darum nie ungeprüft mergen.

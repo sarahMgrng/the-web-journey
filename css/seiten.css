@@ -1,0 +1,396 @@
+/* ==========================================================
+   seiten.css – Unterseiten learnings.html, uebungen.html, ueber.html
+   (baut auf style.css und chapter.css auf)
+   1. Fortschritt & Einträge (Learnings, Übungen)
+   2. Legende (Über)
+   3. Animation „Wie diese Seite zu dir kommt“ (Über)
+   ========================================================== */
+
+/* ---------- 1. Fortschritt & Einträge ---------- */
+
+/* Eine Markierung pro Vorlesung: gefüllt = Learnings eingetragen */
+.fortschritt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.fortschritt a {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--farbe-text-leise);
+  text-decoration: none;
+  border: 1.5px dashed var(--farbe-linie);
+  border-radius: 50%;
+}
+
+.fortschritt .ist-fertig a {
+  color: #fff;
+  background: var(--farbe-akzent);
+  border: 1.5px solid var(--farbe-akzent);
+}
+
+/* Eine Karte pro Vorlesung (Learnings) bzw. pro Übung */
+.eintrag {
+  margin-bottom: 1.5rem;
+  padding: 1.75rem 2rem;
+  background: var(--farbe-flaeche);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+}
+
+.eintrag h2 {
+  font-size: 1.5rem;
+}
+
+.eintrag h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.eintrag h2 a:hover {
+  color: var(--farbe-akzent);
+}
+
+/* In den Karten keine großen Abschnitts-Abstände wie auf der Kapitelseite */
+.eintrag .prose > :first-child {
+  margin-top: 1rem;
+}
+
+.uebungs-liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eintrag--kompakt {
+  padding: 1.25rem 1.5rem;
+}
+
+.eintrag--kompakt .eyebrow {
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.eintrag--kompakt h2 {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.eintrag--kompakt .badge {
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+.eintrag__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.eintrag__links a {
+  text-decoration: none;
+}
+
+.zusammenfassung {
+  margin-bottom: 1.5rem;
+  color: var(--farbe-text-leise);
+}
+
+@media (max-width: 600px) {
+  .eintrag {
+    padding: 1.25rem 1.25rem;
+  }
+}
+
+/* ---------- 2. Legende ---------- */
+.prose .legende {
+  padding: 0;
+  list-style: none;
+}
+
+.prose .legende li {
+  margin: 0.5rem 0;
+}
+
+/* ---------- 3. Animation: Anfrage und Antwort ----------
+   ueber.js setzt nur zwei Attribute an <figure class="anfrage">:
+     data-weg="server" | "datei"   und   data-schritt="0" … "4"
+   Jede Regel unten beschreibt, wie ein Zustand aussieht. */
+.anfrage {
+  margin: 2rem 0 0;
+  padding: 1.5rem;
+  background: var(--farbe-flaeche);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+}
+
+.anfrage__knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.anfrage__knopf,
+.anfrage__nochmal {
+  padding: 0.45rem 1rem;
+  font: 600 0.85rem var(--schrift);
+  color: var(--farbe-text);
+  cursor: pointer;
+  background: #ececf0;
+  border: 0;
+  border-radius: 999px;
+}
+
+.anfrage__knopf[aria-pressed="true"] {
+  color: #fff;
+  background: var(--farbe-text);
+}
+
+.anfrage__nochmal {
+  margin-top: 1rem;
+  color: var(--farbe-akzent);
+  background: var(--farbe-akzent-hell);
+}
+
+/* Bühne: Browser | Leitung | Server */
+.anfrage__buehne {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(4.5rem, 0.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.anfrage__rechner {
+  padding: 0.9rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--farbe-linie);
+  border-radius: 14px;
+  transition: opacity 0.4s;
+}
+
+.anfrage__rolle {
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.anfrage__rolle span {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--farbe-text-leise);
+  overflow-wrap: anywhere;
+}
+
+.anfrage__fenster {
+  min-height: 6.5rem;
+  padding: 0.5rem;
+  background: var(--farbe-hintergrund);
+  border-radius: 8px;
+}
+
+.anfrage__adresse {
+  margin-bottom: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  font: 0.7rem var(--schrift-code);
+  color: var(--farbe-text-leise);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;   /* zu lange Adressen enden mit "…" statt umzubrechen */
+  background: #ececf0;
+  border-radius: 999px;
+}
+
+/* Card und Fehlermeldung erscheinen erst am Ende */
+.anfrage__card,
+.anfrage__fehler {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.anfrage__card {
+  padding: 0.5rem 0.6rem;
+  background: var(--farbe-flaeche);
+  border-radius: 8px;
+  box-shadow: var(--schatten);
+}
+
+.anfrage__card span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--farbe-akzent);
+}
+
+.anfrage__card strong {
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.anfrage__fehler {
+  margin-top: -2.6rem;   /* liegt an derselben Stelle wie die Card */
+  padding: 0.4rem 0.5rem;
+  font-size: 0.75rem;
+  color: #8a1c1c;
+  background: #fff1f1;
+  border-radius: 8px;
+}
+
+.anfrage[data-weg="server"][data-schritt="4"] .anfrage__card,
+.anfrage[data-weg="datei"][data-schritt="3"] .anfrage__fehler {
+  opacity: 1;
+  transform: none;
+}
+
+/* Dateiliste auf dem Server */
+.anfrage__dateien {
+  margin: 0;
+  padding: 0;
+  font: 0.75rem var(--schrift-code);
+  list-style: none;
+}
+
+.anfrage__dateien li {
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Schritt 2–4: Der Server hat die Datei gefunden */
+.anfrage[data-weg="server"]:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .anfrage__gesucht {
+  color: #fff;
+  background: #1f8a4c;
+}
+
+/* Weg "datei": Es gibt keinen Server */
+.anfrage[data-weg="datei"] .anfrage__rechner--server {
+  opacity: 0.3;
+}
+
+/* Die Leitung mit den „Paketen“ */
+.anfrage__leitung {
+  position: relative;
+  height: 4.5rem;
+  border-top: 2px dashed var(--farbe-linie);
+  margin-top: 2.25rem;
+}
+
+.anfrage__paket,
+.anfrage__sperre {
+  position: absolute;
+  top: -0.8rem;
+  padding: 0.2rem 0.5rem;
+  font: 600 0.7rem var(--schrift-code);
+  white-space: nowrap;
+  opacity: 0;
+  border-radius: 6px;
+  transition: left 1.1s ease-in-out, opacity 0.3s, transform 1.1s ease-in-out;
+}
+
+.anfrage__paket--hin {
+  left: 0;
+  color: #fff;
+  background: var(--farbe-akzent);
+}
+
+.anfrage__paket--zurueck {
+  top: 1rem;
+  left: 100%;
+  transform: translateX(-100%);
+  color: #fff;
+  background: #1f8a4c;
+}
+
+/* Schritt 1: Anfrage wandert zum Server (und bleibt danach dort, nur unsichtbar) */
+.anfrage[data-weg="server"]:not([data-schritt="0"]) .anfrage__paket--hin {
+  left: 100%;
+  transform: translateX(-100%);
+}
+
+.anfrage[data-weg="server"][data-schritt="1"] .anfrage__paket--hin {
+  opacity: 1;
+}
+
+/* Schritt 3: Antwort wandert zurück zum Browser */
+.anfrage[data-weg="server"]:is([data-schritt="3"], [data-schritt="4"]) .anfrage__paket--zurueck {
+  left: 0;
+  transform: none;
+}
+
+.anfrage[data-weg="server"][data-schritt="3"] .anfrage__paket--zurueck {
+  opacity: 1;
+}
+
+/* Weg "datei": Anfrage bleibt in der Mitte stecken */
+.anfrage[data-weg="datei"]:not([data-schritt="0"]) .anfrage__paket--hin {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.anfrage[data-weg="datei"]:is([data-schritt="1"], [data-schritt="2"]) .anfrage__paket--hin {
+  opacity: 1;
+}
+
+.anfrage[data-weg="datei"][data-schritt="2"] .anfrage__paket--hin {
+  background: #c0392b;
+}
+
+.anfrage__sperre {
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: #c0392b;
+}
+
+.anfrage[data-weg="datei"]:is([data-schritt="2"], [data-schritt="3"]) .anfrage__sperre {
+  opacity: 1;
+}
+
+/* Log wie im Terminal */
+.anfrage__log {
+  min-height: 4.5rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.anfrage__text {
+  min-height: 3rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .anfrage {
+    padding: 1rem;
+  }
+
+  .anfrage__buehne {
+    grid-template-columns: minmax(0, 1fr) 3.5rem minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .anfrage__rechner {
+    padding: 0.6rem;
+  }
+
+  .anfrage__fenster {
+    min-height: 5rem;
+  }
+
+  .anfrage__paket {
+    font-size: 0.6rem;
+  }
+}

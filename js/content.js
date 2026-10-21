@@ -11,7 +11,7 @@ const CONTENT_ORDNER = "content/vorlesungen/";
 
 // Texte für die Status-Etiketten. "fertig" bekommt kein Etikett.
 const STATUS_TEXTE = {
-  demo: "Demo-Inhalt",
+  demo: "Entwurf",
   platzhalter: "Platzhalter",
 };
 
@@ -97,7 +97,43 @@ function statusBadge(status) {
 }
 
 // Hinweis, falls die Dateien gar nicht geladen werden konnten.
-// Häufigste Ursache: Seite per Doppelklick geöffnet statt über einen lokalen Server.
+// Häufigste Ursache: Seite per Doppelklick geöffnet (file://) statt über einen lokalen Server.
 const LADEFEHLER_TEXT =
-  "Die Inhalte konnten nicht geladen werden. Bitte öffne die Seite über einen lokalen Server " +
-  "(in VS Code: Rechtsklick auf index.html → „Open with Live Server“).";
+  "Die Inhalte konnten nicht geladen werden. Bitte öffne die Seite über einen lokalen Server: " +
+  "im Terminal im Projektordner <code>python3 -m http.server 8000</code> starten und " +
+  "<a href=\"http://localhost:8000\">http://localhost:8000</a> öffnen " +
+  "(oder in VS Code: Rechtsklick auf index.html → „Open with Live Server“).";
+
+// Macht Text sicher für innerHTML: Aus "<noscript>" wird "&lt;noscript&gt;".
+// Sonst würde der Browser den Text als echtes HTML-Tag lesen.
+function maskiere(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// "Meine Learnings" → "meine-learnings"
+// Daraus werden Sprungmarken, z. B. kapitel.html?nr=3#meine-learnings
+function alsAnker(text) {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, "-")   // alles andere (Leerzeichen, Emojis, Klammern …) wird zu "-"
+    .replace(/^-+|-+$/g, "");      // "-" am Anfang und Ende entfernen
+}
+
+// Schneidet einen "## Titel"-Abschnitt aus dem Markdown heraus (ohne die Überschrift selbst).
+// Er endet bei der nächsten "## "-Überschrift oder am Dateiende.
+// Gibt "" zurück, wenn es den Abschnitt nicht gibt.
+function abschnitt(inhalt, titel) {
+  const zeilen = inhalt.replace(/\r\n/g, "\n").split("\n");
+  const start = zeilen.findIndex(zeile => zeile.trim() === "## " + titel);
+  if (start === -1) return "";
+
+  let ende = zeilen.findIndex((zeile, i) => i > start && zeile.startsWith("## "));
+  if (ende === -1) ende = zeilen.length;
+
+  return zeilen.slice(start + 1, ende).join("\n").trim();
+}

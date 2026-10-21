@@ -1,4 +1,4 @@
-# Status – Stand 20.10.2026
+# Status – Stand 21.10.2026
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
 Langfristige Planung: [ROADMAP.md](ROADMAP.md).
@@ -18,13 +18,15 @@ Beide Ordner liegen unter `~/Desktop/Web-Prog_3S/`, die Skripte (PDF) unter `~/D
 
 | Nr | Datum | Thema | Stand |
 |---|---|---|---|
-| 01 | 05.10. | Wie das Web funktioniert | Demo-Inhalt, muss ersetzt werden |
-| 02 | 12.10. | Das HTML-Grundgerüst | Demo-Inhalt, muss ersetzt werden |
+| 01 | 05.10. | Einführung – Webanwendungen & Skriptsprachen | **zusammengefasst** aus Skript V1 + GoodNotes-Notizen, Status `demo` (Etikett „Entwurf“) |
+| 02 | 12.10. | HTML-Grundlagen & JavaScript-Basics | **zusammengefasst** aus Skript HTML1 + JS2 + Notizen, 3 Übungen mit Code-Check, Status `demo` |
 | 03 | 19.10. | JavaScript-Funktionen & Links | **zusammengefasst** aus beiden Skripten, Status `demo`, bis die Lücken geschlossen sind |
 | 04–08 | – | – | Platzhalter |
 
 **Aufgaben im Aufgaben-Repo:** 12.10. Aufgaben 1–3, 19.10. Bar, 19.10. Bohnen zählen.
-Die Aufgaben vom 19.10. sind zusätzlich als lauffähige Kopie unter `aufgaben/` im Portfolio und aus Vorlesung 03 verlinkt („▶ live ansehen“).
+Alle fünf Aufgaben sind zusätzlich als lauffähige Kopie unter `aufgaben/` im Portfolio und aus Vorlesung 02 bzw. 03 verlinkt („▶ live ansehen“).
+
+**Neue Seiten (21.10.):** `learnings.html`, `uebungen.html`, `ueber.html` (mit Animation „Anfrage und Antwort“), Sprungmarken-Leiste in jedem Kapitel. Branch `ausbau-v1-v2-unterseiten`, noch nicht gemergt.
 
 ## Vorlesung 3 – was gesichert ist
 
@@ -40,7 +42,7 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 
 | Übung | Code | Stand |
 |---|---|---|
-| KopfüBar mit Ordnern (HTML2, S. 9–13, 24, 31, 48) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | ✅ bearbeitet und getestet. Korrigiert: `getränke/` → `getraenke/`, Bildpfade → `../bilder/…`, Rücklinks → `../bar.html`, doppelte Altdateien mit `.. /bilder` (Leerzeichen) und `bar/bar.html` entfernt. **Bilddateien vollständig** (`getraenke.gif`, `gruen/hellblau/blau/rot.jpg`), es fehlt keine. Tippfehler im Linktext („Elixire“) im Aufgaben-Repo behoben (`9241ba6`), Kopie in `aufgaben/` noch nicht neu übernommen. |
+| KopfüBar mit Ordnern (HTML2, S. 9–13, 24, 31, 48) | `CODE_WP_Aufgaben/19.10_aufgabe1_bar/` | ✅ bearbeitet und getestet. Korrigiert: `getränke/` → `getraenke/`, Bildpfade → `../bilder/…`, Rücklinks → `../bar.html`, doppelte Altdateien mit `.. /bilder` (Leerzeichen) und `bar/bar.html` entfernt. **Bilddateien vollständig** (`getraenke.gif`, `gruen/hellblau/blau/rot.jpg`), es fehlt keine. Tippfehler im Linktext („Elixire“) im Aufgaben-Repo behoben (`9241ba6`), Kopie in `aufgaben/` ist aktuell. |
 | Bohnen zählen (vorl3, Folie 35, **Abgabe**) | `CODE_WP_Aufgaben/19.10_aufgabe2_bohnen-zaehlen/` | ✅ **bearbeitet**, mit 4 Testfällen getestet (`BBC`→2, `Bohnen & Bananen`→2, `bbb`→0, `kakkerlak`/k→4). ⏳ **Nicht eingereicht.** Einreichung (vorzeigen oder Bildschirmaufnahme per Mail) erst nach Bestätigung durch Sarah, keine feste Frist. |
 
 **HTML2-Übungen ohne Bearbeitung:** Rückverlinkung/`href`-Tabelle (S. 24–25), Pfad-Übung + Kopfnuss (S. 38, 44), Relativität `musik/` (S. 51–52), Kreuzworträtsel (S. 53–55).
@@ -48,14 +50,15 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 ## Was noch fehlt
 
 ### Neu am 20.10.
-- [ ] Seite lokal nur über Server testen: `python3 -m http.server 8000` → http://localhost:8000 (per Doppelklick lädt fetch() nichts)
+- [x] Seite lokal nur über Server testen: `python3 -m http.server 8000` → http://localhost:8000 (per Doppelklick lädt fetch() nichts)
 - [ ] Veröffentlichung klären: GitHub Pages bei privatem Repo nur mit bezahltem Plan → Repo öffentlich machen oder anderer Host?
-- [ ] Neuer fester Abschnitt `## Meine Learnings` (✏️) nach jeder Vorlesung, 5 Leitfragen → in CONTENT_GUIDE aufnehmen
-- [ ] Learnings für V1–V3 schreiben
-- [ ] Struktur entscheiden (Teil von „Layout überarbeiten“): Sprungmarken im Kapitel + Unterseiten learnings.html / uebungen.html / ueber.html
-- [ ] Erste Animation: Request-Ablauf Browser → Server → Card (Demo zu V1)
+- [x] Neuer fester Abschnitt `## Meine Learnings` (✏️) nach jeder Vorlesung, 5 Leitfragen → in CONTENT_GUIDE aufgenommen
+- [x] n8n: Workflow „Vorlesungs-Rückblick“ (Mo 18:00 → Issue) und „Learnings eintragen“ (Formular → Ollama → Branch `learnings`) laufen
+- [ ] Learnings für V1–V3 über das Formular eintragen (Production-URL, Workflow ist veröffentlicht)
+- [x] Struktur gebaut: Sprungmarken im Kapitel + Unterseiten learnings.html / uebungen.html / ueber.html → **prüfen und mergen**
+- [x] Erste Animation: Request-Ablauf Browser → Server → Card (auf ueber.html, beide Wege: localhost und file://)
 - [x] Tippfehler „Elixire“ behoben (Aufgaben-Repo 9241ba6)
-- [ ] Kopie `aufgaben/19.10_aufgabe1_bar/` aus dem Aufgaben-Repo neu übernehmen
+- [x] Kopie `aufgaben/19.10_aufgabe1_bar/` geprüft: schon aktuell. Aufgaben vom 12.10. neu nach `aufgaben/` kopiert
 
 **Abweichung (PO-Wunsch 20.10.):** Unterseiten und Server-Animation sind neue Infrastruktur, bewusst entgegen „keine neuen Demos“.
 
@@ -68,75 +71,17 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 - [ ] Optionale HTML2-Übungen: Baustelle, Pfad-Übung, Relativität, Kreuzworträtsel
 - [ ] Übungsnummerierung festlegen: Zählen die 12.10.-Aufgaben mit?
 - [ ] Danach `03.md` auf `status: fertig` setzen
-- [ ] Vorlesungen 01 und 02 mit echtem Inhalt füllen (siehe Prompts unten)
+- [x] Vorlesungen 01 und 02 mit echtem Inhalt gefüllt (21.10.) → selbst durchlesen, offene ❓ prüfen, dann `status: fertig`
 - [ ] Sprint auf GitHub anlegen (Meilenstein + Issues im Repo `the-web-journey`)
 
-## Wie es mit Vorlesung 1 und 2 weitergeht
+## Vorlesung 1 und 2 – was gesichert ist (21.10.)
 
-**Arbeitsweise wie bei Vorlesung 3:**
-- das Skript vollständig lesen
-- Inhalte nach Herkunft kennzeichnen (📘 ✏️ 🤖 ❓)
-- die bestehende Datei befüllen, keine neue Struktur
-- Lücken offen markieren statt sie zu erfinden
+Quelle: `Skripte/Web-Programming.pdf` (GoodNotes-Export), alle 196 Seiten gelesen, Handschrift als ✏️ übernommen.
 
-Quelle für beide: `~/Desktop/Web-Prog_3S/Skripte/Web-Programming.pdf` (GoodNotes-Export = Skript + meine handschriftlichen Notizen):
-
-| Seiten | Inhalt |
-|---|---|
-| 1–3 | eigene Notizen (Prüfungsform Portfolio, Skriptsprachen) |
-| 4–53 | Vorlesung 1 „Einführung“ (05.10.) |
-| 54–137 | Vorlesung 1ex „Einführung in HTML“ (12.10.) |
-| 138–196 | Vorlesung 2-1 „JavaScript Grundlagen“ (12.10.) |
-
-### Prompt für Vorlesung 1
-
-```text
-Wir arbeiten Vorlesung 1 (05.10.2026) von Web-Programmierung auf.
-Projekt: ~/Desktop/Web-Prog_3S/Portfolio_the-web-journey
-Ziel-Datei: content/vorlesungen/01.md (enthält aktuell Demo-Inhalt → komplett ersetzen).
-
-Quellen:
-- Skript + meine GoodNotes-Anmerkungen: ~/Desktop/Web-Prog_3S/Skripte/Web-Programming.pdf,
-  Seiten 1–53 (S. 1–3 = eigene Notizen zur Prüfungsform, S. 4–53 = Vorlesung 1 "Einführung", 05.10.)
-  Handschrift gilt als ✏️, gedruckter Folientext als 📘.
-
-Bitte:
-1. Lies STATUS.md, CONTENT_GUIDE.md und content/vorlesungen/03.md als Vorbild für Aufbau und Kennzeichnung.
-2. Lies das Skript vollständig (auch Bild-Folien) und notiere die Themen mit Foliennummer.
-3. Schreibe 01.md nach dem Schema des CONTENT_GUIDE (Überblick, Lernziele, Zusammenfassung,
-   Beispiele, Übungen, Offene Fragen & Lücken). Trenne strikt:
-   📘 Skript (mit Folie) · ✏️ meine Notiz · 🤖 KI-Erklärung · ❓ offen.
-4. Übungen aus dem Skript mit <details>-Lösung aufnehmen. Gibt es Code dazu im Aufgaben-Repo, verweise darauf.
-5. Titel, Beschreibung und Datum in den Metadaten anpassen. Status bleibt "demo", bis ich den Inhalt geprüft habe.
-6. Aktualisiere danach STATUS.md (Tabelle Vorlesungen + "Was noch fehlt").
-Keine neue Infrastruktur, keine neuen Demos. Erkläre schwierige Stellen so, dass ich sie wirklich verstehe.
-```
-
-### Prompt für Vorlesung 2
-
-```text
-Wir arbeiten Vorlesung 2 (12.10.2026) von Web-Programmierung auf.
-Projekt: ~/Desktop/Web-Prog_3S/Portfolio_the-web-journey
-Ziel-Datei: content/vorlesungen/02.md (enthält aktuell Demo-Inhalt → komplett ersetzen).
-
-Quellen:
-- Skript + meine GoodNotes-Anmerkungen: ~/Desktop/Web-Prog_3S/Skripte/Web-Programming.pdf,
-  Seiten 54–137 (Vorlesung 1ex "Einführung in HTML") und 138–196 (Vorlesung 2-1 "JavaScript Grundlagen"), beide am 12.10.
-  Handschrift gilt als ✏️, gedruckter Folientext als 📘.
-- Meine Aufgaben vom 12.10. im Aufgaben-Repo CODE_WP_Aufgaben:
-  12.10_Aufgabe1 (Sternback-Kaffee, HTML+CSS), 12.10_Aufg2 (prompt/alert), 12.10_Aufg3_Abschluss (Sternchen-Dreieck)
-
-Bitte:
-1. Lies STATUS.md, CONTENT_GUIDE.md und content/vorlesungen/03.md als Vorbild für Aufbau und Kennzeichnung.
-2. Lies das Skript vollständig (auch Bild-Folien) und notiere die Themen mit Foliennummer.
-3. Schreibe 02.md nach dem Schema des CONTENT_GUIDE. Trenne strikt:
-   📘 Skript (mit Folie) · ✏️ meine Notiz · 🤖 KI-Erklärung · ❓ offen.
-4. Nimm die drei Aufgaben vom 12.10. als Übungen auf: Aufgabenstellung laut Skript, meine Lösung als
-   Code-Ausschnitt in <details>, dazu eine 🤖-Erklärung, warum der Code funktioniert. Prüfe meinen Code auf Fehler.
-5. Titel, Beschreibung und Datum in den Metadaten anpassen. Status bleibt "demo", bis ich den Inhalt geprüft habe.
-6. Kläre mit mir die Übungsnummerierung über das Semester und aktualisiere danach STATUS.md.
-Keine neue Infrastruktur, keine neuen Demos. Erkläre schwierige Stellen so, dass ich sie wirklich verstehe.
-```
+- **01.md:** Prüfungsform (Folien + meine Notizen S. 2), Web-Anwendungen, drei Architekturen, Skriptsprache vs. Programmiersprache (Notizen S. 3), erste JavaScript-Beispiele, Übung `<noscript>`
+- **02.md:** HTML-Teil (Webserver/Browser, Tags, Elemente, Sternback, CSS) + JS-Teil (innerHTML, externe Dateien, `use strict`, `console`, Variablen, Typen, Operatoren, Schleifen, Arrays, Objekte); Übungen Sternback, prompt/alert, Sternchen-Dreieck (Abgabe) mit 🤖-Code-Check
+- **Zwei Fehler im Skript gefunden und als 🤖 markiert:** `prompt` liefert bei Abbrechen `null` (nicht `false`), `person[lastName]` braucht Anführungszeichen
+- **Unsicher gelesene Handschrift** (HTML1 Folie 36, Notiz neben `let`) ist als ❓ markiert
 
 ## PM-Abnahme (Übergabe Pappaccina, 19.10.)
 
