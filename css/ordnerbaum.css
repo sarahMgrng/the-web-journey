@@ -1,0 +1,22 @@
+.mit-ordnerbaum { --baum-breite: 17rem; }
+.mit-ordnerbaum body { margin-left: var(--baum-breite); }
+.ordnerbaum {
+  position: fixed; inset: 0 auto 0 0; z-index: 100;
+  width: var(--baum-breite); box-sizing: border-box; overflow: auto;
+  overscroll-behavior: contain; padding: 1rem .85rem;
+  border-right: 1px solid #adb8c1; background: #edf0f1; color: #26394b;
+  font: 14px/1.45 system-ui, sans-serif; text-align: left;
+}
+.ordnerbaum a, .ordnerbaum summary { display: block; padding: .32rem .4rem; overflow-wrap: anywhere; }
+.ordnerbaum a { color: #214c80; text-decoration: underline; }
+.ordnerbaum summary { display: list-item; cursor: pointer; font-weight: 600; }
+.ordnerbaum details > :not(summary) { margin-left: .7rem; border-left: 1px dotted #8896a4; }
+.ordnerbaum [aria-current] { background: #23486c; color: white; }
+.ordnerbaum button { display: none; }
+@media (max-width: 760px) {
+  .mit-ordnerbaum body { margin-left: 0; padding-top: 2.8rem; }
+  .ordnerbaum { inset: 0 0 auto; width: 100%; max-height: 65vh; padding: .4rem .7rem; border-bottom: 1px solid #adb8c1; }
+  .ordnerbaum button { display: block; min-height: 2rem; font: inherit; }
+  .ordnerbaum button[aria-expanded="false"] + div { display: none; }
+  .mit-ordnerbaum .site-header { top: 2.8rem; }
+}

@@ -7,7 +7,7 @@
 // ==========================================================
 
 const ANZAHL_VORLESUNGEN = 8;
-const CONTENT_ORDNER = "content/vorlesungen/";
+const CONTENT_ORDNER = new URL("../content/vorlesungen/", document.currentScript.src);
 
 // Texte für die Status-Etiketten. "fertig" bekommt kein Etikett.
 const STATUS_TEXTE = {
@@ -53,7 +53,7 @@ function zerlegeMarkdown(text) {
 // async/await: Das Laden dauert einen Moment – "await" wartet auf das Ergebnis,
 // ohne die Seite zu blockieren.
 async function ladeVorlesung(nr) {
-  const antwort = await fetch(CONTENT_ORDNER + zweistellig(nr) + ".md");
+  const antwort = await fetch(new URL(zweistellig(nr) + ".md", CONTENT_ORDNER));
 
   // Datei fehlt (404) → Platzhalter statt Fehler, damit die Seite weiter funktioniert
   if (!antwort.ok) {
