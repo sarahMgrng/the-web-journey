@@ -30,6 +30,7 @@ function findeUebungen(vorlesung) {
       anker: alsAnker(titel),
       live: live ? live[1] : "",
       abgabe: /abgabe/i.test(titel),
+      offen: /noch nicht bearbeitet/i.test(text),   // Hinweis „❓ Noch nicht bearbeitet“ in der Übung
     };
   });
 }
@@ -45,12 +46,12 @@ function zeigeUebungen(vorlesungen) {
 
   liste.innerHTML = `
     <p class="zusammenfassung">${uebungen.length} Übungen aus ${new Set(uebungen.map(u => u.vorlesung.nr)).size} Vorlesungen,
-      davon ${uebungen.filter(u => u.live).length} zum Ausprobieren.</p>
+      davon ${uebungen.filter(u => u.live).length} zum Ausprobieren und ${uebungen.filter(u => u.offen).length} noch offen.</p>
     <ol class="uebungs-liste">
       ${uebungen.map(u => `
         <li class="eintrag eintrag--kompakt">
           <p class="eyebrow">Vorlesung ${zweistellig(u.vorlesung.nr)} · ${u.vorlesung.titel}</p>
-          <h2>${maskiere(u.titel)} ${u.abgabe ? '<span class="badge">Abgabe</span>' : ""}</h2>
+          <h2>${maskiere(u.titel)} ${u.abgabe ? '<span class="badge">Abgabe</span>' : ""} ${u.offen ? '<span class="badge badge--platzhalter">offen</span>' : ""}</h2>
           <p class="eintrag__links">
             <a href="kapitel.html?nr=${u.vorlesung.nr}#${u.anker}">Aufgabe &amp; Lösung</a>
             ${u.live ? `<a href="${u.live}">▶ Live ansehen</a>` : ""}

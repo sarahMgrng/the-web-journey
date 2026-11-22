@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-farbe="hell">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Über das Projekt · The Web Journey</title>
+  <title>Über das Portfolio · The Web Journey</title>
   <meta name="description" content="Worum es in diesem Lerntagebuch geht, wie die Seite gebaut ist und wie sie vom Server in den Browser kommt.">
 
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/chapter.css">
   <link rel="stylesheet" href="css/seiten.css">
 
   <script src="js/ueber.js" defer></script>
+  <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
+  <link rel="stylesheet" href="css/farben.css">
+  <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
+  <script src="js/farben.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
 
+  <!-- Umschalter Portfolio 1 / Portfolio 2 (ein Schnitt in der Mitte) -->
+  <nav class="portfolio-wahl" aria-label="Portfolio wählen">
+    <a class="portfolio-wahl__seite portfolio-wahl__seite--eins" href="index.html" aria-current="true">
+      <span class="portfolio-wahl__nr">1</span> Web-Programmierung <small>WiSe 2026/27</small>
+    </a>
+    <a class="portfolio-wahl__seite portfolio-wahl__seite--zwei" href="verteilte-systeme.html">
+      Verteilte Systeme <small>SoSe 2027</small> <span class="portfolio-wahl__nr">2</span>
+    </a>
+  </nav>
+
   <header class="site-header">
     <a class="site-header__logo" href="index.html">The Web Journey</a>
     <nav aria-label="Hauptnavigation">
-      <a href="index.html#scrollytelling">Scrollytelling</a>
-      <a href="index.html#kapitel">Kapitel</a>
-      <a href="learnings.html">Learnings</a>
+      <a href="schnittwerk/rundgang.html">Bildrundgang</a>
+      <a href="index.html#scrollytelling">Schwerpunkt</a>
+      <a href="index.html#kapitel">Vorlesungen</a>
       <a href="uebungen.html">Übungen</a>
-      <a href="ueber.html" aria-current="page">Über</a>
+      <a href="learnings.html">Learnings</a>
+      <a href="ueber.html" aria-current="page">Portfolio</a>
+      <a href="ueber-mich.html">Über mich</a>
     </nav>
   </header>
 
@@ -30,7 +47,7 @@
        weil er sich im Semester kaum ändert. Nur die Animation braucht JavaScript (ueber.js). -->
   <main class="kapitel-seite" id="inhalt">
     <header class="kapitel-kopf">
-      <p class="eyebrow">Über das Projekt</p>
+      <p class="eyebrow">Über das Portfolio</p>
       <h1>Ein Lerntagebuch, das selbst eine Web-Anwendung ist.</h1>
       <p class="kapitel-kopf__lead">The Web Journey ist mein Portfolio im Modul Web-Programmierung an der DHBW Mannheim,
         Wintersemester 2026/27. Was ich in der Vorlesung lerne, steckt auch im Code dieser Seite.</p>
@@ -132,7 +149,13 @@
   </main>
 
   <footer class="site-footer">
-    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+    <p>The Web Journey · Portfolio 1 im Modul Web-Programmierung · DHBW Mannheim · Sarah Gehring</p>
+    <p class="site-footer__links">
+      <a href="ueber-mich.html">Über mich</a>
+      <a href="ueber.html">Über das Portfolio</a>
+      <a href="https://github.com/sarahMgrng">GitHub</a>
+      <a href="https://github.com/sarahMgrng/the-web-journey">Quellcode</a>
+    </p>
   </footer>
 </body>
 </html>

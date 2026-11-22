@@ -2,11 +2,11 @@
 // content.js – lädt die Vorlesungsinhalte aus den Markdown-Dateien
 // Wird von BEIDEN Seiten genutzt (Startseite und Kapitelseite).
 //
-// Jede Vorlesung ist eine Datei: content/vorlesungen/01.md … 08.md
+// Jede Vorlesung ist eine Datei: content/vorlesungen/01.md … 07.md
 // Oben stehen Metadaten (zwischen ---), darunter der Inhalt in Markdown.
 // ==========================================================
 
-const ANZAHL_VORLESUNGEN = 8;
+const ANZAHL_VORLESUNGEN = 7;
 const CONTENT_ORDNER = "content/vorlesungen/";
 
 // Texte für die Status-Etiketten. "fertig" bekommt kein Etikett.
@@ -72,7 +72,7 @@ async function ladeVorlesung(nr) {
   };
 }
 
-// Lädt alle acht Vorlesungen gleichzeitig.
+// Lädt alle Vorlesungen gleichzeitig.
 // Promise.all wartet, bis ALLE Dateien da sind, und behält die Reihenfolge bei.
 async function ladeAlleVorlesungen() {
   const ladevorgaenge = [];

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-farbe="hell">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Web Journey</title>
-  <meta name="description" content="Interaktive Lernwebsite zum Modul Webprogrammierung – mit Scrollytelling als Schwerpunkt.">
+  <meta name="description" content="Portfolio von Sarah Gehring im Modul Web-Programmierung (DHBW Mannheim) – Lerntagebuch mit Scrollytelling als Schwerpunkt.">
 
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
 
@@ -16,18 +17,34 @@
   <!-- defer = Skripte erst ausführen, wenn das HTML fertig gelesen ist -->
   <script src="js/content.js" defer></script>
   <script src="js/home.js" defer></script>
+  <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
+  <link rel="stylesheet" href="css/farben.css">
+  <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
+  <script src="js/farben.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#kapitel">Direkt zur Kapitelübersicht</a>
 
+  <!-- Umschalter Portfolio 1 / Portfolio 2 (ein Schnitt in der Mitte) -->
+  <nav class="portfolio-wahl" aria-label="Portfolio wählen">
+    <a class="portfolio-wahl__seite portfolio-wahl__seite--eins" href="index.html" aria-current="true">
+      <span class="portfolio-wahl__nr">1</span> Web-Programmierung <small>WiSe 2026/27</small>
+    </a>
+    <a class="portfolio-wahl__seite portfolio-wahl__seite--zwei" href="verteilte-systeme.html">
+      Verteilte Systeme <small>SoSe 2027</small> <span class="portfolio-wahl__nr">2</span>
+    </a>
+  </nav>
+
   <header class="site-header">
     <a class="site-header__logo" href="index.html">The Web Journey</a>
     <nav aria-label="Hauptnavigation">
-      <a href="#scrollytelling">Scrollytelling</a>
-      <a href="#kapitel">Kapitel</a>
-      <a href="learnings.html">Learnings</a>
+      <a href="schnittwerk/rundgang.html">Bildrundgang</a>
+      <a href="#scrollytelling">Schwerpunkt</a>
+      <a href="#kapitel">Vorlesungen</a>
       <a href="uebungen.html">Übungen</a>
-      <a href="ueber.html">Über</a>
+      <a href="learnings.html">Learnings</a>
+      <a href="ueber.html">Portfolio</a>
+      <a href="ueber-mich.html">Über mich</a>
     </nav>
   </header>
 
@@ -37,17 +54,66 @@
          ====================================================== -->
     <section class="hero">
       <div class="hero__inhalt">
-        <p class="eyebrow">Portfolio · Webprogrammierung</p>
-        <h1 class="hero__titel">The Web Journey</h1>
-        <p class="hero__lead">Acht Vorlesungen. Von der ersten Zeile HTML bis zur Website, die auf deine Bewegung reagiert.</p>
+        <p class="eyebrow">Portfolio 1 · Web-Programmierung · DHBW Mannheim</p>
+        <h1 class="hero__titel">The Web Journey<span class="hero__cursor" aria-hidden="true"></span></h1>
+        <p class="hero__lead">Mein Lerntagebuch: sieben Vorlesungen, zusammengefasst, ausprobiert und reflektiert. Gebaut mit dem, was ich dabei gelernt habe.</p>
         <p class="hero__hinweis" aria-hidden="true">Scrollen <span>↓</span></p>
       </div>
     </section>
 
     <!-- ======================================================
+         DEMO 0 – Der Aufhänger: Apple-Produktseiten
+         Eine Bildsequenz im <canvas>, gesteuert vom Scrollbalken (js/home.js, Abschnitt 4)
+         ====================================================== -->
+    <section class="abschnitt apple" id="scrollytelling" aria-labelledby="apple-titel">
+      <p class="demo-label">Demo 00 · Der Aufhänger</p>
+      <h2 class="abschnitt__titel reveal" id="apple-titel">Wie Apple ein Produkt erzählt.</h2>
+      <p class="abschnitt__lead reveal">
+        Auf Apples Produktseiten klappt ein Laptop auf, während man scrollt – vorwärts und rückwärts.
+        Das ist kein Video: Die Scrollposition wählt aus einer Bildsequenz das passende Bild und zeichnet es
+        in ein <code>&lt;canvas&gt;</code>. Hier dieselbe Technik, mit 120 selbst gezeichneten Bildern.
+      </p>
+
+      <div class="apple__buehne">
+        <div class="apple__sticky">
+          <canvas class="apple__canvas" id="apple-canvas" width="960" height="600"
+                  role="img" aria-label="Ein Laptop klappt beim Scrollen auf"></canvas>
+          <p class="apple__zaehler" aria-hidden="true">
+            <code>scrollFraction = <span id="apple-anteil">0.00</span></code>
+            <code>Frame <span id="apple-frame">0</span> / 119</code>
+          </p>
+        </div>
+      </div>
+
+      <details class="erklaerung">
+        <summary>Wie funktioniert das?</summary>
+        <p>
+          Der Bereich ist viel höher als der Bildschirm, das <code>&lt;canvas&gt;</code> bleibt mit
+          <code>position: sticky</code> stehen. Bei jedem Scrollen rechnet JavaScript aus, wie weit man
+          durch den Bereich ist (0 bis 1), macht daraus eine Bildnummer und zeichnet genau dieses Bild.
+          Apple lädt dafür echte Fotos einer Bildsequenz vor – hier zeichnet eine Funktion jedes Bild selbst.
+        </p>
+<pre><code>// 1. Wie weit bin ich durch den Bereich? (0 … 1)
+const rect = buehne.getBoundingClientRect();
+const scrollFraction = -rect.top / (rect.height - innerHeight);
+
+// 2. Daraus wird eine Bildnummer
+const frame = Math.min(FRAMES - 1, Math.floor(scrollFraction * FRAMES));
+
+// 3. Nur dieses eine Bild zeichnen – im nächsten Animationsschritt
+requestAnimationFrame(() =&gt; zeichneFrame(frame));</code></pre>
+        <p>
+          Quelle der Idee:
+          <a href="https://css-tricks.com/lets-make-one-of-those-fancy-scrolling-animations-used-on-apple-product-pages/">CSS-Tricks:
+          „Let’s Make One of Those Fancy Scrolling Animations Used on Apple Product Pages“</a>.
+        </p>
+      </details>
+    </section>
+
+    <!-- ======================================================
          DEMO 1 – Was ist Scrollytelling? (Fade-in)
          ====================================================== -->
-    <section class="abschnitt" id="scrollytelling">
+    <section class="abschnitt" id="was-ist-scrollytelling">
       <p class="demo-label">Demo 01 · Fade-in beim Scrollen</p>
       <h2 class="abschnitt__titel reveal">Was ist Scrollytelling?</h2>
       <p class="abschnitt__lead reveal">
@@ -239,8 +305,8 @@ browser.dataset.schritt = eintrag.target.dataset.schritt;
          KAPITELÜBERSICHT – wird von home.js aus den Markdown-Dateien gefüllt
          ====================================================== -->
     <section class="abschnitt" id="kapitel" aria-labelledby="kapitel-titel">
-      <p class="eyebrow">Kapitelübersicht</p>
-      <h2 class="abschnitt__titel" id="kapitel-titel">Acht Vorlesungen.<br>Eine Reise.</h2>
+      <p class="eyebrow">Vorlesungen</p>
+      <h2 class="abschnitt__titel" id="kapitel-titel">Sieben Vorlesungen.<br>Alles an einem Ort.</h2>
 
       <!-- Darstellung umstellen: "kapitel-liste--raster" durch "kapitel-liste--liste" ersetzen -->
       <ol class="kapitel-liste kapitel-liste--raster" id="kapitel-liste">
@@ -250,7 +316,13 @@ browser.dataset.schritt = eintrag.target.dataset.schritt;
   </main>
 
   <footer class="site-footer">
-    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+    <p>The Web Journey · Portfolio 1 im Modul Web-Programmierung · DHBW Mannheim · Sarah Gehring</p>
+    <p class="site-footer__links">
+      <a href="ueber-mich.html">Über mich</a>
+      <a href="ueber.html">Über das Portfolio</a>
+      <a href="https://github.com/sarahMgrng">GitHub</a>
+      <a href="https://github.com/sarahMgrng/the-web-journey">Quellcode</a>
+    </p>
   </footer>
 </body>
 </html>
