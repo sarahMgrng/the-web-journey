@@ -1,0 +1,124 @@
+/* Demo 05 – Centerpiece „Die Reise einer Website“ (Platzhalter)
+   Layout kommt von .story / .story__visual / .story__schritte aus home.css.
+   Hier nur: die eigenen Textschritte und die Weg-Grafik. */
+
+/* ---------- Textschritte (wie Demo 02, eigene Klasse, damit home.js sie nicht mitbeobachtet) ---------- */
+.reise__schritt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 75vh;
+}
+
+.reise__schritt h3 {
+  font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+}
+
+.reise__schritt p:last-child {
+  max-width: 36ch;
+  margin-top: 1rem;
+  font-size: 1.15rem;
+  color: var(--farbe-text-leise);
+}
+
+.js .reise__schritt {
+  opacity: 0.25;
+  transition: opacity 0.5s ease;
+}
+
+.js .reise__schritt.is-active {
+  opacity: 1;
+}
+
+/* ---------- Die Grafik ---------- */
+.reise {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: min(100%, 440px);
+}
+
+.reise__platzhalter {
+  align-self: flex-start;
+  padding: 0.3rem 0.75rem;
+  border: 1px dashed var(--farbe-hinweis);
+  border-radius: 999px;
+  background: var(--farbe-hinweis-hell);
+  color: var(--farbe-text);
+  font-size: 0.8rem;
+}
+
+.reise__adresse {
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  background: var(--farbe-flaeche-2);
+  color: var(--farbe-text);
+  font-family: var(--schrift-code, ui-monospace, monospace);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.reise__weg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Jeder Knoten ist eine Station auf dem Weg – standardmäßig abgeblendet */
+.reise__knoten {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--farbe-linie);
+  border-radius: 12px;
+  background: var(--farbe-flaeche);
+  color: var(--farbe-text-leise);
+  opacity: 0.35;
+  transition: opacity 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.reise__knoten strong {
+  color: var(--farbe-text);
+}
+
+.reise__knoten small {
+  margin-left: auto;
+  font-size: 0.75rem;
+}
+
+.reise__symbol {
+  width: 1.6rem;
+  font-family: var(--schrift-code, ui-monospace, monospace);
+  text-align: center;
+}
+
+/* Aktive Knoten je Station (data-station setzt reise.js) */
+.reise[data-station="1"] [data-knoten="datei"],
+.reise[data-station="2"] :is([data-knoten="datei"], [data-knoten="browser"]),
+.reise[data-station="3"] :is([data-knoten="datei"], [data-knoten="server"], [data-knoten="browser"]),
+.reise[data-station="4"] :is([data-knoten="datei"], [data-knoten="server"], [data-knoten="dns"], [data-knoten="browser"]),
+.reise[data-station="5"] .reise__knoten {
+  opacity: 1;
+  border-color: var(--farbe-akzent);
+  transform: translateX(6px);
+}
+
+/* Übersprungene Stationen: Bei file:// gibt es keinen Server, bei localhost kein DNS */
+.reise[data-station="2"] :is([data-knoten="server"], [data-knoten="dns"]),
+.reise[data-station="3"] [data-knoten="dns"] {
+  text-decoration: line-through;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reise__knoten,
+  .js .reise__schritt {
+    transition: none;
+  }
+  .reise .reise__knoten {
+    transform: none !important;
+  }
+}

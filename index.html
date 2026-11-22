@@ -9,6 +9,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/reise.css">   <!-- Demo 05: Centerpiece (Platzhalter) -->
 
   <!-- Markiert sofort, dass JavaScript läuft. Nur dann werden Elemente
        für die Einblend-Animation zunächst versteckt (siehe home.css). -->
@@ -18,6 +19,7 @@
   <script src="js/inhalte.js" defer></script>   <!-- Ersatzkopie der Kapitel für den Start per Doppelklick -->
   <script src="js/content.js" defer></script>
   <script src="js/home.js" defer></script>
+  <script src="js/reise.js" defer></script>
   <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
   <link rel="stylesheet" href="css/farben.css">
   <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
@@ -299,6 +301,60 @@ browser.dataset.schritt = eintrag.target.dataset.schritt;
         Faustregel: Animation nur dort, wo sie etwas <strong>erklärt</strong>. Wer in den
         Systemeinstellungen „Bewegung reduzieren“ aktiviert hat, sieht diese Seite deshalb ganz ohne Animationen.
       </p>
+    </section>
+
+    <!-- ======================================================
+         DEMO 5 – Centerpiece „Die Reise einer Website“ (PLATZHALTER)
+         Später: große animierte Grafik wie die iPhone-Seite von Apple.
+         Jetzt schon echt: Schritte, Hosting-Varianten, Adresszeile, Hervorhebung.
+         ====================================================== -->
+    <section class="abschnitt" id="reise" aria-labelledby="reise-titel">
+      <p class="demo-label">Demo 05 · Centerpiece</p>
+      <h2 class="abschnitt__titel reveal" id="reise-titel">Von index.html<br>bis auf deinen Bildschirm.</h2>
+
+      <div class="story">
+        <div class="story__visual">
+          <div class="reise" data-station="1">
+            <p class="reise__platzhalter">Platzhalter – die große Grafik entsteht hier</p>
+            <p class="reise__adresse" aria-live="polite">index.html</p>
+            <ol class="reise__weg">
+              <li class="reise__knoten" data-knoten="datei"><span class="reise__symbol" aria-hidden="true">&lt;/&gt;</span><strong>Datei</strong><small>index.html auf der Festplatte</small></li>
+              <li class="reise__knoten" data-knoten="server"><span class="reise__symbol" aria-hidden="true">▤</span><strong>Server</strong><small>liefert die Datei per HTTP</small></li>
+              <li class="reise__knoten" data-knoten="dns"><span class="reise__symbol" aria-hidden="true">⌖</span><strong>DNS</strong><small>Name → IP-Adresse</small></li>
+              <li class="reise__knoten" data-knoten="browser"><span class="reise__symbol" aria-hidden="true">◱</span><strong>Browser</strong><small>baut daraus den DOM</small></li>
+              <li class="reise__knoten" data-knoten="bildschirm"><span class="reise__symbol" aria-hidden="true">▭</span><strong>Bildschirm teilen</strong><small>nur Pixel reisen weiter</small></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="story__schritte">
+          <article class="reise__schritt" data-station="1" data-adresse="index.html">
+            <p class="demo-label">01 · Die Datei</p>
+            <h3>Alles beginnt mit einer Datei.</h3>
+            <p>index.html ist nur Text auf einer Festplatte. Erst ein Browser macht daraus eine Seite – die Frage ist nur, wie die Datei zu ihm kommt.</p>
+          </article>
+          <article class="reise__schritt" data-station="2" data-adresse="file:///…/index.html">
+            <p class="demo-label">02 · Doppelklick (file://)</p>
+            <h3>Der kürzeste Weg.</h3>
+            <p>Der Browser liest die Datei direkt von der Platte. Kein Server, kein Netz. Dafür verbietet er fetch() – deshalb lädt diese Seite ihre Kapitel dann aus js/inhalte.js.</p>
+          </article>
+          <article class="reise__schritt" data-station="3" data-adresse="http://localhost:5500/">
+            <p class="demo-label">03 · Lokaler Server</p>
+            <h3>Ein Server auf dem eigenen Rechner.</h3>
+            <p>python3 -m http.server liefert die Dateien per HTTP aus. localhost zeigt immer auf den eigenen Rechner – ein DNS-Server wird nicht gefragt.</p>
+          </article>
+          <article class="reise__schritt" data-station="4" data-adresse="https://….vercel.app/">
+            <p class="demo-label">04 · Online (Vercel)</p>
+            <h3>Die echte Reise durchs Internet.</h3>
+            <p>Der Browser fragt DNS nach der IP-Adresse, baut eine HTTPS-Verbindung auf und lädt index.html von Vercels Servern – dieselbe Datei, nur weit weg.</p>
+          </article>
+          <article class="reise__schritt" data-station="5" data-adresse="Teams · Bildschirm teilen">
+            <p class="demo-label">05 · Geteilter Bildschirm</p>
+            <h3>Und in der Präsentation?</h3>
+            <p>Beim Bildschirmteilen in Teams reist kein HTML mehr, sondern ein Video meines Bildschirms. Wer zusieht, kann nichts anklicken – es kommen nur Pixel an.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <!-- ======================================================
