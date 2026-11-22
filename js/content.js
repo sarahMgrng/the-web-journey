@@ -52,15 +52,40 @@ function zerlegeMarkdown(text) {
 // Lädt EINE Vorlesung und gibt ein Objekt mit allen Angaben zurück.
 // async/await: Das Laden dauert einen Moment – "await" wartet auf das Ergebnis,
 // ohne die Seite zu blockieren.
-async function ladeVorlesung(nr) {
-  const antwort = await fetch(CONTENT_ORDNER + zweistellig(nr) + ".md");
+// Holt den Text einer Markdown-Datei.
+// Normalfall (über einen Server, z. B. Vercel oder localhost): fetch() fragt die Datei beim Server an.
+// Per Doppelklick (file://) gibt es keinen Server – dann nehmen wir die Ersatzkopie aus js/inhalte.js,
+// die tools/inhalte-buendeln.py erzeugt und die jede Seite mit <script> einbindet.
+// Rückgabe: der Text, oder null, wenn es die Vorlesung (noch) nicht gibt.
+async function ladeText(nr) {
+  const name = zweistellig(nr);
+  const ersatz = window.INHALTE ? window.INHALTE[name] ?? null : null;
 
-  // Datei fehlt (404) → Platzhalter statt Fehler, damit die Seite weiter funktioniert
-  if (!antwort.ok) {
+  if (location.protocol === "file:") {
+    if (!window.INHALTE) throw new Error("js/inhalte.js fehlt");
+    return ersatz;
+  }
+
+  try {
+    const antwort = await fetch(CONTENT_ORDNER + name + ".md");
+    if (antwort.ok) return await antwort.text();
+    if (antwort.status === 404) return null;   // Datei gibt es nicht → Platzhalter
+  } catch (fehler) {
+    // Netzwerk weg? Dann unten die Ersatzkopie versuchen.
+  }
+  if (window.INHALTE) return ersatz;
+  throw new Error("Inhalte nicht erreichbar");
+}
+
+async function ladeVorlesung(nr) {
+  const text = await ladeText(nr);
+
+  // Datei fehlt → Platzhalter statt Fehler, damit die Seite weiter funktioniert
+  if (text === null) {
     return { nr: nr, titel: "Vorlesung folgt", datum: "", beschreibung: "", status: "platzhalter", inhalt: "" };
   }
 
-  const { meta, inhalt } = zerlegeMarkdown(await antwort.text());
+  const { meta, inhalt } = zerlegeMarkdown(text);
 
   return {
     nr: nr,
@@ -97,12 +122,13 @@ function statusBadge(status) {
 }
 
 // Hinweis, falls die Dateien gar nicht geladen werden konnten.
-// Häufigste Ursache: Seite per Doppelklick geöffnet (file://) statt über einen lokalen Server.
+// Kommt nur noch vor, wenn weder fetch() noch die Ersatzkopie js/inhalte.js funktioniert.
 const LADEFEHLER_TEXT =
-  "Die Inhalte konnten nicht geladen werden. Bitte öffne die Seite über einen lokalen Server: " +
-  "im Terminal im Projektordner <code>python3 -m http.server 8000</code> starten und " +
-  "<a href=\"http://localhost:8000\">http://localhost:8000</a> öffnen " +
-  "(oder in VS Code: Rechtsklick auf index.html → „Open with Live Server“).";
+  "Die Inhalte konnten nicht geladen werden. Am einfachsten: im Projektordner <code>start.command</code> doppelklicken. " +
+  "Oder im Terminal <code>python3 -m http.server 5500</code> starten und " +
+  "<a href=\"http://localhost:5500\">http://localhost:5500</a> öffnen. " +
+  "Per Doppelklick auf index.html braucht die Seite die Datei <code>js/inhalte.js</code> " +
+  "(neu erzeugen mit <code>python3 tools/inhalte-buendeln.py</code>).";
 
 // Macht Text sicher für innerHTML: Aus "<noscript>" wird "&lt;noscript&gt;".
 // Sonst würde der Browser den Text als echtes HTML-Tag lesen.

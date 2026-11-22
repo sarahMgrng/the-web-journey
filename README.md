@@ -16,8 +16,12 @@ Dazu die Unterseiten Learnings, Übungen, Über das Portfolio, Über mich und di
 
 ## Starten
 
-Die Seite lädt ihre Inhalte per `fetch()`. Browser erlauben das nur über einen (lokalen) Server,
-**nicht** beim Öffnen per Doppelklick.
+Die Seite lädt ihre Inhalte per `fetch()` – das klappt über einen Server (Vercel, localhost).
+Per Doppelklick auf `index.html` (`file://`) blockiert der Browser `fetch()`; dann liest die Seite die
+Ersatzkopie `js/inhalte.js`. Nach jeder Änderung an `content/vorlesungen/*.md` neu erzeugen:
+`python3 tools/inhalte-buendeln.py` (macht `start.command` automatisch).
+
+**Variante Doppelklick auf index.html** – geht ohne alles, auch offline.
 
 **Variante 0 – Doppelklick (macOS)**
 `start.command` doppelklicken. Ein Terminal startet den Server und öffnet http://localhost:5500. Beim ersten Mal

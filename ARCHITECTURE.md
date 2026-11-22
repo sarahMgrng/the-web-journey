@@ -82,8 +82,12 @@ Alle Farben stehen als Variablen in `style.css` (`:root`) bzw. `farben.css`. Ein
 `marked` liegt unter `js/vendor/`, damit die Seite bei der Präsentation auch ohne Internet läuft.
 
 **Start per Doppelklick**
-`index.html` per Doppelklick lädt keine Kapitel (`file://`). Darum gibt es `start.command` (macOS): Doppelklick startet
-`python3 -m http.server` im Projektordner und öffnet den Browser. Online liegt die Seite bei Vercel.
+Über `file://` blockiert der Browser `fetch()`. Darum gibt es zwei Wege:
+- `js/inhalte.js` (erzeugt von `tools/inhalte-buendeln.py`) enthält eine Kopie aller Kapitel als `window.INHALTE` und wird
+  per `<script>` eingebunden – das lädt der Browser auch über `file://`. `ladeText()` in `content.js` nimmt sie, wenn es
+  keinen Server gibt. Quelle bleibt das Markdown; die Kopie wird nie von Hand bearbeitet.
+- `start.command` (macOS): bündelt neu, startet `python3 -m http.server` und öffnet den Browser.
+Online liegt die Seite bei Vercel, dort lädt `fetch()` direkt die Markdown-Dateien.
 
 **Barrierearmut**
 - Semantisches HTML (`header`, `main`, `nav`, `article`), Skip-Link, sichtbarer Fokusrahmen.

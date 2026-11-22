@@ -2,7 +2,7 @@
 // ueber.js – Animation „Wie diese Seite zu dir kommt“ (ueber.html)
 // Spielt Schritt für Schritt ab, was bei fetch("content/vorlesungen/03.md") passiert:
 //   Weg "server": über http://localhost  → Anfrage, Datei gefunden, Antwort 200, Card erscheint
-//   Weg "datei":  per Doppelklick file:// → der Browser blockiert, es kommt nie eine Anfrage an
+//   Weg "datei":  per Doppelklick file:// → der Browser blockiert fetch(), die Ersatzkopie js/inhalte.js springt ein
 // JavaScript setzt nur data-weg und data-schritt – wie es aussieht, steht in seiten.css.
 // ==========================================================
 
@@ -31,7 +31,7 @@ const ABLAUF = {
       { text: "① Der Browser will dieselbe Datei mit fetch() holen …" },
       { text: "② … aber über file:// gibt es keinen Server, der antworten könnte. Der Browser blockiert die Anfrage.",
         log: () => 'Fetch API cannot load file:///…/content/vorlesungen/03.md. URL scheme "file" is not supported.' },
-      { text: "③ Ohne Antwort keine Inhalte: Genau diese Fehlermeldung siehst du dann auf der Seite." },
+      { text: "③ fetch() scheitert. Darum bringt die Seite eine Ersatzkopie mit: js/inhalte.js, eingebunden per <script> – das lädt der Browser auch über file://." },
     ],
   },
 };

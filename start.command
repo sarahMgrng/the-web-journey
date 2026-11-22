@@ -4,6 +4,7 @@
 # Warum? Die Kapitel werden per fetch() geladen – das klappt nur über http://, nicht über file://.
 
 cd "$(dirname "$0")" || exit 1
+python3 tools/inhalte-buendeln.py   # Ersatzkopie für den Doppelklick-Start aktuell halten
 PORT=5500
 echo "The Web Journey läuft auf http://localhost:$PORT  (Fenster schließen = Server beenden)"
 ( sleep 1 && open "http://localhost:$PORT" ) &
