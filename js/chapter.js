@@ -47,7 +47,7 @@ function zeigeVorlesung(vorlesung) {
     </header>`;
 
   if (vorlesung.status === "demo") {
-    html += `<p class="demo-banner"><strong>Entwurf:</strong> Aus Skript und Notizen zusammengefasst,
+    html += `<p class="demo-banner"><strong>Entwurf:</strong> Aus den Skripten zusammengefasst,
              aber noch nicht abschließend von mir geprüft. Offene Punkte stehen unten unter „Offene Fragen & Lücken“.</p>`;
   }
 

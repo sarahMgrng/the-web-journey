@@ -25,6 +25,20 @@ Langfristige Planung: [ROADMAP.md](ROADMAP.md).
   - 07 Events & Browser-Steuerung (Skript WebProg-25!) – Übungen Tabellenreihen, Akkordeon offen
   - alle JS-Beispiele mit node und im Browser („▶ Ausführen“) getestet
 
+**Review-Runde 22.11., 17:30 (Prüfung aus Sicht des Profs):**
+
+| # | Befund | Erledigt |
+|---|---|---|
+| 1 | Learnings-Seite leer | ✅ Learning V3 vom Branch `portfolio/ordnernavigation` übernommen – **V1, V2, V4–V7 fehlen noch (selbst schreiben!)** |
+| 2 | Apple-Aufhänger fehlt im Schwerpunkt | ✅ Demo 00: Laptop klappt beim Scrollen auf (120 Bilder im `<canvas>`, Quelle CSS-Tricks) |
+| 3 | Entwurf-Hinweis „Skript und Notizen“ falsch für V4–7 | ✅ „Aus den Skripten zusammengefasst“ |
+| 4 | Doppelklick auf index.html lädt keine Kapitel | ✅ `start.command` (Doppelklick → Server + Browser) |
+| 5 | Handy: Menü abgeschnitten | ✅ Menü bricht zweizeilig um |
+| 6 | Offene Übungen nicht erkennbar | ✅ Etikett „offen“ + Zählung auf der Übungsseite |
+| 7 | V1: „Präsentation 10 Min“ ≠ Folie (5 + 10 Min) | ✅ korrigiert, als ❓ dokumentiert |
+| 8 | ARCHITECTURE.md veraltet | ✅ aktualisiert |
+| – | Technik-Check: 21 Seiten, alle Links und Sprungmarken | ✅ keine Fehler (einziger 404 = fehlendes Favicon in Übung 12.10 Aufgabe 1, bleibt original) |
+
 **Offen (Iteration 2):**
 - [ ] Daten von V5–V7 prüfen (aus Wochenrhythmus abgeleitet, V7 fehlt)
 - [ ] Abgabe V5 (Kontakte-Klasse) lösen und ins Aufgaben-Repo

@@ -61,9 +61,58 @@
     </section>
 
     <!-- ======================================================
+         DEMO 0 – Der Aufhänger: Apple-Produktseiten
+         Eine Bildsequenz im <canvas>, gesteuert vom Scrollbalken (js/home.js, Abschnitt 4)
+         ====================================================== -->
+    <section class="abschnitt apple" id="scrollytelling" aria-labelledby="apple-titel">
+      <p class="demo-label">Demo 00 · Der Aufhänger</p>
+      <h2 class="abschnitt__titel reveal" id="apple-titel">Wie Apple ein Produkt erzählt.</h2>
+      <p class="abschnitt__lead reveal">
+        Auf Apples Produktseiten klappt ein Laptop auf, während man scrollt – vorwärts und rückwärts.
+        Das ist kein Video: Die Scrollposition wählt aus einer Bildsequenz das passende Bild und zeichnet es
+        in ein <code>&lt;canvas&gt;</code>. Hier dieselbe Technik, mit 120 selbst gezeichneten Bildern.
+      </p>
+
+      <div class="apple__buehne">
+        <div class="apple__sticky">
+          <canvas class="apple__canvas" id="apple-canvas" width="960" height="600"
+                  role="img" aria-label="Ein Laptop klappt beim Scrollen auf"></canvas>
+          <p class="apple__zaehler" aria-hidden="true">
+            <code>scrollFraction = <span id="apple-anteil">0.00</span></code>
+            <code>Frame <span id="apple-frame">0</span> / 119</code>
+          </p>
+        </div>
+      </div>
+
+      <details class="erklaerung">
+        <summary>Wie funktioniert das?</summary>
+        <p>
+          Der Bereich ist viel höher als der Bildschirm, das <code>&lt;canvas&gt;</code> bleibt mit
+          <code>position: sticky</code> stehen. Bei jedem Scrollen rechnet JavaScript aus, wie weit man
+          durch den Bereich ist (0 bis 1), macht daraus eine Bildnummer und zeichnet genau dieses Bild.
+          Apple lädt dafür echte Fotos einer Bildsequenz vor – hier zeichnet eine Funktion jedes Bild selbst.
+        </p>
+<pre><code>// 1. Wie weit bin ich durch den Bereich? (0 … 1)
+const rect = buehne.getBoundingClientRect();
+const scrollFraction = -rect.top / (rect.height - innerHeight);
+
+// 2. Daraus wird eine Bildnummer
+const frame = Math.min(FRAMES - 1, Math.floor(scrollFraction * FRAMES));
+
+// 3. Nur dieses eine Bild zeichnen – im nächsten Animationsschritt
+requestAnimationFrame(() =&gt; zeichneFrame(frame));</code></pre>
+        <p>
+          Quelle der Idee:
+          <a href="https://css-tricks.com/lets-make-one-of-those-fancy-scrolling-animations-used-on-apple-product-pages/">CSS-Tricks:
+          „Let’s Make One of Those Fancy Scrolling Animations Used on Apple Product Pages“</a>.
+        </p>
+      </details>
+    </section>
+
+    <!-- ======================================================
          DEMO 1 – Was ist Scrollytelling? (Fade-in)
          ====================================================== -->
-    <section class="abschnitt" id="scrollytelling">
+    <section class="abschnitt" id="was-ist-scrollytelling">
       <p class="demo-label">Demo 01 · Fade-in beim Scrollen</p>
       <h2 class="abschnitt__titel reveal">Was ist Scrollytelling?</h2>
       <p class="abschnitt__lead reveal">

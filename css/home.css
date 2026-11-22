@@ -152,6 +152,46 @@
   font-size: 0.9em;
 }
 
+/* ---------- 2b. Demo 00 – Apple-Technik: Bildsequenz im Canvas ----------
+   Die Bühne ist 2,6 Bildschirme hoch, der Inhalt klebt (sticky) und wird vom Scrollen „abgespielt“. */
+.apple__buehne {
+  position: relative;
+  height: 260vh;
+  margin-top: 2rem;
+}
+
+.apple__sticky {
+  position: sticky;
+  top: var(--header-hoehe);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1rem;
+  height: calc(100svh - var(--header-hoehe));
+}
+
+.apple__canvas {
+  width: min(100%, 880px);
+  height: auto;
+  aspect-ratio: 960 / 600;
+}
+
+.apple__zaehler {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--farbe-text-leise);
+}
+
+.apple__zaehler code {
+  padding: 0.25rem 0.6rem;
+  background: var(--farbe-flaeche);
+  border: 1px solid var(--farbe-linie);
+  border-radius: 999px;
+}
+
 /* ---------- 3. Demo 01 – Fade-in ----------
    Versteckt wird nur, wenn (a) JavaScript läuft (.js) und
    (b) der Nutzer keine reduzierte Bewegung wünscht.

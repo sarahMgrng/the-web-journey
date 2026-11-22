@@ -111,3 +111,135 @@ async function zeigeKapitelUebersicht() {
 }
 
 zeigeKapitelUebersicht();
+
+
+// ---------- 4. Demo 00 – Apple-Technik: Bildsequenz im Canvas ----------
+// Apple lädt für solche Effekte eine Folge von Fotos vor und zeigt je nach Scrollposition
+// eines davon im <canvas>. Wir zeichnen die 120 Bilder selbst: ein Laptop, der aufklappt.
+
+const appleBuehne = document.querySelector(".apple__buehne");
+const appleCanvas = document.getElementById("apple-canvas");
+const FRAMES = 120;
+
+if (appleBuehne && appleCanvas) {
+  const ctx = appleCanvas.getContext("2d");
+  const anzeigeFrame = document.getElementById("apple-frame");
+  const anzeigeAnteil = document.getElementById("apple-anteil");
+  let letzterFrame = -1;
+  let wartet = false;
+
+  // Farben aus den CSS-Variablen lesen – so passt die Zeichnung zu jedem Farbschema
+  function farbe(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  // Zeichnet Bild Nummer "frame" (0 … 119)
+  function zeichneFrame(frame) {
+    const t = frame / (FRAMES - 1);                    // 0 = zu, 1 = offen
+    const winkel = (t * 105) * Math.PI / 180;          // Deckel: 0° bis 105°
+    const W = appleCanvas.width, H = appleCanvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    // Schatten unter dem Gerät
+    ctx.fillStyle = "rgba(0, 0, 0, 0.12)";
+    ctx.beginPath();
+    ctx.ellipse(480, 528, 340, 22, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Unterteil: Trapez (vorne breiter = Perspektive) + Kante
+    const metall = ctx.createLinearGradient(0, 455, 0, 515);
+    metall.addColorStop(0, "#e4e6ea");
+    metall.addColorStop(1, "#b9bdc5");
+    ctx.fillStyle = metall;
+    ctx.beginPath();
+    ctx.moveTo(215, 455); ctx.lineTo(745, 455); ctx.lineTo(790, 500); ctx.lineTo(170, 500);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = "#9da2ab";
+    ctx.fillRect(170, 500, 620, 12);
+
+    // Tastaturfeld
+    ctx.fillStyle = "rgba(30, 30, 35, 0.18)";
+    ctx.beginPath();
+    ctx.moveTo(250, 462); ctx.lineTo(710, 462); ctx.lineTo(735, 482); ctx.lineTo(225, 482);
+    ctx.closePath();
+    ctx.fill();
+
+    // Deckel: dreht sich um die Scharnierkante (y = 455)
+    const L = 330;
+    const dy = -L * Math.sin(winkel) * 0.95 + L * Math.cos(winkel) * 0.13;   // Höhe nach Perspektive
+    const breiter = 1 + 0.05 * Math.sin(winkel);
+    const oben = 455 + dy;
+    const links = 480 - 265 * breiter, rechts = 480 + 265 * breiter;
+
+    const zeigtBildschirm = t > 0.18;   // anfangs sieht man den Deckel von außen, danach den Bildschirm
+    ctx.beginPath();
+    ctx.moveTo(215, 455); ctx.lineTo(745, 455); ctx.lineTo(rechts, oben); ctx.lineTo(links, oben);
+    ctx.closePath();
+    ctx.fillStyle = zeigtBildschirm ? "#1d1d1f" : metall;
+    ctx.fill();
+
+    if (zeigtBildschirm) {
+      // Bildschirmfläche mit Rand
+      const rand = 14;
+      const helligkeit = Math.min(1, (t - 0.18) / 0.5);   // geht langsam an
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(215 + rand, 455 - rand * Math.sign(-dy));
+      ctx.lineTo(745 - rand, 455 - rand * Math.sign(-dy));
+      ctx.lineTo(rechts - rand, oben + rand);
+      ctx.lineTo(links + rand, oben + rand);
+      ctx.closePath();
+      ctx.clip();
+      const bild = ctx.createLinearGradient(links, oben, rechts, 455);
+      bild.addColorStop(0, farbe("--farbe-akzent-fuellung") || "#0071e3");
+      bild.addColorStop(1, farbe("--farbe-zweit") || "#bf4800");
+      ctx.globalAlpha = helligkeit;
+      ctx.fillStyle = bild;
+      ctx.fillRect(0, 0, W, H);
+
+      // Text erscheint erst, wenn der Deckel fast offen ist
+      if (t > 0.7) {
+        ctx.globalAlpha = Math.min(1, (t - 0.7) / 0.2);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "700 46px ui-monospace, Menlo, monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(">_ Hallo, Web!", 480, (oben + 455) / 2 + 16);
+      }
+      ctx.restore();
+    }
+  }
+
+  // Scrollposition → Anteil (0 … 1) → Bildnummer
+  function aktualisiere() {
+    wartet = false;
+    const rect = appleBuehne.getBoundingClientRect();
+    const weg = rect.height - window.innerHeight;
+    const anteil = Math.min(1, Math.max(0, -rect.top / weg));
+    const frame = Math.min(FRAMES - 1, Math.floor(anteil * FRAMES));
+
+    anzeigeAnteil.textContent = anteil.toFixed(2);
+    if (frame === letzterFrame) return;   // gleiches Bild? Nichts tun.
+    letzterFrame = frame;
+    anzeigeFrame.textContent = frame;
+    zeichneFrame(frame);
+  }
+
+  // requestAnimationFrame: höchstens einmal pro Bildschirm-Aktualisierung zeichnen
+  window.addEventListener("scroll", () => {
+    if (!wartet) {
+      wartet = true;
+      requestAnimationFrame(aktualisiere);
+    }
+  }, { passive: true });
+
+  // Beim Wechsel des Farbschemas neu zeichnen
+  document.addEventListener("click", e => {
+    if (e.target.closest(".farbwahl")) {
+      letzterFrame = -1;
+      requestAnimationFrame(aktualisiere);
+    }
+  });
+
+  aktualisiere();
+}

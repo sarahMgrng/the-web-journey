@@ -208,20 +208,29 @@ pre {
   text-underline-offset: 0.45em;
 }
 
-/* Schmale Bildschirme: Navigation seitlich wischbar statt umbrechen */
+/* Schmale Bildschirme: Navigation bricht in zwei Zeilen um, der Header wird dafür höher */
 @media (max-width: 640px) {
+  :root {
+    --header-hoehe: 72px;
+  }
+
   .site-header {
     gap: 1rem;
   }
 
   .site-header__logo {
     flex: none;
+    font-size: 0;            /* Text ausblenden, nur ">_" bleibt (siehe ::before) */
+  }
+
+  .site-header__logo::before {
+    font-size: 1rem;
   }
 
   .site-header nav {
-    gap: 1rem;
-    overflow-x: auto;
-    scrollbar-width: none;
+    flex-wrap: wrap;           /* zwei Zeilen statt abgeschnitten – alle Punkte sichtbar */
+    justify-content: flex-end;
+    gap: 0.2rem 0.9rem;
   }
 
   .site-header nav a {

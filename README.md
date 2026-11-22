@@ -19,6 +19,10 @@ Dazu die Unterseiten Learnings, Übungen, Über das Portfolio, Über mich und di
 Die Seite lädt ihre Inhalte per `fetch()`. Browser erlauben das nur über einen (lokalen) Server,
 **nicht** beim Öffnen per Doppelklick.
 
+**Variante 0 – Doppelklick (macOS)**
+`start.command` doppelklicken. Ein Terminal startet den Server und öffnet http://localhost:5500. Beim ersten Mal
+ggf. Rechtsklick → „Öffnen“ (Gatekeeper). Fenster schließen = Server aus.
+
 **Variante A – VS Code (empfohlen)**
 1. Erweiterung **Live Server** installieren (Ritwick Dey).
 2. Ordner `the-web-journey` in VS Code öffnen.
