@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-farbe="hell">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Web Journey</title>
   <meta name="description" content="Interaktive Lernwebsite zum Modul Webprogrammierung – mit Scrollytelling als Schwerpunkt.">
 
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
 
@@ -16,6 +17,10 @@
   <!-- defer = Skripte erst ausführen, wenn das HTML fertig gelesen ist -->
   <script src="js/content.js" defer></script>
   <script src="js/home.js" defer></script>
+  <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
+  <link rel="stylesheet" href="css/farben.css">
+  <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
+  <script src="js/farben.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#kapitel">Direkt zur Kapitelübersicht</a>
@@ -38,7 +43,7 @@
     <section class="hero">
       <div class="hero__inhalt">
         <p class="eyebrow">Portfolio · Webprogrammierung</p>
-        <h1 class="hero__titel">The Web Journey</h1>
+        <h1 class="hero__titel">The Web Journey<span class="hero__cursor" aria-hidden="true"></span></h1>
         <p class="hero__lead">Acht Vorlesungen. Von der ersten Zeile HTML bis zur Website, die auf deine Bewegung reagiert.</p>
         <p class="hero__hinweis" aria-hidden="true">Scrollen <span>↓</span></p>
       </div>

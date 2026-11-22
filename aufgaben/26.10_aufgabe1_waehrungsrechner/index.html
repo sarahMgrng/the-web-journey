@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aufgabe - Währungsumrechner</title>
+</head>
+<body>
+  <h1>Währungsumrechner</h1>
+
+  <!-- Eingabe-Formular: Betrag + Richtung -->
+  <form id="eingabe">
+    <label for="betrag">Betrag:</label>
+    <input type="text" id="betrag" placeholder="z. B. 100,4">
+    <br>
+
+    <!-- gleicher name = nur einer von beiden auswählbar -->
+    <input type="radio" id="dollarNachEuro" name="richtung" value="dollarNachEuro" checked>
+    <label for="dollarNachEuro">Dollar nach Euro</label>
+
+    <input type="radio" id="euroNachDollar" name="richtung" value="euroNachDollar">
+    <label for="euroNachDollar">Euro nach Dollar</label>
+    <br>
+
+    <!-- type="button" statt "submit", sonst lädt die Seite neu -->
+    <input type="button" value="Umrechnen" onclick="umrechnen()">
+  </form>
+
+  <!-- Ausgabe-Formular: hier schreibt die Funktion das Ergebnis hinein -->
+  <form id="ausgabe">
+    <label for="ergebnis">Ergebnis:</label>
+    <input type="text" id="ergebnis" readonly>
+  </form>
+
+  <script>
+    // Kurs: 1 Dollar = KURS Euro (Wert selbst festlegen)
+    const KURS = 0.86;
+
+    function umrechnen() {
+      // 1. Wert aus dem Eingabefeld holen (ist immer ein String)
+      const eingabe = document.getElementById("betrag").value;
+
+      // 2. Komma -> Punkt, dann in eine Zahl umwandeln ("100,4" -> "100.4" -> 100.4)
+      const betrag = parseFloat(eingabe.replace(",", "."));
+
+      if (isNaN(betrag)) {                       // z. B. bei "abc" oder leerem Feld
+        document.getElementById("ergebnis").value = "Bitte eine Zahl eingeben";
+        return;                                  // Funktion hier abbrechen
+      }
+
+      // 3. Prüfen, welcher Radio-Button checked ist, und rechnen
+      let ergebnis;
+      if (document.getElementById("dollarNachEuro").checked) {
+        ergebnis = betrag * KURS;                // Dollar -> Euro
+      } else {
+        ergebnis = betrag / KURS;                // Euro -> Dollar
+      }
+
+      // 4. Auf 2 Stellen runden (wird zum String), Punkt -> Komma, ins Feld schreiben
+      document.getElementById("ergebnis").value = ergebnis.toFixed(2).replace(".", ",");
+    }
+  </script>
+</body>
+</html>

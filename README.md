@@ -11,7 +11,8 @@ Dazu drei Unterseiten: Learnings, Übungen und Über das Projekt.
 
 - HTML5, CSS3, Vanilla JavaScript – kein Framework, kein Build-Schritt
 - Inhalte als Markdown-Dateien in `content/vorlesungen/`
-- Einzige externe Bibliothek: [marked](https://marked.js.org/) (wandelt Markdown in HTML um, wird per CDN geladen)
+- Einzige externe Bibliothek: [marked](https://marked.js.org/) (wandelt Markdown in HTML um), liegt lokal unter `js/vendor/` – die Seite läuft auch ohne Internet
+- Farben nur über CSS-Variablen: Standard ist das helle Schema „Hell“ (Apple-Blau & Orange), vier weitere Schemata in `css/farben.css`, umschaltbar über den Farbwähler unten rechts
 
 ## Starten
 
@@ -30,7 +31,13 @@ python3 -m http.server 5500
 ```
 Dann im Browser `http://localhost:5500` öffnen.
 
-Für die Kapitelseiten wird eine Internetverbindung benötigt (marked kommt vom CDN).
+## Online: Vercel
+
+Die Seite ist eine reine statische Website (kein Build-Schritt). Vercel ist mit diesem Repo verbunden:
+Jeder Push auf `abgaben-3-semester` wird automatisch als Produktionsversion veröffentlicht,
+jeder andere Branch bekommt eine eigene Vorschau-Adresse.
+
+Einstellungen bei Vercel: Framework „Other“, kein Build Command, Output Directory = Projektordner (Standard).
 
 ## Ordnerstruktur
 
@@ -45,14 +52,17 @@ the-web-journey/
 │   ├── style.css         Gemeinsame Basis: Farben, Schrift, Header, Footer
 │   ├── home.css          Nur Startseite: Hero, Demos, Cards
 │   ├── chapter.css       Kapitelseite: Kopf, Markdown-Text, Sprungmarken, Blättern
-│   └── seiten.css        Unterseiten: Einträge, Fortschritt, Animation
+│   ├── seiten.css        Unterseiten: Einträge, Fortschritt, Animation
+│   └── farben.css        Fünf Farbschemata (Standard: „hell“) + Farbwähler
 ├── js/
 │   ├── content.js        Lädt & zerlegt die Markdown-Dateien (von allen Seiten genutzt)
 │   ├── home.js           Startseite: Fade-in, Sticky Section, Cards erzeugen
 │   ├── chapter.js        Kapitelseite: Template füllen, Sprungmarken, Navigation
 │   ├── learnings.js      Learnings-Seite
 │   ├── uebungen.js       Übungs-Seite
-│   └── ueber.js          Animation auf der Über-Seite
+│   ├── ueber.js          Animation auf der Über-Seite
+│   ├── farben.js         Farbwähler unten rechts
+│   └── vendor/marked.min.js  Markdown → HTML (lokal, offline)
 ├── content/
 │   ├── _vorlage.md       Kopiervorlage für neue Vorlesungen
 │   └── vorlesungen/

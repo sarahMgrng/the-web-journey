@@ -32,9 +32,10 @@
 }
 
 .fortschritt .ist-fertig a {
-  color: #fff;
-  background: var(--farbe-akzent);
+  color: var(--auf-akzent);
+  background: var(--farbe-akzent-fuellung);
   border: 1.5px solid var(--farbe-akzent);
+  box-shadow: 0 0 14px var(--akzent-glow);
 }
 
 /* Eine Karte pro Vorlesung (Learnings) bzw. pro Übung */
@@ -147,14 +148,15 @@
   font: 600 0.85rem var(--schrift);
   color: var(--farbe-text);
   cursor: pointer;
-  background: #ececf0;
-  border: 0;
+  background: var(--farbe-flaeche-2);
+  border: 1px solid var(--farbe-linie);
   border-radius: 999px;
 }
 
 .anfrage__knopf[aria-pressed="true"] {
-  color: #fff;
-  background: var(--farbe-text);
+  color: var(--auf-akzent);
+  background: var(--farbe-akzent-fuellung);
+  border-color: var(--farbe-akzent);
 }
 
 .anfrage__nochmal {
@@ -207,7 +209,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;   /* zu lange Adressen enden mit "…" statt umzubrechen */
-  background: #ececf0;
+  background: var(--farbe-flaeche-2);
   border-radius: 999px;
 }
 
@@ -241,8 +243,8 @@
   margin-top: -2.6rem;   /* liegt an derselben Stelle wie die Card */
   padding: 0.4rem 0.5rem;
   font-size: 0.75rem;
-  color: #8a1c1c;
-  background: #fff1f1;
+  color: var(--farbe-fehler);
+  background: var(--farbe-fehler-hell);
   border-radius: 8px;
 }
 
@@ -268,8 +270,8 @@
 
 /* Schritt 2–4: Der Server hat die Datei gefunden */
 .anfrage[data-weg="server"]:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .anfrage__gesucht {
-  color: #fff;
-  background: #1f8a4c;
+  color: #04130d;
+  background: var(--farbe-erfolg);
 }
 
 /* Weg "datei": Es gibt keinen Server */
@@ -299,16 +301,16 @@
 
 .anfrage__paket--hin {
   left: 0;
-  color: #fff;
-  background: var(--farbe-akzent);
+  color: var(--auf-akzent);
+  background: var(--farbe-akzent-fuellung);
 }
 
 .anfrage__paket--zurueck {
   top: 1rem;
   left: 100%;
   transform: translateX(-100%);
-  color: #fff;
-  background: #1f8a4c;
+  color: #04130d;
+  background: var(--farbe-erfolg);
 }
 
 /* Schritt 1: Anfrage wandert zum Server (und bleibt danach dort, nur unsichtbar) */
@@ -342,7 +344,7 @@
 }
 
 .anfrage[data-weg="datei"][data-schritt="2"] .anfrage__paket--hin {
-  background: #c0392b;
+  background: #dc2626;
 }
 
 .anfrage__sperre {
@@ -350,7 +352,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.2rem;
-  color: #c0392b;
+  color: var(--farbe-fehler);
 }
 
 .anfrage[data-weg="datei"]:is([data-schritt="2"], [data-schritt="3"]) .anfrage__sperre {

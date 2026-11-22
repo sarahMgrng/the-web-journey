@@ -1,7 +1,26 @@
-# Status – Stand 21.10.2026
+# Status – Stand 22.11.2026
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
 Langfristige Planung: [ROADMAP.md](ROADMAP.md).
+
+## Update 22.11.2026 (vor der Präsentation am 23.11.)
+
+**Erledigt:**
+- [x] **Layout/Design überarbeitet** (Feedback PO 19.10.): Alle Farben als CSS-Variablen, fünf Farbschemata in `css/farben.css`. Gewählt: **„Hell“** – Hintergrund `#f5f5f7`, Apple-Blau `#0071e3`/`#0066cc`, Orange `#bf4800`, feines Raster, Verlauf im Titel, Terminal-Logo `>_`. Farbwähler unten rechts (Wahl wird im Browser gemerkt).
+- [x] Weicher Übergang hinter der Sticky-Grafik auf schmalen Bildschirmen (vorher harte Kante)
+- [x] **marked lokal** unter `js/vendor/marked.min.js` → Seite läuft offline bei der Präsentation
+- [x] Favicon `>_` (vorher 404 im Log)
+- [x] Währungsrechner (26.10.) nach `aufgaben/26.10_aufgabe1_waehrungsrechner/` kopiert
+- [x] **Hosting über Vercel**, verbunden mit diesem Repo (Push = neue Version)
+- ⚠️ Lokal hießen die Seiten zwischenzeitlich `1_index.html` usw. – dadurch waren alle Links kaputt. HTML-Dateien nicht umbenennen.
+
+**Offen (Iteration 2):**
+- [ ] Alle weiteren Skripte + Übungen laden, Vorlesungen 04–08 füllen (04 = Währungsrechner verlinken)
+- [ ] V1–V3 prüfen und auf `status: fertig` setzen
+- [ ] Learnings + n8n-Automation (macht Sarah)
+- [ ] Startseite: Apple-Aufhänger + scrollgesteuerte „Reise einer Website“ (Browser → DNS → Server → DOM) mit Code
+- [ ] Übungs-Labor: Übungen mit Code + Terminal direkt auf der Seite ausführen
+- [ ] Branch `portfolio/ordnernavigation` (Ordnerbaum, 21.11.) prüfen und ins neue Design übernehmen
 
 ## Was wir haben
 
@@ -51,7 +70,7 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 
 ### Neu am 20.10.
 - [x] Seite lokal nur über Server testen: `python3 -m http.server 8000` → http://localhost:8000 (per Doppelklick lädt fetch() nichts)
-- [ ] Veröffentlichung klären: GitHub Pages bei privatem Repo nur mit bezahltem Plan → Repo öffentlich machen oder anderer Host?
+- [x] Veröffentlichung geklärt: Vercel statt GitHub Pages (Repo bleibt privat)
 - [x] Neuer fester Abschnitt `## Meine Learnings` (✏️) nach jeder Vorlesung, 5 Leitfragen → in CONTENT_GUIDE aufgenommen
 - [x] n8n: Workflow „Vorlesungs-Rückblick“ (Mo 18:00 → Issue) und „Learnings eintragen“ (Formular → Ollama → Branch `learnings`) laufen
 - [ ] Learnings für V1–V3 über das Formular eintragen (Production-URL, Workflow ist veröffentlicht)
@@ -63,7 +82,7 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 **Abweichung (PO-Wunsch 20.10.):** Unterseiten und Server-Animation sind neue Infrastruktur, bewusst entgegen „keine neuen Demos“.
 
 ### Seit 19.10.
-- [ ] **Layout überarbeiten** (Feedback PO 19.10.): Logik passt, Optik der Kapitelseite gefällt noch nicht. Gemeinsam Richtung festlegen.
+- [x] **Layout überarbeiten** (Feedback PO 19.10.): Farbschema „Hell“ gewählt (22.11.)
 - [ ] Vorlesung 03 auf `status: fertig` setzen (Demo-Hinweis entfernen)
 - [ ] **Notizen des Kommilitonen** zum 19.10. besorgen und in `03.md` als ✏️ einarbeiten
 - [x] **GoodNotes-Export** liegt vor: `Skripte/Web-Programming.pdf` (196 S.: Skripte V1 + V2 mit handschriftlichen Notizen; zum 19.10. nichts enthalten)

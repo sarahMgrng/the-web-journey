@@ -41,6 +41,7 @@
   place-items: center;
   width: 2.25rem;
   height: 2.25rem;
+  font-family: var(--schrift-code);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--farbe-text-leise);
@@ -49,13 +50,15 @@
 }
 
 .sprung-liste a:hover {
-  background: #ececf0;
+  color: var(--farbe-text);
+  background: var(--farbe-flaeche-2);
 }
 
 /* aria-current="page" markiert die aktuelle Vorlesung – für Screenreader UND für CSS */
 .sprung-liste a[aria-current="page"] {
-  color: #fff;
-  background: var(--farbe-text);
+  color: var(--auf-akzent);
+  background: var(--farbe-akzent-fuellung);
+  box-shadow: 0 0 18px var(--akzent-glow);
 }
 
 /* ---------- 2. Kopfbereich ---------- */
@@ -68,6 +71,10 @@
   font-size: clamp(2.1rem, 5vw, 3.1rem);
   font-weight: 700;
   letter-spacing: -0.04em;
+  color: transparent;
+  background: var(--kapitel-verlauf);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .kapitel-kopf__meta {
@@ -90,9 +97,9 @@
 .demo-banner {
   padding: 1rem 1.25rem;
   font-size: 0.95rem;
-  color: #6b4e00;
-  background: #fff8e6;
-  border: 1px solid #f3dc9c;
+  color: var(--hinweis-text);
+  background: var(--farbe-hinweis-hell);
+  border: 1px solid var(--hinweis-rand);
   border-radius: 14px;
 }
 
@@ -116,10 +123,10 @@
   padding: 0.6rem var(--rand);
   overflow-x: auto;
   scrollbar-width: none;
-  background: rgba(251, 251, 253, 0.9);
+  background: var(--header-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid var(--farbe-linie);
 }
 
 .abschnitt-leiste::-webkit-scrollbar {
@@ -134,13 +141,15 @@
   color: var(--farbe-text-leise);
   text-decoration: none;
   white-space: nowrap;
-  background: #ececf0;
+  background: var(--farbe-flaeche-2);
+  border: 1px solid var(--farbe-linie);
   border-radius: 999px;
 }
 
 .abschnitt-leiste a:hover {
   color: var(--farbe-text);
   background: var(--farbe-akzent-hell);
+  border-color: var(--farbe-akzent);
 }
 
 /* ---------- 3. Fließtext aus Markdown ----------
@@ -152,6 +161,18 @@
   font-size: 2rem;
   letter-spacing: -0.03em;
   border-top: 1px solid var(--farbe-linie);
+}
+
+/* Kleines "##" vor jeder Hauptüberschrift – Markdown-Optik */
+.prose h2::before {
+  content: "## ";
+  font-family: var(--schrift-code);
+  font-size: 0.7em;
+  color: var(--farbe-zweit);
+}
+
+.prose h3 {
+  color: var(--h3);
 }
 
 .prose h3 {
@@ -172,7 +193,8 @@
 .prose :not(pre) > code {
   padding: 0.1em 0.35em;
   font-size: 0.9em;
-  background: #ececf0;
+  color: var(--code-inline);
+  background: var(--farbe-flaeche-2);
   border-radius: 6px;
 }
 
@@ -181,6 +203,21 @@
   padding: 0.25rem 0 0.25rem 1.25rem;
   color: var(--farbe-text-leise);
   border-left: 3px solid var(--farbe-akzent);
+  background: var(--farbe-akzent-hell);
+  border-radius: 0 10px 10px 0;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+}
+
+.prose th {
+  font-family: var(--schrift-code);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--farbe-zweit);
+}
+
+.prose strong {
+  color: var(--stark);
 }
 
 /* display: block + overflow: breite Tabellen lassen sich auf dem Handy seitlich wischen,
@@ -230,7 +267,9 @@
   display: flex;
   justify-content: flex-end;
   padding: 0.4rem 0.75rem;
-  background: #2c2c2e;
+  background: var(--farbe-flaeche-2);
+  border: 1px solid var(--farbe-linie);
+  border-top: 0;
   border-radius: 0 0 14px 14px;
 }
 
@@ -241,9 +280,9 @@
 .code-knopf {
   padding: 0.35rem 0.9rem;
   font: 600 0.8rem var(--schrift);
-  color: #fff;
+  color: var(--auf-akzent);
   cursor: pointer;
-  background: var(--farbe-akzent);
+  background: var(--farbe-akzent-fuellung);
   border: 0;
   border-radius: 999px;
 }
@@ -256,8 +295,8 @@
   margin-top: 0;
   min-height: 2.5rem;
   color: #7ee787;   /* klassisches Terminal-Grün */
-  background: #0d0d0f;
-  border-top: 1px solid #3a3a3c;
+  background: var(--terminal-bg);
+  border-top: 1px solid var(--farbe-linie);
   border-radius: 0 0 14px 14px;
 }
 
@@ -280,7 +319,8 @@
 }
 
 .blaettern a:hover {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 20px 40px -20px rgba(0, 0, 0, 0.25);
+  color: var(--farbe-text);
+  box-shadow: var(--leuchten);
 }
 
 .blaettern span {
