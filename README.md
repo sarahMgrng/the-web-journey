@@ -1,11 +1,11 @@
 # The Web Journey
 
 Interaktive Lernwebsite für das Modul **Webprogrammierung** (DHBW).
-Sie fasst acht aufeinander aufbauende Vorlesungen zusammen.
+Sie fasst sieben aufeinander aufbauende Vorlesungen zusammen (Portfolio 1). Portfolio 2 (Verteilte Systeme, SoSe 2027) hat oben rechts schon seinen Platz.
 Technischer Schwerpunkt ist **Scrollytelling**: Die Startseite erklärt die Technik und führt sie gleichzeitig vor.
 
-**Stand:** Vorlesung 1–3 aus den Skripten zusammengefasst (noch Status `demo`, bis ich sie geprüft habe), Vorlesung 4–8 sind Platzhalter.
-Dazu drei Unterseiten: Learnings, Übungen und Über das Projekt.
+**Stand (22.11.):** Vorlesung 1–7 aus den Skripten zusammengefasst (Status `demo`, bis ich sie geprüft habe).
+Dazu die Unterseiten Learnings, Übungen, Über das Portfolio, Über mich und die Startseite von Portfolio 2.
 
 ## Technik
 
@@ -43,11 +43,13 @@ Einstellungen bei Vercel: Framework „Other“, kein Build Command, Output Dire
 
 ```
 the-web-journey/
-├── index.html            Startseite: Hero, 4 Scrollytelling-Demos, Kapitelübersicht
+├── index.html            Startseite (Portfolio 1): Hero, 4 Scrollytelling-Demos, Vorlesungen
 ├── kapitel.html          EIN Template für alle Vorlesungen (kapitel.html?nr=2)
 ├── learnings.html        Sammelt „Meine Learnings“ aus allen Vorlesungen
 ├── uebungen.html         Sammelt alle Übungen mit Links zu Lösung und Live-Version
-├── ueber.html            Über das Projekt + Animation „Anfrage und Antwort“
+├── ueber.html            Über das Portfolio + Animation „Anfrage und Antwort“
+├── ueber-mich.html       Über mich: Pitch und Links (GitHub, Repos, Website)
+├── verteilte-systeme.html  Portfolio 2 (SoSe 2027), erreichbar über den Umschalter oben rechts
 ├── css/
 │   ├── style.css         Gemeinsame Basis: Farben, Schrift, Header, Footer
 │   ├── home.css          Nur Startseite: Hero, Demos, Cards
@@ -66,7 +68,7 @@ the-web-journey/
 ├── content/
 │   ├── _vorlage.md       Kopiervorlage für neue Vorlesungen
 │   └── vorlesungen/
-│       └── 01.md … 08.md Eine Datei pro Vorlesung
+│       └── 01.md … 07.md Eine Datei pro Vorlesung
 ├── aufgaben/            Lauffähige Kopien meiner Übungen (Quelle: Repo wp-aufgaben-3-semester)
 │   └── TT.MM_aufgabeN_name/
 └── *.md                  Dokumentation (siehe unten)

@@ -396,3 +396,65 @@
     font-size: 0.6rem;
   }
 }
+
+/* ---------- 4. Über mich: Pitch und Konten ---------- */
+.prose .pitch li {
+  margin: 0.9rem 0;
+}
+
+.konten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.konto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1.25rem 1.4rem;
+  color: var(--farbe-text);
+  text-decoration: none;
+  background: var(--farbe-flaeche);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.konto:hover {
+  color: var(--farbe-text);
+  transform: translateY(-3px);
+  box-shadow: var(--leuchten);
+}
+
+.konto__art {
+  font-family: var(--schrift-code);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--farbe-zweit);
+}
+
+.konto strong {
+  font-size: 1.15rem;
+}
+
+.konto span:last-child {
+  font-size: 0.9rem;
+  color: var(--farbe-text-leise);
+}
+
+/* Portfolio 2: Themenliste */
+.themen-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+}
+
+.themen-liste .eintrag {
+  margin: 0;
+}

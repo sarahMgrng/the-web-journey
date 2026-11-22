@@ -19,7 +19,8 @@
 - [x] Git-Repository anlegen und ersten Stand einchecken
 - [ ] Geprüfte Inhalte für Vorlesung 1 und 2 einpflegen (Demo-Inhalte ersetzen)
 - [ ] Echte Titel der Vorlesungen eintragen (Daten von 1 und 2 sind eingetragen)
-- [ ] Vorlesungen 3–8 im Laufe des Semesters ergänzen (insgesamt 6 Übungen, jeweils der passenden Vorlesung zugeordnet)
+- [x] Vorlesungen 1–7 aus den Skripten zusammengefasst (Entwurf)
+- [x] Umschalter Portfolio 1 / Portfolio 2, Seiten „Über mich“ und „Über das Portfolio“
 - [x] marked lokal speichern (`js/vendor/`), damit die Seite bei der Präsentation auch offline läuft
 - [ ] Demo 04 (Vergleich): Einblenden soll bei jedem Hinscrollen wieder abspielen, nicht nur beim ersten Mal
 - [ ] Test in Safari, Firefox und auf einem echten Smartphone

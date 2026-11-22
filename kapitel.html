@@ -22,18 +22,29 @@
 <body>
   <a class="skip-link" href="#kapitel">Direkt zum Inhalt</a>
 
+  <!-- Umschalter Portfolio 1 / Portfolio 2 (ein Schnitt in der Mitte) -->
+  <nav class="portfolio-wahl" aria-label="Portfolio wählen">
+    <a class="portfolio-wahl__seite portfolio-wahl__seite--eins" href="index.html" aria-current="true">
+      <span class="portfolio-wahl__nr">1</span> Web-Programmierung <small>WiSe 2026/27</small>
+    </a>
+    <a class="portfolio-wahl__seite portfolio-wahl__seite--zwei" href="verteilte-systeme.html">
+      Verteilte Systeme <small>SoSe 2027</small> <span class="portfolio-wahl__nr">2</span>
+    </a>
+  </nav>
+
   <header class="site-header">
     <a class="site-header__logo" href="index.html">The Web Journey</a>
     <nav aria-label="Hauptnavigation">
-      <a href="index.html#scrollytelling">Scrollytelling</a>
-      <a href="index.html#kapitel" aria-current="page">Kapitel</a>
-      <a href="learnings.html">Learnings</a>
+      <a href="index.html#scrollytelling">Schwerpunkt</a>
+      <a href="index.html#kapitel" aria-current="page">Vorlesungen</a>
       <a href="uebungen.html">Übungen</a>
-      <a href="ueber.html">Über</a>
+      <a href="learnings.html">Learnings</a>
+      <a href="ueber.html">Portfolio</a>
+      <a href="ueber-mich.html">Über mich</a>
     </nav>
   </header>
 
-  <!-- EIN Template für alle acht Vorlesungen.
+  <!-- EIN Template für alle Vorlesungen.
        Welche Vorlesung angezeigt wird, steht in der Adresse: kapitel.html?nr=2 -->
   <main class="kapitel-seite">
     <div class="kapitel-leiste">
@@ -51,7 +62,13 @@
   </main>
 
   <footer class="site-footer">
-    <p>The Web Journey · Portfolio im Modul Webprogrammierung</p>
+    <p>The Web Journey · Portfolio 1 im Modul Web-Programmierung · DHBW Mannheim · Sarah Gehring</p>
+    <p class="site-footer__links">
+      <a href="ueber-mich.html">Über mich</a>
+      <a href="ueber.html">Über das Portfolio</a>
+      <a href="https://github.com/sarahMgrng">GitHub</a>
+      <a href="https://github.com/sarahMgrng/the-web-journey">Quellcode</a>
+    </p>
   </footer>
 </body>
 </html>

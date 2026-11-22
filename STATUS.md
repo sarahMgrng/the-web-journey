@@ -14,8 +14,20 @@ Langfristige Planung: [ROADMAP.md](ROADMAP.md).
 - [x] **Hosting über Vercel**, verbunden mit diesem Repo (Push = neue Version)
 - ⚠️ Lokal hießen die Seiten zwischenzeitlich `1_index.html` usw. – dadurch waren alle Links kaputt. HTML-Dateien nicht umbenennen.
 
+- [x] **Struktur Portfolio 1 / 2:** Umschalter oben mit schrägem Schnitt – links Portfolio 1 (Web-Programmierung, WiSe 26/27), rechts Portfolio 2 (Verteilte Systeme, SoSe 27, `verteilte-systeme.html`)
+- [x] Neue Seite **Über mich** (`ueber-mich.html`): erster Pitch + Links zu GitHub-Profil, beiden Repos und der Website. ⚠️ Repos sind privat – für den Prof öffentlich machen oder einladen.
+- [x] „Über das Projekt“ heißt jetzt **„Über das Portfolio“**, Navigation: Schwerpunkt · Vorlesungen · Übungen · Learnings · Portfolio · Über mich
+- [x] „Reise“-Sprache entfernt („Sieben Vorlesungen. Alles an einem Ort.“)
+- [x] **Vorlesungen 04–07** aus allen Skripten zusammengefasst (Quelle: gesammelte Skript-Ablage, 507 Folien per Texterkennung gelesen; Texte unter `Vika_Wp-alle Skripte/_text/` auf dem Mac). 08 entfällt (`ANZAHL_VORLESUNGEN = 7`).
+  - 04 Strings, Formulare & CSS (26.10.) – Abgabe Währungsrechner verlinkt
+  - 05 Objekte, JSON & Klassen – **Abgabe Kontakte-Klasse offen**
+  - 06 DOM & jQuery – Übungen Kreative Überschriften, Pull Quotes offen
+  - 07 Events & Browser-Steuerung (Skript WebProg-25!) – Übungen Tabellenreihen, Akkordeon offen
+  - alle JS-Beispiele mit node und im Browser („▶ Ausführen“) getestet
+
 **Offen (Iteration 2):**
-- [ ] Alle weiteren Skripte + Übungen laden, Vorlesungen 04–08 füllen (04 = Währungsrechner verlinken)
+- [ ] Daten von V5–V7 prüfen (aus Wochenrhythmus abgeleitet, V7 fehlt)
+- [ ] Abgabe V5 (Kontakte-Klasse) lösen und ins Aufgaben-Repo
 - [ ] V1–V3 prüfen und auf `status: fertig` setzen
 - [ ] Learnings + n8n-Automation (macht Sarah)
 - [ ] Startseite: Apple-Aufhänger + scrollgesteuerte „Reise einer Website“ (Browser → DNS → Server → DOM) mit Code
