@@ -1,0 +1,604 @@
+/* ==========================================================
+   home.css – nur für die Startseite (index.html)
+   1. Hero
+   2. Abschnitte allgemein + Erklär-Boxen
+   3. Demo 01 – Fade-in (.reveal)
+   4. Demo 02 – Sticky Section mit Browser-Grafik
+   5. Demo 03 – Bewegen & Skalieren (CSS Scroll-Animation)
+   6. Demo 04 – Vergleich
+   7. Kapitel-Cards
+   8. Smartphone-Anpassungen
+   ========================================================== */
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: calc(100svh - var(--header-hoehe));   /* svh = sichtbare Höhe, auch mobil */
+  padding: 4rem var(--rand);
+  text-align: center;
+}
+
+/* Einstiegsanimation beim Laden: Elemente tauchen nacheinander auf */
+.hero__inhalt > * {
+  animation: auftauchen 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero__inhalt > :nth-child(2) { animation-delay: 0.15s; }
+.hero__inhalt > :nth-child(3) { animation-delay: 0.3s; }
+.hero__inhalt > :nth-child(4) { animation-delay: 0.8s; }
+
+.hero__titel {
+  font-size: clamp(3.25rem, 11vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.hero__lead {
+  max-width: 32ch;
+  margin: 1.5rem auto 0;
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--farbe-text-leise);
+}
+
+.hero__hinweis {
+  margin-top: 4rem;
+  font-size: 0.85rem;
+  color: var(--farbe-text-leise);
+}
+
+.hero__hinweis span {
+  display: inline-block;
+  animation: wippen 2s ease-in-out infinite;
+}
+
+@keyframes auftauchen {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes wippen {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+/* Beim Wegscrollen wird der Hero kleiner und blasser.
+   Nur in Browsern, die scrollgesteuerte CSS-Animationen können. */
+@supports (animation-timeline: scroll()) {
+  .hero__inhalt {
+    animation: hero-weg linear both;
+    animation-timeline: scroll(root);   /* Zeitachse = Scrollposition der Seite */
+    animation-range: 0 80vh;            /* nur in den ersten 80 % einer Bildschirmhöhe */
+  }
+}
+
+@keyframes hero-weg {
+  to { opacity: 0; transform: scale(0.9) translateY(-40px); }
+}
+
+/* ---------- 2. Abschnitte allgemein ---------- */
+.abschnitt {
+  max-width: var(--breite-max);
+  margin: 0 auto;
+  padding: clamp(5rem, 12vw, 9rem) var(--rand);
+}
+
+.abschnitt__titel {
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.abschnitt__lead {
+  max-width: 42ch;
+  margin-top: 1.25rem;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--farbe-text-leise);
+}
+
+.demo-label {
+  margin-bottom: 1rem;
+  font-family: var(--schrift-code);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--farbe-akzent);
+}
+
+/* Aufklappbare Erklärung unter jeder Demo (<details> braucht kein JavaScript) */
+.erklaerung {
+  max-width: 720px;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--farbe-linie);
+}
+
+.erklaerung summary {
+  font-weight: 600;
+  color: var(--farbe-akzent);
+  cursor: pointer;
+}
+
+.erklaerung p {
+  margin-top: 1rem;
+  color: var(--farbe-text-leise);
+}
+
+.erklaerung code {
+  font-size: 0.9em;
+}
+
+/* ---------- 3. Demo 01 – Fade-in ----------
+   Versteckt wird nur, wenn (a) JavaScript läuft (.js) und
+   (b) der Nutzer keine reduzierte Bewegung wünscht.
+   So bleiben Inhalte in jedem Fall erreichbar. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity var(--uebergang), transform var(--uebergang);
+    /* --verzoegerung wird im HTML gesetzt → Elemente erscheinen gestaffelt */
+    transition-delay: calc(var(--verzoegerung, 0) * 120ms);
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.punkte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.punkt {
+  padding: 1.75rem;
+  background: var(--farbe-flaeche);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+}
+
+.punkt h3 {
+  font-size: 1.2rem;
+}
+
+.punkt p {
+  margin-top: 0.5rem;
+  color: var(--farbe-text-leise);
+}
+
+/* ---------- 4. Demo 02 – Sticky Section ---------- */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+/* Textschritte links */
+.story__schritte {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 15vh 0 25vh;
+}
+
+.story__schritt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 75vh;
+}
+
+.story__schritt h3 {
+  font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+}
+
+.story__schritt p:last-child {
+  max-width: 34ch;
+  margin-top: 1rem;
+  font-size: 1.15rem;
+  color: var(--farbe-text-leise);
+}
+
+/* Nicht aktive Schritte werden abgeblendet (nur wenn JS läuft) */
+.js .story__schritt {
+  opacity: 0.25;
+  transition: opacity 0.5s ease;
+}
+
+.js .story__schritt.is-active {
+  opacity: 1;
+}
+
+/* Grafik rechts – bleibt dank "sticky" stehen */
+.story__visual {
+  position: sticky;
+  top: var(--header-hoehe);
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;   /* wichtig: sonst wäre das Element so hoch wie die Zeile und könnte nicht "kleben" */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100svh - var(--header-hoehe));
+}
+
+/* Die Mini-Browser-Grafik */
+.browser {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--farbe-flaeche);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 30px 60px -24px rgba(0, 0, 0, 0.3);
+}
+
+.browser__leiste {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  height: 34px;
+  padding: 0 14px;
+  background: #f2f2f5;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.browser__leiste span {
+  width: 10px;
+  height: 10px;
+  background: #d2d2d7;
+  border-radius: 50%;
+}
+
+.browser__seite {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 32px 28px;
+  transition: background 0.6s ease;
+}
+
+/* SCHRITT 1 (HTML): nur Struktur – gestrichelte Kästen mit Tag-Namen */
+.mini {
+  position: relative;
+  padding: 10px 12px;
+  font-family: var(--schrift-code);
+  font-size: 0.85rem;
+  color: var(--farbe-text-leise);
+  border: 1.5px dashed var(--farbe-linie);
+  border-radius: 6px;
+  transition: all 0.6s ease;
+}
+
+.mini--titel,
+.mini--text {
+  align-self: stretch;
+}
+
+/* Tag-Name als kleines Etikett, gelesen aus data-tag="h1" */
+.mini::before {
+  content: "<" attr(data-tag) ">";
+  position: absolute;
+  top: -9px;
+  left: 8px;
+  padding: 0 4px;
+  font-size: 0.7rem;
+  color: var(--farbe-akzent);
+  background: var(--farbe-flaeche);
+  transition: opacity 0.4s ease;
+}
+
+.mini-toast {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--farbe-text);
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+}
+
+/* AB SCHRITT 2 (CSS): echte Gestaltung */
+.browser:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .browser__seite {
+  background: linear-gradient(180deg, #ffffff, #f4f6fb);
+}
+
+.browser:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .mini {
+  padding: 0;
+  font-family: var(--schrift);
+  border-color: transparent;
+}
+
+.browser:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .mini::before {
+  opacity: 0;
+}
+
+.browser:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .mini--titel {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--farbe-text);
+}
+
+.browser:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .mini--text {
+  font-size: 1rem;
+}
+
+.browser:is([data-schritt="2"], [data-schritt="3"], [data-schritt="4"]) .mini--button {
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--farbe-akzent);
+  border-radius: 999px;
+}
+
+/* AB SCHRITT 3 (JavaScript): Button reagiert, Meldung erscheint */
+.browser:is([data-schritt="3"], [data-schritt="4"]) .mini--button {
+  animation: pulsieren 1.6s ease-out infinite;
+}
+
+.browser:is([data-schritt="3"], [data-schritt="4"]) .mini-toast {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes pulsieren {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45); }
+  100% { box-shadow: 0 0 0 16px rgba(37, 99, 235, 0); }
+}
+
+/* SCHRITT 4 (Zusammenspiel): Elemente fahren gestaffelt herein */
+.browser[data-schritt="4"] .mini--titel  { animation: auftauchen 0.8s 0s both; }
+.browser[data-schritt="4"] .mini--text   { animation: auftauchen 0.8s 0.15s both; }
+.browser[data-schritt="4"] .mini--button { animation: auftauchen 0.8s 0.3s both, pulsieren 1.6s 1.1s ease-out infinite; }
+
+/* ---------- 5. Demo 03 – Bewegen & Skalieren ---------- */
+.skalier-demo {
+  display: grid;
+  place-items: center;
+  min-height: 80vh;
+  padding: 4rem 0;
+}
+
+.skalier-demo__objekt {
+  display: grid;
+  place-items: center;
+  width: min(60vw, 320px);
+  aspect-ratio: 1;
+  font-family: var(--schrift-code);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border-radius: 32px;
+  box-shadow: 0 40px 80px -30px rgba(37, 99, 235, 0.6);
+}
+
+.skalier-demo__hinweis {
+  max-width: 44ch;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--farbe-text-leise);
+}
+
+/* Nur wenn der Browser es kann: Animation an die Scrollposition koppeln */
+@supports (animation-timeline: view()) {
+  .skalier-demo__objekt {
+    animation: wachsen linear both;
+    animation-timeline: view();          /* NACH "animation" schreiben, sonst wird es überschrieben */
+    animation-range: entry 0% exit 100%; /* vom Hereinkommen bis zum Verlassen */
+  }
+
+  .skalier-demo__hinweis {
+    display: none;
+  }
+}
+
+@keyframes wachsen {
+  0%   { transform: translateY(80px) scale(0.4) rotate(-20deg); border-radius: 50%; opacity: 0.3; }
+  45%,
+  55%  { transform: none; border-radius: 32px; opacity: 1; }
+  100% { transform: translateY(-80px) scale(0.6) rotate(15deg); border-radius: 50%; opacity: 0.3; }
+}
+
+/* ---------- 6. Demo 04 – Vergleich ---------- */
+.vergleich {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.vergleich__spalte {
+  padding: 2rem;
+  background: var(--farbe-flaeche);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+}
+
+.vergleich__spalte h3 {
+  font-family: var(--schrift-code);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--farbe-text-leise);
+}
+
+.vergleich__spalte--gesteuert h3 {
+  color: var(--farbe-akzent);
+}
+
+.vergleich__spalte ul {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vergleich__spalte li {
+  margin-top: 0.75rem;
+  padding: 1.25rem;
+  font-weight: 600;
+  background: var(--farbe-hintergrund);
+  border-radius: 12px;
+}
+
+.fazit {
+  max-width: 52ch;
+  margin-top: 3rem;
+  font-size: 1.15rem;
+  color: var(--farbe-text-leise);
+}
+
+/* ---------- 7. Kapitel-Cards ---------- */
+.kapitel-liste {
+  margin: 3.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Variante A: Raster aus Cards */
+.kapitel-liste--raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Variante B: chronologische Liste (Klasse im HTML umstellen) */
+.kapitel-liste--liste {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.kapitel-liste--liste .kapitel-card {
+  min-height: 0;
+}
+
+.kapitel-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 250px;
+  padding: 1.75rem;
+  color: var(--farbe-text);
+  text-decoration: none;
+  background: var(--farbe-flaeche);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kapitel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 24px 48px -20px rgba(0, 0, 0, 0.25);
+}
+
+.kapitel-card__kopf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kapitel-card__nr {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.kapitel-card__titel {
+  margin-top: auto;   /* schiebt Titel & Text an den unteren Rand der Card */
+  padding-top: 2rem;
+  font-size: 1.25rem;
+}
+
+.kapitel-card__beschreibung {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--farbe-text-leise);
+}
+
+.kapitel-card__datum {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--farbe-text-leise);
+}
+
+/* Platzhalter: gestrichelt und zurückhaltend */
+.kapitel-card--platzhalter {
+  background: transparent;
+  border: 1.5px dashed var(--farbe-linie);
+  box-shadow: none;
+}
+
+.kapitel-card--platzhalter .kapitel-card__nr {
+  color: #c7c7cc;
+}
+
+.kapitel-card--platzhalter .kapitel-card__titel {
+  color: var(--farbe-text-leise);
+}
+
+/* ---------- 8. Smartphone ---------- */
+@media (max-width: 800px) {
+  .story {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Grafik oben festhalten, Texte laufen darunter durch */
+  .story__visual {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 2;
+    height: auto;
+    padding: 1rem 0 1.5rem;
+    background: var(--farbe-hintergrund);
+  }
+
+  .story__schritte {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 25vh 0 45vh;
+  }
+
+  /* Texte oben ausrichten und kürzer machen: So bleibt der aktive Text
+     unterhalb der Grafik, solange er aktiv ist (siehe home.js, 75 %-Linie) */
+  .story__schritt {
+    justify-content: flex-start;
+    min-height: 34vh;
+  }
+
+  .browser {
+    width: min(100%, 320px);
+  }
+
+  .browser__seite {
+    gap: 14px;
+    padding: 24px 20px;
+  }
+
+  .vergleich {
+    grid-template-columns: 1fr;
+  }
+}

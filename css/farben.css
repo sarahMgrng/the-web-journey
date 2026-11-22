@@ -1,0 +1,205 @@
+/* ==========================================================
+   farben.css – fünf Farbvorschläge („Themes“)
+   Jedes Theme überschreibt nur die Variablen aus style.css.
+   Umschalten: <html data-farbe="terminal"> – das erledigt js/farben.js.
+   Standard ist „hell“ (data-farbe="hell" im <html>-Tag jeder Seite).
+   Ohne data-farbe gelten die Werte aus style.css („nacht“).
+   ========================================================== */
+
+/* ---------- 1. Nacht – Violett & Türkis (Standard, steht in style.css) ---------- */
+
+/* ---------- 2. Terminal – Graphit & Grün (wie GitHub / VS Code dunkel) ---------- */
+:root[data-farbe="terminal"] {
+  color-scheme: dark;
+  --farbe-hintergrund: #0d1117;
+  --farbe-flaeche: #161b22;
+  --farbe-flaeche-2: #21262d;
+  --farbe-text: #e6edf3;
+  --farbe-text-leise: #8b949e;
+  --farbe-linie: #30363d;
+  --farbe-akzent: #3fb950;
+  --farbe-akzent-fuellung: #238636;
+  --farbe-akzent-hell: rgba(63, 185, 80, 0.14);
+  --farbe-zweit: #58a6ff;
+  --farbe-zweit-hell: rgba(88, 166, 255, 0.14);
+  --farbe-code-bg: #010409;
+  --verlauf: linear-gradient(120deg, #3fb950 0%, #58a6ff 100%);
+  --leuchten: 0 0 0 1px rgba(63, 185, 80, 0.35), 0 18px 50px -18px rgba(35, 134, 54, 0.6);
+  --glow-1: rgba(46, 160, 67, 0.14);
+  --glow-2: rgba(88, 166, 255, 0.10);
+  --raster: rgba(255, 255, 255, 0.022);
+  --header-bg: rgba(13, 17, 23, 0.8);
+  --titel-verlauf: linear-gradient(120deg, #ffffff 10%, #7ee787 50%, #58a6ff 90%);
+  --kapitel-verlauf: linear-gradient(120deg, #ffffff 30%, #aff5b4 70%, #79c0ff 100%);
+  --titel-schatten: rgba(63, 185, 80, 0.25);
+  --akzent-glow: rgba(63, 185, 80, 0.5);
+  --auf-zweit: #04111f;
+  --h3: #7ee787;
+  --code-inline: #79c0ff;
+  --code-text: #e6edf3;
+  --platzhalter-nr: #30363d;
+  --browser-seite: linear-gradient(180deg, #1c2128, #161b22);
+  --terminal-bg: #010409;
+}
+
+/* ---------- 3. Tiefsee – Petrol & Koralle ---------- */
+:root[data-farbe="tiefsee"] {
+  color-scheme: dark;
+  --farbe-hintergrund: #071a1f;
+  --farbe-flaeche: #0c262d;
+  --farbe-flaeche-2: #12343c;
+  --farbe-text: #e6f2f1;
+  --farbe-text-leise: #8fb3b1;
+  --farbe-linie: #1d4650;
+  --farbe-akzent: #2dd4bf;
+  --farbe-akzent-fuellung: #0f766e;
+  --farbe-akzent-hell: rgba(45, 212, 191, 0.14);
+  --farbe-zweit: #ff8a65;
+  --farbe-zweit-hell: rgba(255, 138, 101, 0.14);
+  --farbe-code-bg: #041215;
+  --verlauf: linear-gradient(120deg, #2dd4bf 0%, #ff8a65 100%);
+  --leuchten: 0 0 0 1px rgba(45, 212, 191, 0.35), 0 18px 50px -18px rgba(15, 118, 110, 0.7);
+  --glow-1: rgba(45, 212, 191, 0.16);
+  --glow-2: rgba(255, 138, 101, 0.10);
+  --raster: rgba(255, 255, 255, 0.025);
+  --header-bg: rgba(7, 26, 31, 0.8);
+  --titel-verlauf: linear-gradient(120deg, #ffffff 10%, #5eead4 50%, #ff8a65 90%);
+  --kapitel-verlauf: linear-gradient(120deg, #ffffff 30%, #99f6e4 70%, #ffb199 100%);
+  --titel-schatten: rgba(45, 212, 191, 0.25);
+  --akzent-glow: rgba(45, 212, 191, 0.45);
+  --auf-zweit: #2a0d04;
+  --h3: #99f6e4;
+  --code-inline: #ffb199;
+  --code-text: #e6f2f1;
+  --platzhalter-nr: #1d4650;
+  --browser-seite: linear-gradient(180deg, #10303a, #0c262d);
+  --terminal-bg: #020b0d;
+}
+
+/* ---------- 4. Hell – Apple-Blau & Orange (STANDARD, gesetzt über <html data-farbe="hell">) ---------- */
+:root[data-farbe="hell"] {
+  color-scheme: light;
+  --farbe-hintergrund: #f5f5f7;
+  --farbe-flaeche: #ffffff;
+  --farbe-flaeche-2: #ececf0;
+  --farbe-text: #1d1d1f;
+  --farbe-text-leise: #6e6e73;
+  --farbe-linie: #d2d2d7;
+  --farbe-akzent: #0066cc;
+  --farbe-akzent-fuellung: #0071e3;
+  --farbe-akzent-hell: rgba(0, 113, 227, 0.10);
+  --farbe-zweit: #bf4800;
+  --farbe-zweit-hell: rgba(191, 72, 0, 0.10);
+  --farbe-fehler: #c0392b;
+  --farbe-fehler-hell: #fff1f1;
+  --farbe-hinweis-hell: #fff8e6;
+  --farbe-code-bg: #1d1d1f;
+  --verlauf: linear-gradient(120deg, #0071e3 0%, #af52de 100%);
+  --leuchten: 0 0 0 1px rgba(0, 113, 227, 0.25), 0 24px 48px -20px rgba(0, 0, 0, 0.25);
+  --schatten: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.18);
+  --glow-1: rgba(0, 113, 227, 0.07);
+  --glow-2: rgba(175, 82, 222, 0.05);
+  --raster: rgba(0, 0, 0, 0.03);
+  --header-bg: rgba(245, 245, 247, 0.82);
+  --titel-verlauf: linear-gradient(120deg, #1d1d1f 25%, #0071e3 65%, #af52de 95%);
+  --kapitel-verlauf: linear-gradient(120deg, #1d1d1f 45%, #0066cc 100%);
+  --titel-schatten: rgba(0, 113, 227, 0.12);
+  --akzent-glow: rgba(0, 113, 227, 0.35);
+  --auf-zweit: #ffffff;
+  --h3: #1d1d1f;
+  --code-inline: #b4235a;
+  --code-text: #f5f5f7;
+  --stark: #1d1d1f;
+  --hinweis-text: #6b4e00;
+  --hinweis-rand: #f3dc9c;
+  --platzhalter-nr: #c7c7cc;
+  --browser-seite: linear-gradient(180deg, #ffffff, #f4f6fb);
+  --terminal-bg: #111113;
+}
+
+/* ---------- 5. Papier – Creme, Koralle & Tannengrün ---------- */
+:root[data-farbe="papier"] {
+  color-scheme: light;
+  --farbe-hintergrund: #faf6f0;
+  --farbe-flaeche: #fffdf9;
+  --farbe-flaeche-2: #f1e9de;
+  --farbe-text: #1f1a17;
+  --farbe-text-leise: #6b625a;
+  --farbe-linie: #e3d8ca;
+  --farbe-akzent: #c2410c;
+  --farbe-akzent-fuellung: #c2410c;
+  --farbe-akzent-hell: rgba(194, 65, 12, 0.10);
+  --farbe-zweit: #1f6f5c;
+  --farbe-zweit-hell: rgba(31, 111, 92, 0.10);
+  --farbe-fehler: #b91c1c;
+  --farbe-fehler-hell: #fdecea;
+  --farbe-hinweis-hell: #fdf3dc;
+  --farbe-code-bg: #1f2a28;
+  --verlauf: linear-gradient(120deg, #c2410c 0%, #1f6f5c 100%);
+  --leuchten: 0 0 0 1px rgba(194, 65, 12, 0.25), 0 24px 48px -20px rgba(60, 30, 10, 0.25);
+  --schatten: 0 1px 2px rgba(60, 40, 20, 0.05), 0 12px 32px -16px rgba(60, 40, 20, 0.2);
+  --glow-1: rgba(226, 88, 62, 0.09);
+  --glow-2: rgba(31, 111, 92, 0.07);
+  --raster: rgba(60, 40, 20, 0.035);
+  --header-bg: rgba(250, 246, 240, 0.85);
+  --titel-verlauf: linear-gradient(120deg, #1f1a17 25%, #c2410c 65%, #1f6f5c 95%);
+  --kapitel-verlauf: linear-gradient(120deg, #1f1a17 45%, #c2410c 100%);
+  --titel-schatten: rgba(194, 65, 12, 0.12);
+  --akzent-glow: rgba(194, 65, 12, 0.35);
+  --auf-zweit: #ffffff;
+  --h3: #1f6f5c;
+  --code-inline: #a4361f;
+  --code-text: #f3efe8;
+  --stark: #1f1a17;
+  --hinweis-text: #6b4e00;
+  --hinweis-rand: #ecd9a8;
+  --platzhalter-nr: #d8ccbc;
+  --browser-seite: linear-gradient(180deg, #fffdf9, #f6efe5);
+  --terminal-bg: #141c1a;
+}
+
+/* ---------- Farbwähler (unten rechts) ---------- */
+.farbwahl {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem 0.4rem 0.9rem;
+  font: 600 0.75rem var(--schrift);
+  color: var(--farbe-text-leise);
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--farbe-linie);
+  border-radius: 999px;
+  box-shadow: var(--schatten);
+}
+
+.farbwahl button {
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  cursor: pointer;
+  background: var(--muster);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(127, 127, 127, 0.35);
+}
+
+.farbwahl button[aria-pressed="true"] {
+  border-color: var(--farbe-text);
+}
+
+/* Die Knöpfe zeigen immer ihre eigenen Farben, egal welches Theme aktiv ist */
+.farbwahl [data-wert="nacht"]    { --muster: linear-gradient(135deg, #0f1020 50%, #a78bfa 50%); }
+.farbwahl [data-wert="terminal"] { --muster: linear-gradient(135deg, #0d1117 50%, #3fb950 50%); }
+.farbwahl [data-wert="tiefsee"]  { --muster: linear-gradient(135deg, #071a1f 50%, #ff8a65 50%); }
+.farbwahl [data-wert="hell"]     { --muster: linear-gradient(135deg, #f5f5f7 50%, #0071e3 50%); }
+.farbwahl [data-wert="papier"]   { --muster: linear-gradient(135deg, #faf6f0 50%, #c2410c 50%); }
+
+@media (max-width: 640px) {
+  .farbwahl span { display: none; }
+}
