@@ -87,3 +87,10 @@ the-web-journey/
 - [ARCHITECTURE.md](ARCHITECTURE.md) – Aufbau und technische Entscheidungen
 - [CONTENT_GUIDE.md](CONTENT_GUIDE.md) – Vorlesungen ergänzen, Animationen anpassen
 - [ROADMAP.md](ROADMAP.md) – Stand, offene Aufgaben, spätere Erweiterungen
+
+## Terminal, Atlas & „Jean“ (V1, 23.11.2026)
+
+- **Terminal auf jeder Seite** – Taste `^` (oder `` ` ``), Klick auf `>_` oben links oder auf den blinkenden Cursor im Titel. `help` zeigt alle Befehle (`ls`, `open`, `cat`, `grep`, `curl -I`, `dom`, `theme`, `jean`, `js`, `review` …). Code: `js/terminal.js`, `css/terminal.css`.
+- **Atlas** – der Bot zum Portfolio, zweiter Tab im Terminal. V1 sucht lokal in den sieben Kapiteln (TF-IDF) und verlinkt die Stelle. Optional mit Ollama: `js/atlas-config.js` (noch nicht verbunden).
+- **Jean** – Entwickler-Ansicht: Überschriften zeigen ihr Tag (`<h2 id="…">`), die Seite ist mit `<body>`/`</html>` gerahmt. Terminal: `jean on` / `jean off`.
+- **KopfüBar an Bord** – `aufgaben/19.10_aufgabe1_bar/bar.html` ist das Deck für alle Übungen; `aufgaben/bord.css` + `bord.js` setzen jeder Übung Kopfzeile, Stationsschild und Terminal auf. Der Übungscode bleibt unverändert.

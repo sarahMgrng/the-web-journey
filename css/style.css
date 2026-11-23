@@ -407,3 +407,21 @@ pre {
     transition: none !important;
   }
 }
+
+/* Knopf-Link (z. B. „An Bord der KopfüBar“ auf der Übungsseite) */
+.knopf {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.65rem 1.2rem;
+  font-weight: 600;
+  color: var(--auf-akzent);
+  text-decoration: none;
+  background: var(--farbe-akzent-fuellung);
+  border-radius: 999px;
+}
+
+.knopf:hover {
+  filter: brightness(1.08);
+}

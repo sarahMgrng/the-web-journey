@@ -17,8 +17,12 @@
   <script src="js/uebungen.js" defer></script>
   <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
   <link rel="stylesheet" href="css/farben.css">
+  <link rel="stylesheet" href="css/terminal.css">
   <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
   <script src="js/farben.js" defer></script>
+  <!-- Terminal + Atlas: Taste ^ oder Klick auf ">_" -->
+  <script src="js/atlas-config.js" defer></script>
+  <script src="js/terminal.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
@@ -53,6 +57,7 @@
       <h1>Übungen</h1>
       <p class="kapitel-kopf__lead">Alle Übungen des Semesters an einem Ort. Die Aufgabenstellung und meine Lösung stehen
         jeweils in der Vorlesung, die laufende Version lässt sich direkt öffnen.</p>
+      <p><a class="knopf" href="aufgaben/19.10_aufgabe1_bar/bar.html">⚓ An Bord der KopfüBar – alle Übungen als Stationen</a></p>
     </header>
 
     <div id="uebungen-liste">
