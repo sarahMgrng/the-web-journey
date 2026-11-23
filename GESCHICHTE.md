@@ -25,6 +25,7 @@ Geplant (Issues):
 
 - `bugs.html` – **SMG Bug Findings**: 8 echte Bugs als Messenger-Chat, Analogie zur Motte im Harvard Mark II (1947)
 - `<h2 id>`-Etikett statt Markdown-„##“, weniger Abstand zwischen Abschnitten
+- Vorlesungen in Moodle-Struktur: „V1 05.10.“ … „V7 16.11.“ auf Karten, Kapitelkopf und Learnings; Datum V7 ergänzt
 - Enthält die letzte Runde vom Abgabeabend (`b2d9189`), die beim Merge von #25 noch fehlte
 
 ## Abgabe · 23.11.2026, 24:00 – PR #25

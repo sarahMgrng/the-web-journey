@@ -33,7 +33,7 @@ function zeigeLearnings(vorlesungen) {
   liste.innerHTML = mitLearnings
     .map(v => `
       <article class="eintrag">
-        <p class="eyebrow">Vorlesung ${zweistellig(v.nr)}${v.datum ? " · " + formatiereDatum(v.datum) : ""}</p>
+        <p class="eyebrow">${moodleName(v)} · Vorlesung ${zweistellig(v.nr)}</p>
         <h2><a href="kapitel.html?nr=${v.nr}#${alsAnker(LEARNINGS_TITEL)}">${v.titel}</a></h2>
         <div class="prose">${marked.parse(abschnitt(v.inhalt, LEARNINGS_TITEL))}</div>
       </article>`)
