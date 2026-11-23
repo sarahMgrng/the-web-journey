@@ -1,0 +1,10 @@
+# Nicht auf Vercel veröffentlichen (interne Notizen und Editor-Einstellungen).
+# tools/ und start.command bleiben drin: das Terminal auf der Seite zeigt sie mit "ls" / "curl -I".
+.cursor/
+.vscode/
+abgabe/
+PITCH.md
+PROTOKOLL.md
+ABGABE.md
+STATUS.md
+ROADMAP.md

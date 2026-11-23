@@ -1,7 +1,7 @@
 // ==========================================================
 // chapter.js – füllt das Kapitel-Template (kapitel.html)
 // 1. Nummer aus der Adresse lesen   (kapitel.html?nr=2 → 2)
-// 2. Schnellnavigation 01–08
+// 2. Schnellnavigation 01–07
 // 3. Vorlesung anzeigen (+ Sprungmarken zu den Abschnitten)
 // 4. Vorherige / nächste Vorlesung
 // ==========================================================
@@ -18,7 +18,7 @@ function istGueltigeNr(nr) {
 }
 
 
-// ---------- 2. Schnellnavigation 01–08 ----------
+// ---------- 2. Schnellnavigation 01–07 ----------
 function zeigeSprungNavigation() {
   let html = "";
   for (let nr = 1; nr <= ANZAHL_VORLESUNGEN; nr++) {
@@ -47,7 +47,7 @@ function zeigeVorlesung(vorlesung) {
     </header>`;
 
   if (vorlesung.status === "demo") {
-    html += `<p class="demo-banner"><strong>Entwurf:</strong> Aus Skript und Notizen zusammengefasst,
+    html += `<p class="demo-banner"><strong>Entwurf:</strong> Aus den Skripten zusammengefasst,
              aber noch nicht abschließend von mir geprüft. Offene Punkte stehen unten unter „Offene Fragen & Lücken“.</p>`;
   }
 

@@ -1,17 +1,103 @@
-<html>
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="UTF-8">
-    <title>Kopf&uuml;Bar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kopf&uuml;Bar – an Bord</title>
+    <meta name="description" content="Die KopfüBar legt ab: alle Übungen aus der Vorlesung Web-Programmierung als Stationen an Bord.">
+    <link rel="stylesheet" href="../bord.css">
   </head>
-  <body>
-    <h1>Willkommen in der KopfüBar</h1>
-    <img src="bilder/getraenke.gif">
-    <p>
-      Kommen Sie einfach mal vorbei. Bei uns finden Sie jeden Abend erfrischende <a href="getraenke/elixir.html"> Elixire </a> , Unterhaltung, und vielleicht interessiert Sie auch die eine oder andere Runde <em>Dance, Dance, Revolution</em>. Wireless-Zugang ist jederzeit verfügbar, aber BSIEWSM (Bringen Sie Ihren eigenen Webserver mit).
-    </p>
-    <h2>Wegweiser</h2>
-    <p>
-      Sie finden uns unmittelbar im Zentrum der Altstadt von Webville. Falls Sie Probleme haben uns zu finden, werfen Sie einen Blick auf unsere <a href="info/wegbeschreibung.html"> wegbeschreibung </a> Kommen Sie mal vorbei!
-    </p>
+  <body data-bord="deck">
+
+    <!-- Deck: Startseite aller Übungen. Darunter steht meine Original-Lösung der Bar-Aufgabe (V03). -->
+    <section class="deck-held" aria-labelledby="deck-titel">
+      <h1 id="deck-titel">Die KopfüBar legt ab.</h1>
+      <p class="deck-unterzeile">
+        Aus einer kleinen Bar in Webville wird ein Schiff. Jede Übung aus der Vorlesung ist eine Station an Bord –
+        vom ersten Kaffee in CSS bis zur Bordkasse mit Formular.
+      </p>
+
+      <svg class="deck-boot" viewBox="0 0 720 260" role="img" aria-label="Ein Schiff mit der Flagge der KopfüBar auf Wellen">
+        <g class="boot">
+          <!-- Mast und Segel -->
+          <rect x="356" y="38" width="6" height="150" rx="3" fill="#0b2e4f"/>
+          <path d="M366 46 L366 172 L470 172 Z" fill="#ffffff" stroke="#d2d2d7" stroke-width="2"/>
+          <path d="M352 62 L352 172 L272 172 Z" fill="#eaf4ff" stroke="#d2d2d7" stroke-width="2"/>
+          <!-- Flagge -->
+          <path d="M362 38 L404 48 L362 58 Z" fill="#bf4800"/>
+          <!-- Rumpf -->
+          <path d="M200 182 L520 182 L478 228 L244 228 Z" fill="#0b2e4f"/>
+          <rect x="230" y="190" width="260" height="6" rx="3" fill="#bf4800"/>
+          <!-- Bullaugen -->
+          <circle cx="290" cy="210" r="7" fill="#eaf4ff"/>
+          <circle cx="330" cy="210" r="7" fill="#eaf4ff"/>
+          <circle cx="370" cy="210" r="7" fill="#eaf4ff"/>
+          <circle cx="410" cy="210" r="7" fill="#eaf4ff"/>
+          <text x="452" y="215" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#ffffff">&lt;/&gt;</text>
+        </g>
+        <g class="welle">
+          <path d="M0 232 Q30 220 60 232 T120 232 T180 232 T240 232 T300 232 T360 232 T420 232 T480 232 T540 232 T600 232 T660 232 T720 232 T780 232 T840 232 V260 H0 Z" fill="#0071e3" opacity="0.9"/>
+        </g>
+        <g class="welle" style="animation-duration: 11s">
+          <path d="M0 244 Q30 236 60 244 T120 244 T180 244 T240 244 T300 244 T360 244 T420 244 T480 244 T540 244 T600 244 T660 244 T720 244 T780 244 T840 244 V260 H0 Z" fill="#4da3ff" opacity="0.8"/>
+        </g>
+      </svg>
+    </section>
+
+    <section class="deck-pitch" aria-label="Pitch">
+      <p>
+        <strong>Warum ein Schiff?</strong> Die Bar ist meine Lieblingsübung aus V03: Dort habe ich gelernt, dass eine Website
+        aus Ordnern und relativen Pfaden besteht – <code>getraenke/elixir.html</code>, <code>../bilder/</code>.
+        Genau so ist dieses Deck gebaut: Jede Station ist eine eigene Seite in ihrem eigenen Ordner, und ein Skript
+        (<code>bord.js</code>) setzt allen dieselbe Kopfzeile auf.
+      </p>
+      <p>
+        Der Code jeder Übung bleibt <strong>so, wie ich ihn abgegeben habe</strong>. Neu ist nur der Rahmen.
+        Und auf jeder Station gibt es das Terminal aus dem Portfolio – Taste <kbd>^</kbd> oder ein Klick auf <code>&gt;_</code>.
+      </p>
+    </section>
+
+    <h2 class="deck-titel" id="stationen">Die Stationen</h2>
+    <ul class="stationen">
+      <li><a class="station" href="../12.10_Aufgabe1/index.html">
+        <span class="station__nr">01 · V02</span><strong>Getränkekarte</strong><span>Sternback-Kaffee, erste CSS-Regeln</span></a></li>
+      <li><a class="station" href="../12.10_Aufg2/index.html">
+        <span class="station__nr">02 · V02</span><strong>Alterskontrolle</strong><span>prompt() und alert() – wer darf an die Bar?</span></a></li>
+      <li><a class="station" href="../12.10_Aufg3_Abschluss/index.html">
+        <span class="station__nr">03 · V02</span><strong>Sternenhimmel an Deck</strong><span>Sternchen-Dreieck mit Schleifen</span></a></li>
+      <li><a class="station" href="#original">
+        <span class="station__nr">04 · V03</span><strong>Die Bar</strong><span>Ordner, Bilder, relative Pfade – gleich hier unten</span></a></li>
+      <li><a class="station" href="../19.10_aufgabe2_bohnen-zaehlen/index.html">
+        <span class="station__nr">05 · V03</span><strong>Bohnenlager</strong><span>Bohnen zählen mit Variablen und Bedingungen</span></a></li>
+      <li><a class="station" href="../26.10_aufgabe1_waehrungsrechner/index.html">
+        <span class="station__nr">06 · V04</span><strong>Bordkasse</strong><span>Formular: Dollar ↔ Euro umrechnen</span></a></li>
+      <li><div class="station station--bald">
+        <span class="station__nr">07 · V05</span><strong>Passagierliste</strong><span>Kontakte-Klasse – kommt als Nächstes</span></div></li>
+      <li><div class="station station--bald">
+        <span class="station__nr">08 · V06</span><strong>Logbuch</strong><span>Pull Quotes mit jQuery – kommt</span></div></li>
+      <li><div class="station station--bald">
+        <span class="station__nr">09 · V07</span><strong>Kajüten</strong><span>Akkordeon – kommt</span></div></li>
+    </ul>
+
+    <!-- Station 04: meine Original-Lösung der Bar-Aufgabe, nur in eine Kabine gesetzt -->
+    <main class="kabine deck-original" id="original">
+      <p>Station 04 · V03 · Original</p>
+      <h1>Willkommen in der KopfüBar</h1>
+      <img src="bilder/getraenke.gif" alt="Getränke der KopfüBar">
+      <p>
+        Kommen Sie einfach mal vorbei. Bei uns finden Sie jeden Abend erfrischende <a href="getraenke/elixir.html"> Elixire </a> , Unterhaltung, und vielleicht interessiert Sie auch die eine oder andere Runde <em>Dance, Dance, Revolution</em>. Wireless-Zugang ist jederzeit verfügbar, aber BSIEWSM (Bringen Sie Ihren eigenen Webserver mit).
+      </p>
+      <h2>Wegweiser</h2>
+      <p>
+        Sie finden uns unmittelbar im Zentrum der Altstadt von Webville. Falls Sie Probleme haben uns zu finden, werfen Sie einen Blick auf unsere <a href="info/wegbeschreibung.html"> wegbeschreibung </a> Kommen Sie mal vorbei!
+      </p>
+    </main>
+
+    <footer class="bord-fuss">
+      Original der Bar-Aufgabe: <a href="https://github.com/sarahMgrng/wp-aufgaben-3-semester">wp-aufgaben-3-semester</a> ·
+      zurück zum <a href="../../index.html">Portfolio</a> · Terminal: Taste <kbd>^</kbd>
+    </footer>
+
+    <script src="../bord.js"></script>
   </body>
 </html>

@@ -1,7 +1,74 @@
-# Status – Stand 21.10.2026
+# Status – Stand 23.11.2026, 06:00
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
-Langfristige Planung: [ROADMAP.md](ROADMAP.md).
+Langfristige Planung: [ROADMAP.md](ROADMAP.md) · Abgabe heute: [ABGABE.md](ABGABE.md)
+
+## Übergabe 23.11., 06:00 – Cursor + Vercel
+
+- **Hauptstand entschieden:** `design-hell-vercel` → PR #13 → `abgaben-3-semester`. Ab jetzt nur dort weiterarbeiten.
+  `finale-abgabe`, `design`, `portfolio/ordnernavigation` sind ältere Parallel-Entwürfe = nur Archiv (Details in ABGABE.md).
+- **Cursor:** Projektordner in Cursor öffnen (`File → Open Folder`). Die Regeln für die KI in Cursor liegen in
+  `.cursor/rules/projekt.mdc` (kein Framework, Herkunfts-Emojis, `inhalte-buendeln.py` nach Markdown-Änderungen, HTML nicht umbenennen).
+  Vorschau: `start.command` oder `python3 -m http.server 5500`.
+- **Vercel:** statische Seite, kein Build. `.vercelignore` hält interne Notizen (STATUS, ABGABE, PITCH, PROTOKOLL, ROADMAP, `.cursor/`) aus der Live-Seite heraus.
+  Push auf `abgaben-3-semester` = Production, jeder andere Branch = Vorschau-Link.
+- **Geprüft:** 15 HTML-Seiten ohne tote lokale Links, alle JS-Dateien syntaktisch ok, `js/inhalte.js` synchron mit den 7 Kapiteln.
+- **Offen bei Sarah:** Vercel-Teamzugriff für Claude freigeben (oder selbst im Dashboard prüfen) · Archiv-Tags + Zweige löschen (Befehle in ABGABE.md) · Repos für den Prof freigeben · Frist klären (19:00 oder 0:00).
+
+## Update 23.11.2026, 06:00 – Übergabe vor der Präsentation
+
+- [x] Terminal + Atlas-Bot (V1, lokal) auf jeder Seite, Entwickler-Ansicht „Jean“, KopfüBar an Bord (Deck aller Übungen)
+- [x] Pitch (`PITCH.md`), Abgabe-Checkliste mit Mail-Entwurf (`ABGABE.md`), Protokoll/Archiv (`PROTOKOLL.md`), `tools/abgabe-zip.sh`
+- [x] Test: 21 Seiten über Server und per Doppelklick, Handy – keine Fehler
+- [ ] **Vercel ist noch nicht live** (Autorisierung offen) – Rückfall: ZIP / `start.command`
+- [ ] PR #13 mergen, PR #12 schließen, Zweige aufräumen (siehe `ABGABE.md`)
+- [ ] Learnings V01, V02, V04–V07 · Abgabe V05 · Repos für den Prof sichtbar machen
+- ⚠️ Frist unklar: 19:00 (Abgabeplan) oder 24:00 (Nachricht 22.11.)
+
+## Update 22.11.2026 (vor der Präsentation am 23.11.)
+
+**Erledigt:**
+- [x] **Layout/Design überarbeitet** (Feedback PO 19.10.): Alle Farben als CSS-Variablen, fünf Farbschemata in `css/farben.css`. Gewählt: **„Hell“** – Hintergrund `#f5f5f7`, Apple-Blau `#0071e3`/`#0066cc`, Orange `#bf4800`, feines Raster, Verlauf im Titel, Terminal-Logo `>_`. Farbwähler unten rechts (Wahl wird im Browser gemerkt).
+- [x] Weicher Übergang hinter der Sticky-Grafik auf schmalen Bildschirmen (vorher harte Kante)
+- [x] **marked lokal** unter `js/vendor/marked.min.js` → Seite läuft offline bei der Präsentation
+- [x] Favicon `>_` (vorher 404 im Log)
+- [x] Währungsrechner (26.10.) nach `aufgaben/26.10_aufgabe1_waehrungsrechner/` kopiert
+- [ ] **Hosting über Vercel** vorbereitet, Autorisierung durch Sarah noch offen
+- ⚠️ Lokal hießen die Seiten zwischenzeitlich `1_index.html` usw. – dadurch waren alle Links kaputt. HTML-Dateien nicht umbenennen.
+
+- [x] **Struktur Portfolio 1 / 2:** Umschalter oben mit schrägem Schnitt – links Portfolio 1 (Web-Programmierung, WiSe 26/27), rechts Portfolio 2 (Verteilte Systeme, SoSe 27, `verteilte-systeme.html`)
+- [x] Neue Seite **Über mich** (`ueber-mich.html`): erster Pitch + Links zu GitHub-Profil, beiden Repos und der Website. ⚠️ Repos sind privat – für den Prof öffentlich machen oder einladen.
+- [x] „Über das Projekt“ heißt jetzt **„Über das Portfolio“**, Navigation: Schwerpunkt · Vorlesungen · Übungen · Learnings · Portfolio · Über mich
+- [x] „Reise“-Sprache entfernt („Sieben Vorlesungen. Alles an einem Ort.“)
+- [x] **Vorlesungen 04–07** aus allen Skripten zusammengefasst (Quelle: gesammelte Skript-Ablage, 507 Folien per Texterkennung gelesen; Texte unter `Vika_Wp-alle Skripte/_text/` auf dem Mac). 08 entfällt (`ANZAHL_VORLESUNGEN = 7`).
+  - 04 Strings, Formulare & CSS (26.10.) – Abgabe Währungsrechner verlinkt
+  - 05 Objekte, JSON & Klassen – **Abgabe Kontakte-Klasse offen**
+  - 06 DOM & jQuery – Übungen Kreative Überschriften, Pull Quotes offen
+  - 07 Events & Browser-Steuerung (Skript WebProg-25!) – Übungen Tabellenreihen, Akkordeon offen
+  - alle JS-Beispiele mit node und im Browser („▶ Ausführen“) getestet
+
+**Review-Runde 22.11., 17:30 (Prüfung aus Sicht des Profs):**
+
+| # | Befund | Erledigt |
+|---|---|---|
+| 1 | Learnings-Seite leer | ✅ Learning V3 vom Branch `portfolio/ordnernavigation` übernommen – **V1, V2, V4–V7 fehlen noch (selbst schreiben!)** |
+| 2 | Apple-Aufhänger fehlt im Schwerpunkt | ✅ Demo 00: Laptop klappt beim Scrollen auf (120 Bilder im `<canvas>`, Quelle CSS-Tricks) |
+| 3 | Entwurf-Hinweis „Skript und Notizen“ falsch für V4–7 | ✅ „Aus den Skripten zusammengefasst“ |
+| 4 | Doppelklick auf index.html lädt keine Kapitel | ✅ `start.command` (Doppelklick → Server + Browser) |
+| 5 | Handy: Menü abgeschnitten | ✅ Menü bricht zweizeilig um |
+| 6 | Offene Übungen nicht erkennbar | ✅ Etikett „offen“ + Zählung auf der Übungsseite |
+| 7 | V1: „Präsentation 10 Min“ ≠ Folie (5 + 10 Min) | ✅ korrigiert, als ❓ dokumentiert |
+| 8 | ARCHITECTURE.md veraltet | ✅ aktualisiert |
+| – | Technik-Check: 21 Seiten, alle Links und Sprungmarken | ✅ keine Fehler (einziger 404 = fehlendes Favicon in Übung 12.10 Aufgabe 1, bleibt original) |
+
+**Offen (Iteration 2):**
+- [ ] Daten von V5–V7 prüfen (aus Wochenrhythmus abgeleitet, V7 fehlt)
+- [ ] Abgabe V5 (Kontakte-Klasse) lösen und ins Aufgaben-Repo
+- [ ] V1–V3 prüfen und auf `status: fertig` setzen
+- [ ] Learnings + n8n-Automation (macht Sarah)
+- [ ] Startseite: Apple-Aufhänger + scrollgesteuerte „Reise einer Website“ (Browser → DNS → Server → DOM) mit Code
+- [ ] Übungs-Labor: Übungen mit Code + Terminal direkt auf der Seite ausführen
+- [ ] Branch `portfolio/ordnernavigation` (Ordnerbaum, 21.11.) prüfen und ins neue Design übernehmen
 
 ## Was wir haben
 
@@ -51,7 +118,7 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 
 ### Neu am 20.10.
 - [x] Seite lokal nur über Server testen: `python3 -m http.server 8000` → http://localhost:8000 (per Doppelklick lädt fetch() nichts)
-- [ ] Veröffentlichung klären: GitHub Pages bei privatem Repo nur mit bezahltem Plan → Repo öffentlich machen oder anderer Host?
+- [x] Veröffentlichung geklärt: Vercel statt GitHub Pages (Repo bleibt privat)
 - [x] Neuer fester Abschnitt `## Meine Learnings` (✏️) nach jeder Vorlesung, 5 Leitfragen → in CONTENT_GUIDE aufgenommen
 - [x] n8n: Workflow „Vorlesungs-Rückblick“ (Mo 18:00 → Issue) und „Learnings eintragen“ (Formular → Ollama → Branch `learnings`) laufen
 - [ ] Learnings für V1–V3 über das Formular eintragen (Production-URL, Workflow ist veröffentlicht)
@@ -63,7 +130,7 @@ Alles in [content/vorlesungen/03.md](content/vorlesungen/03.md), nach Herkunft g
 **Abweichung (PO-Wunsch 20.10.):** Unterseiten und Server-Animation sind neue Infrastruktur, bewusst entgegen „keine neuen Demos“.
 
 ### Seit 19.10.
-- [ ] **Layout überarbeiten** (Feedback PO 19.10.): Logik passt, Optik der Kapitelseite gefällt noch nicht. Gemeinsam Richtung festlegen.
+- [x] **Layout überarbeiten** (Feedback PO 19.10.): Farbschema „Hell“ gewählt (22.11.)
 - [ ] Vorlesung 03 auf `status: fertig` setzen (Demo-Hinweis entfernen)
 - [ ] **Notizen des Kommilitonen** zum 19.10. besorgen und in `03.md` als ✏️ einarbeiten
 - [x] **GoodNotes-Export** liegt vor: `Skripte/Web-Programming.pdf` (196 S.: Skripte V1 + V2 mit handschriftlichen Notizen; zum 19.10. nichts enthalten)
