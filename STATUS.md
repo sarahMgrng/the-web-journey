@@ -1,7 +1,17 @@
-# Status – Stand 22.11.2026
+# Status – Stand 23.11.2026, 06:00
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
 Langfristige Planung: [ROADMAP.md](ROADMAP.md).
+
+## Update 23.11.2026, 06:00 – Übergabe vor der Präsentation
+
+- [x] Terminal + Atlas-Bot (V1, lokal) auf jeder Seite, Entwickler-Ansicht „Jean“, KopfüBar an Bord (Deck aller Übungen)
+- [x] Pitch (`PITCH.md`), Abgabe-Checkliste mit Mail-Entwurf (`ABGABE.md`), Protokoll/Archiv (`PROTOKOLL.md`), `tools/abgabe-zip.sh`
+- [x] Test: 21 Seiten über Server und per Doppelklick, Handy – keine Fehler
+- [ ] **Vercel ist noch nicht live** (Autorisierung offen) – Rückfall: ZIP / `start.command`
+- [ ] PR #13 mergen, PR #12 schließen, Zweige aufräumen (siehe `ABGABE.md`)
+- [ ] Learnings V01, V02, V04–V07 · Abgabe V05 · Repos für den Prof sichtbar machen
+- ⚠️ Frist unklar: 19:00 (Abgabeplan) oder 24:00 (Nachricht 22.11.)
 
 ## Update 22.11.2026 (vor der Präsentation am 23.11.)
 
@@ -11,7 +21,7 @@ Langfristige Planung: [ROADMAP.md](ROADMAP.md).
 - [x] **marked lokal** unter `js/vendor/marked.min.js` → Seite läuft offline bei der Präsentation
 - [x] Favicon `>_` (vorher 404 im Log)
 - [x] Währungsrechner (26.10.) nach `aufgaben/26.10_aufgabe1_waehrungsrechner/` kopiert
-- [x] **Hosting über Vercel**, verbunden mit diesem Repo (Push = neue Version)
+- [ ] **Hosting über Vercel** vorbereitet, Autorisierung durch Sarah noch offen
 - ⚠️ Lokal hießen die Seiten zwischenzeitlich `1_index.html` usw. – dadurch waren alle Links kaputt. HTML-Dateien nicht umbenennen.
 
 - [x] **Struktur Portfolio 1 / 2:** Umschalter oben mit schrägem Schnitt – links Portfolio 1 (Web-Programmierung, WiSe 26/27), rechts Portfolio 2 (Verteilte Systeme, SoSe 27, `verteilte-systeme.html`)
