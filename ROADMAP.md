@@ -35,6 +35,7 @@ Stand: 23.11.2026 (Abgabe Portfolio 1)
 - [x] Präsentation am 23.11.; Präsentationsstand gesichert im Branch `archiv/launch-2026-11-23`
 - [x] `html-og.html`: dieselbe Basis als reines HTML ohne CSS/JS (Vergleich file:// · localhost · gehostet)
 - [x] Launch-Review: 404 kurz vor der Präsentation offen dokumentiert (`launch-review.html`)
+- [x] Human in the Loop: jede Änderung als Pull Request, Review und Merge durch Sarah
 - [x] Leitfaden für die Abgabe (`abgabe.html`, `PROF_HANDBOOK.md`)
 - [x] Abgabe-ZIP per Skript (`tools/abgabe-zip.sh`)
 

@@ -101,6 +101,24 @@ the-web-journey/
 - **Jean** – Entwickler-Ansicht: Überschriften zeigen ihr Tag (`<h2 id="…">`), die Seite ist mit `<body>`/`</html>` gerahmt. Terminal: `jean on` / `jean off`.
 - **KopfüBar an Bord** – `aufgaben/19.10_aufgabe1_bar/bar.html` ist das Deck für alle Übungen; `aufgaben/bord.css` + `bord.js` setzen jeder Übung Kopfzeile, Stationsschild und Terminal auf. Der Übungscode bleibt unverändert.
 
+## Arbeitsweise: Human in the Loop
+
+KI und Automatisierung bereiten vor – **entschieden und übernommen wird nur durch mich**. Kein Inhalt kommt ungeprüft auf die Seite.
+
+1. **Vorbereiten** – Claude, Cursor oder der n8n-Workflow arbeiten **nie direkt** auf dem Hauptzweig, sondern immer auf einem eigenen Branch.
+2. **Pull Request** – jede Änderung kommt als Pull Request mit Beschreibung und Prüfliste.
+3. **Review durch Sarah** – ich lese den Diff, öffne die Vercel-Vorschau des Branches und klicke die Seite durch.
+4. **Merge durch Sarah** – erst mein Merge bringt die Änderung auf `abgaben-3-semester`; Vercel veröffentlicht dann automatisch.
+5. **Nachvollziehbar** – Commits, Pull Requests und Issues zeigen, wer was vorgeschlagen und wer es freigegeben hat. Ältere Stände bleiben als `archiv/…`-Branches erhalten.
+
+```
+Vorschlag (KI / n8n) ─► eigener Branch ─► Pull Request ─► Review Sarah ─► Merge Sarah ─► Vercel live
+                                                │
+                                                └─ abgelehnt / Änderungswunsch ─► zurück an den Branch
+```
+
+Die finale Abgabe selbst ist genauso entstanden: als Pull Request `abgabe-final` → `abgaben-3-semester`, gemergt von mir.
+
 ## Automatisierung mit n8n
 
 Auf meinem eigenen Server läuft **n8n**. Zwei Workflows begleiten jede Vorlesung:
