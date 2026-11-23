@@ -4,12 +4,14 @@
 > Die ältere Datei auf dem Branch `finale-abgabe` nennt **Präsentation 15:15** und **Abgabe 19:00**.
 > Im Zweifel die frühere Zeit nehmen.
 
-Arbeitszweig für alles Finale: **`design-hell-vercel`** (PR #13).
+**Entschieden 23.11., 06:00:** `design-hell-vercel` ist der Hauptstand und wird über PR #13 in
+`abgaben-3-semester` gemergt. Ab dann gilt: **nur noch auf `abgaben-3-semester` arbeiten** (Push = Vercel live).
+Bearbeiten in Cursor: Ordner öffnen, die Projektregeln liegen in `.cursor/rules/projekt.mdc`.
 
 ## Morgens – finale Sicherung (≈ 20 Min.)
 
 - [ ] Mac-Ordner wieder verbinden: Abfrage in der Claude-App beantworten (Ordner wurde umbenannt/verschoben).
-- [ ] Neuesten Stand holen: `git pull` auf `design-hell-vercel` (oder ZIP aus dem Chat entpacken).
+- [ ] Neuesten Stand holen: `git checkout abgaben-3-semester && git pull`.
 - [ ] `start.command` doppelklicken → Website einmal durchklicken: Start, V01–V07, Übungen, An Bord, Terminal (`^`), Atlas.
 - [ ] `index.html` per Doppelklick öffnen → läuft auch ohne Server.
 - [ ] Learnings, die heute noch dazukommen: in `content/vorlesungen/0X.md` unter `## Meine Learnings`, danach `python3 tools/inhalte-buendeln.py`.
@@ -17,18 +19,20 @@ Arbeitszweig für alles Finale: **`design-hell-vercel`** (PR #13).
 
 ## GitHub aufräumen (Ziel: ein Hauptzweig)
 
-Standardzweig heißt aktuell **`abgaben-3-semester`** (es gibt kein `main`). Stand 23.11., 05:40:
+Standardzweig bleibt **`abgaben-3-semester`** (Vercel-Production hängt daran – vor der Abgabe nicht umbenennen).
+Geprüft 23.11., 06:00 (alle Zweige gegeneinander verglichen):
 
-| Zweig | Stand | Vorschlag |
+| Zweig | Stand | Entscheidung |
 | --- | --- | --- |
-| `design-hell-vercel` | **aktuell, 5 Commits voraus** | PR #13 mergen → wird der Hauptstand |
-| `finale-abgabe` | Paralleler Entwurf (Reise-Demo, Countdown, 99_Archiv) | Tag `archiv/finale-abgabe`, Zweig löschen |
-| `design` | Paralleler Entwurf „Schnittwerk“ (Marke, Atlas-Seite, Prüfungsfragen) | Tag `archiv/design-schnittwerk`, Zweig löschen – Prüfungsfragen sind in `PITCH.md` übernommen |
-| `portfolio/ordnernavigation` | Ordnerbaum-Navigation (PR #12) | PR #12 schließen, Tag `archiv/ordnernavigation`, Zweig löschen |
-| `ausbau-v1-v2-unterseiten` | schon enthalten | löschen |
-| `learnings` | alt (20.10.), schon enthalten | löschen |
+| `abgaben-3-semester` | Hauptzweig, bis zum Merge Stand 21.10. | **bleibt Hauptzweig**, bekommt PR #13 |
+| `design-hell-vercel` | neuester Stand (05:42), PR #13 konfliktfrei, 15 Seiten ohne tote Links | **→ mergen**, danach löschen |
+| `finale-abgabe` | Paralleler Entwurf 01:08 (Reise-Demo als Platzhalter, Countdown, 99_Archiv) – älter, kein Terminal/Atlas | nur Archiv |
+| `design` | Paralleler Entwurf „Schnittwerk“ (Marke, Atlas-Seite, Prüfungsfragen) | nur Archiv – Prüfungsfragen stehen in `PITCH.md` |
+| `portfolio/ordnernavigation` | Ordnerbaum-Navigation (PR #12) | PR #12 schließen, nur Archiv |
+| `ausbau-v1-v2-unterseiten` | vollständig in `abgaben-3-semester` enthalten | löschen |
+| `learnings` | alt (20.10.), vollständig enthalten | löschen – **aber** n8n-Workflow „Learnings eintragen“ schreibt in diesen Branch! Erst Workflow auf `abgaben-3-semester` umstellen |
 
-**Vor dem Löschen Archiv-Tags setzen** (einmal im Terminal im Projektordner – ich durfte von hier aus keine Tags anlegen):
+**Vor dem Löschen Archiv-Tags setzen.** Claude kann aus der Cloud keine Tags anlegen (Proxy blockt es) – deshalb ist noch **kein Zweig gelöscht**. Einmal im Terminal im Projektordner:
 
 ```bash
 git fetch origin
@@ -38,15 +42,20 @@ git tag archiv/ordnernavigation  origin/portfolio/ordnernavigation
 git tag archiv/learnings         origin/learnings
 git tag archiv/ausbau-v1-v2      origin/ausbau-v1-v2-unterseiten
 git push origin --tags
+
+# danach (erst wenn die Tags auf GitHub sichtbar sind):
+git push origin --delete finale-abgabe design portfolio/ordnernavigation ausbau-v1-v2-unterseiten design-hell-vercel
+# learnings erst löschen, wenn n8n auf abgaben-3-semester umgestellt ist
 ```
 
-Danach geht nichts verloren, auch wenn die Zweige gelöscht werden.
-Optional: Standardzweig in GitHub → Settings → Branches in `main` umbenennen.
+Danach geht nichts verloren (`git checkout archiv/<name>` holt jeden Entwurf zurück).
+Nach der Abgabe optional: Standardzweig in `main` umbenennen (dann auch bei Vercel → Settings → Git den Production Branch anpassen).
 
-- [ ] Archiv-Tags gesetzt (Befehle oben)
 - [ ] PR #13 mergen (GitHub → Pull requests → #13 → *Merge*)
+- [ ] Archiv-Tags gesetzt (Befehle oben)
 - [ ] PR #12 schließen
 - [ ] Alte Zweige löschen (Tags bleiben)
+- [ ] Vercel: Production Branch = `abgaben-3-semester`, Deployment Protection für Production aus (sonst sieht der Prof eine Vercel-Anmeldung) – Link im privaten Fenster testen
 - [ ] Repos für den Prof sichtbar: öffentlich stellen **oder** Prof als Collaborator einladen (`the-web-journey`, `wp-aufgaben-3-semester`)
 - [ ] Optional: Vercel-Deployment (braucht deine Bestätigung des Autorisierungslinks)
 

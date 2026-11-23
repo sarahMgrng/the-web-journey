@@ -1,7 +1,19 @@
 # Status – Stand 23.11.2026, 06:00
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
-Langfristige Planung: [ROADMAP.md](ROADMAP.md).
+Langfristige Planung: [ROADMAP.md](ROADMAP.md) · Abgabe heute: [ABGABE.md](ABGABE.md)
+
+## Übergabe 23.11., 06:00 – Cursor + Vercel
+
+- **Hauptstand entschieden:** `design-hell-vercel` → PR #13 → `abgaben-3-semester`. Ab jetzt nur dort weiterarbeiten.
+  `finale-abgabe`, `design`, `portfolio/ordnernavigation` sind ältere Parallel-Entwürfe = nur Archiv (Details in ABGABE.md).
+- **Cursor:** Projektordner in Cursor öffnen (`File → Open Folder`). Die Regeln für die KI in Cursor liegen in
+  `.cursor/rules/projekt.mdc` (kein Framework, Herkunfts-Emojis, `inhalte-buendeln.py` nach Markdown-Änderungen, HTML nicht umbenennen).
+  Vorschau: `start.command` oder `python3 -m http.server 5500`.
+- **Vercel:** statische Seite, kein Build. `.vercelignore` hält interne Notizen (STATUS, ABGABE, PITCH, PROTOKOLL, ROADMAP, `.cursor/`) aus der Live-Seite heraus.
+  Push auf `abgaben-3-semester` = Production, jeder andere Branch = Vorschau-Link.
+- **Geprüft:** 15 HTML-Seiten ohne tote lokale Links, alle JS-Dateien syntaktisch ok, `js/inhalte.js` synchron mit den 7 Kapiteln.
+- **Offen bei Sarah:** Vercel-Teamzugriff für Claude freigeben (oder selbst im Dashboard prüfen) · Archiv-Tags + Zweige löschen (Befehle in ABGABE.md) · Repos für den Prof freigeben · Frist klären (19:00 oder 0:00).
 
 ## Update 23.11.2026, 06:00 – Übergabe vor der Präsentation
 
