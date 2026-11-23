@@ -69,6 +69,33 @@
       kabine.before(schild);
     }
 
+    // ---------- 3b. Leere Kabine? (Übungen, die nur mit prompt/alert arbeiten) ----------
+    // alert() blockiert, bis man klickt – danach hat die Seite nichts zu rendern.
+    // Damit die Kabine nicht leer bleibt, zeigt sie den Code und einen Knopf für die nächste Runde.
+    const sichtbar = [...kabine.childNodes].some((n) => n.nodeType === 3 ? n.textContent.trim() : n.tagName !== "SCRIPT");
+    if (!sichtbar) {
+      const code = [...kabine.querySelectorAll("script:not([src])")].map((s) => s.textContent.trim()).join("\n\n");
+      const karte = document.createElement("section");
+      karte.className = "bord-leer";
+      karte.innerHTML = `<p><code>alert()</code> hat geliefert – und danach gibt es im DOM nichts mehr zu rendern.
+        Kein Bug, nur ein sehr minimalistisches Frontend.</p>
+        <pre><code></code></pre>
+        <button type="button">↻ Nochmal ausführen</button>`;
+      karte.querySelector("pre code").textContent = code;
+      karte.querySelector("button").addEventListener("click", () => location.reload());
+      kabine.append(karte);
+    }
+
+    // ---------- Zurück-Knopf ----------
+    const zurueck = document.createElement("a");
+    zurueck.className = "bord-zurueck";
+    zurueck.href = zu("19.10_aufgabe1_bar/bar.html") + "#stationen";
+    zurueck.textContent = "← Zurück an Deck";
+    zurueck.addEventListener("click", (e) => {
+      if (history.length > 1 && document.referrer) { e.preventDefault(); history.back(); }
+    });
+    kabine.before(zurueck);
+
     // ---------- 4. Fußzeile ----------
     const fuss = document.createElement("footer");
     fuss.className = "bord-fuss";
