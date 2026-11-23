@@ -90,7 +90,7 @@ function erzeugeCard(vorlesung, index) {
           <span class="visually-hidden">Vorlesung ${vorlesung.nr}: </span>${vorlesung.titel}
         </h3>
         ${vorlesung.beschreibung ? `<p class="kapitel-card__beschreibung">${vorlesung.beschreibung}</p>` : ""}
-        <p class="kapitel-card__datum">${moodleName(vorlesung)}${vorlesung.datum ? " · " + formatiereDatum(vorlesung.datum) : ""}</p>
+        <p class="kapitel-card__datum">📁 ${moodleName(vorlesung)}${vorlesung.datum ? " · " + formatiereDatum(vorlesung.datum) : ""}</p>
       </a>
     </li>`;
 }

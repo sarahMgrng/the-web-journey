@@ -16,8 +16,8 @@ const FARBEN = [
 ];
 
 const WERKZEUGE = [
-  { id: "atlas",    zeichen: "AI",  name: "Frag Atlas – der KI-Bot zum Portfolio" },
   { id: "terminal", zeichen: ">_",  name: "Terminal öffnen (Taste ^)" },
+  { id: "atlas",    zeichen: "◎",   name: "Atlas – Bot zum Portfolio" },
   { id: "jean",     zeichen: "&lt;/&gt;", name: "Jean – HTML-Tags ein/aus" },
   { id: "index",    zeichen: "#",   name: "Index dieser Seite (alle <h2>)" },
   { id: "oben",     zeichen: "↑",   name: "Nach oben" },

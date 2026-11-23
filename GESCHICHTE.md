@@ -25,7 +25,6 @@ Geplant (Issues):
 
 - `bugs.html` – **SMG Bug Findings**: 8 echte Bugs als Messenger-Chat, Analogie zur Motte im Harvard Mark II (1947)
 - `<h2 id>`-Etikett statt Markdown-„##“, weniger Abstand zwischen Abschnitten
-- Werkzeugkasten senkrecht am rechten Rand, Atlas als „AI“-Knopf oben · Über mich ohne „Hi, ich bin Sarah“, mit SMG-Impressum · Öffnungswege + Werkzeuge erklärt · keine Emojis in der Oberfläche
 - Vorlesungen in Moodle-Struktur: „V1 05.10.“ … „V7 16.11.“ auf Karten, Kapitelkopf und Learnings; Datum V7 ergänzt
 - Enthält die letzte Runde vom Abgabeabend (`b2d9189`), die beim Merge von #25 noch fehlte
 

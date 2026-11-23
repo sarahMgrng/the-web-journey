@@ -285,27 +285,3 @@
   .werkzeugkasten { flex-wrap: wrap; justify-content: flex-end; max-width: calc(100vw - 2rem); border-radius: 22px; }
   .farbwahl .werkzeug, .farbwahl.werkzeugkasten [data-wert] { width: 1.9rem; height: 1.9rem; }
 }
-
-/* ---------- Werkzeugkasten senkrecht am rechten Rand (alle Seiten, 24.11.) ---------- */
-@media (min-width: 721px) {
-  .farbwahl.werkzeugkasten {
-    top: 50%; bottom: auto; right: 0.75rem;
-    transform: translateY(-50%);
-    flex-direction: column;
-    gap: 0.6rem;
-    padding: 0.8rem 0.55rem;
-    border-radius: 30px;
-  }
-  .werkzeugkasten__titel { writing-mode: vertical-rl; transform: rotate(180deg); font-size: .62rem; }
-  .werkzeugkasten__tools, .werkzeugkasten__farben { flex-direction: column; gap: 0.5rem; }
-  .werkzeugkasten__trenner { width: 1.8rem; height: 1px; }
-  .farbwahl .werkzeug, .farbwahl.werkzeugkasten [data-wert] { width: 2.6rem; height: 2.6rem; }
-  .farbwahl.werkzeugkasten [data-wert] { width: 1.9rem; height: 1.9rem; }
-  .farbwahl .werkzeug { font-size: 0.85rem; }
-  .farbwahl .werkzeug[data-tool="atlas"] {
-    width: 3rem; height: 3rem; font-size: 0.95rem;
-    background: var(--farbe-akzent); color: #fff; border-color: transparent;
-    box-shadow: 0 6px 18px -6px var(--akzent-glow, rgba(234, 88, 12, .45));
-  }
-  .werkzeug-index { right: 5.5rem; bottom: auto; top: 50%; transform: translateY(-50%); }
-}
