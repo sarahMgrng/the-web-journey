@@ -115,6 +115,13 @@ function formatiereDatum(isoDatum) {
   return datum.toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
 }
 
+// Moodle-Struktur: "V2 12.10." – genau so heißen die Ordner im Moodle-Kurs von Prof. Noll
+function moodleName(vorlesung) {
+  if (!vorlesung.datum) return `V${vorlesung.nr}`;
+  const [, monat, tag] = vorlesung.datum.split("-");
+  return `V${vorlesung.nr} ${tag}.${monat}.`;
+}
+
 // Gibt das HTML für ein Status-Etikett zurück (oder nichts bei "fertig")
 function statusBadge(status) {
   if (!STATUS_TEXTE[status]) return "";

@@ -1,7 +1,6 @@
 // ==========================================================
-// farben.js – Werkzeugkasten unten rechts (auf jeder Seite gleich)
-// Links: Farbschemata. Rechts: fünf Werkzeuge wie in den Entwicklertools –
-// Terminal, Atlas, Jean (HTML-Ansicht), Seiten-Index und „nach oben“.
+// farben.js – gemeinsamer Werkzeugkasten am rechten Seitenrand
+// Terminal, Atlas, Jean (HTML-Ansicht), Seitenindex und Farbschemata.
 // Farben setzen nur <html data-farbe="…">; alles andere steht als CSS-Variable
 // in style.css und farben.css. Standard ist "weiss" (Weiß & Orange).
 // ==========================================================
@@ -17,7 +16,6 @@ const FARBEN = [
 
 const WERKZEUGE = [
   { id: "terminal", zeichen: ">_",  name: "Terminal öffnen (Taste ^)" },
-  { id: "atlas",    zeichen: "◎",   name: "Atlas – Bot zum Portfolio" },
   { id: "jean",     zeichen: "&lt;/&gt;", name: "Jean – HTML-Tags ein/aus" },
   { id: "index",    zeichen: "#",   name: "Index dieser Seite (alle <h2>)" },
   { id: "oben",     zeichen: "↑",   name: "Nach oben" },
@@ -66,7 +64,11 @@ function zeigeIndex(knopf) {
   });
   liste.innerHTML = `<p><code>&lt;nav&gt;</code> Index dieser Seite</p>` +
     (zeilen.join("") || "<p>Auf dieser Seite gibt es keine &lt;h2&gt; – ehrlich gesagt ein bisschen leer hier.</p>");
-  liste.addEventListener("click", (e) => { if (e.target.closest("a")) liste.remove(); });
+  liste.addEventListener("click", (e) => {
+    if (!e.target.closest("a")) return;
+    liste.remove();
+    knopf.setAttribute("aria-expanded", "false");
+  });
   document.body.append(liste);
   knopf.setAttribute("aria-expanded", "true");
 }
@@ -87,17 +89,25 @@ function werkzeug(id, knopf) {
 function baueWerkzeugkasten() {
   const leiste = document.createElement("div");
   leiste.className = "farbwahl werkzeugkasten";
-  leiste.setAttribute("role", "toolbar");
+  leiste.setAttribute("role", "group");
   leiste.setAttribute("aria-label", "Werkzeugkasten");
   leiste.innerHTML =
-    `<span class="werkzeugkasten__titel">Werkzeug</span>` +
-    `<div class="werkzeugkasten__tools">` +
+    `<button type="button" class="werkzeug werkzeugkasten__atlas" data-tool="atlas" title="Fragen zum Portfolio stellen">Atlas</button>` +
+    `<button type="button" class="werkzeug werkzeugkasten__schalter" aria-label="Werkzeuge und Farben" aria-expanded="false" aria-controls="werkzeugkasten-inhalt">+</button>` +
+    `<div class="werkzeugkasten__inhalt" id="werkzeugkasten-inhalt"><div class="werkzeugkasten__tools">` +
       WERKZEUGE.map(w => `<button type="button" class="werkzeug" data-tool="${w.id}" title="${w.name}" aria-label="${w.name}">${w.zeichen}</button>`).join("") +
     `</div><span class="werkzeugkasten__trenner" aria-hidden="true"></span>` +
     `<div class="werkzeugkasten__farben" role="group" aria-label="Farbschema">` +
       FARBEN.map(f => `<button type="button" data-wert="${f.wert}" title="${f.name}" aria-label="${f.name}"></button>`).join("") +
-    `</div>`;
+    `</div></div>`;
   document.body.append(leiste);
+
+  const schalter = leiste.querySelector(".werkzeugkasten__schalter");
+  schalter.addEventListener("click", () => {
+    const offen = schalter.getAttribute("aria-expanded") === "true";
+    schalter.setAttribute("aria-expanded", String(!offen));
+    schalter.textContent = offen ? "+" : "−";
+  });
 
   for (const knopf of leiste.querySelectorAll("[data-wert]")) {
     knopf.addEventListener("click", () => setzeFarbe(knopf.dataset.wert));

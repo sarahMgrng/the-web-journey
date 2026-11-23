@@ -80,7 +80,7 @@
       karte.innerHTML = `<p><code>alert()</code> hat geliefert – und danach gibt es im DOM nichts mehr zu rendern.
         Kein Bug, nur ein sehr minimalistisches Frontend.</p>
         <pre><code></code></pre>
-        <button type="button">↻ Nochmal ausführen</button>`;
+        <button type="button">Nochmal ausführen</button>`;
       karte.querySelector("pre code").textContent = code;
       karte.querySelector("button").addEventListener("click", () => location.reload());
       kabine.append(karte);

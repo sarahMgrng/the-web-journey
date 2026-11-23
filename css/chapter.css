@@ -156,20 +156,28 @@
    marked erzeugt ganz normale HTML-Elemente (h2, p, ul, pre …).
    Hier legen wir fest, wie sie innerhalb von .prose aussehen. */
 .prose h2 {
-  margin: 4rem 0 1rem;
-  padding-top: 2rem;
+  margin: 2.25rem 0 0.75rem;
+  padding-top: 1.25rem;
   font-size: 2rem;
   letter-spacing: -0.03em;
   border-top: 1px solid var(--farbe-linie);
 }
 
-/* Kleines "##" vor jeder Hauptüberschrift – Markdown-Optik */
+/* Jede Hauptüberschrift trägt ihr HTML-Tag – im Stil der Seite, nicht als Markdown-„##“ */
 .prose h2::before {
-  content: "## ";
-  font-family: var(--schrift-code);
-  font-size: 0.7em;
-  color: var(--farbe-zweit);
+  content: "<h2>";
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.35rem;
+  padding: 0.1rem 0.5rem;
+  font: 600 0.82rem var(--schrift-code, ui-monospace, monospace);
+  letter-spacing: 0;
+  color: var(--farbe-akzent);
+  -webkit-text-fill-color: var(--farbe-akzent);
+  background: var(--farbe-akzent-hell);
+  border-radius: 6px;
 }
+.prose h2[id]::before { content: "<h2 id=\"" attr(id) "\">"; }
 
 .prose h3 {
   color: var(--h3);
