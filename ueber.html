@@ -67,17 +67,16 @@
       <h2 id="legende">So lese ich die Kapitel</h2>
       <p>Jeder Absatz verrät, woher er kommt. So bleibt sichtbar, was ich selbst verstanden habe und was erklärt wurde.</p>
       <ul class="legende">
-        <li><span aria-hidden="true">📘</span> <strong>Skript</strong>, mit Foliennummer</li>
-        <li><span aria-hidden="true">✏️</span> <strong>meine Notiz</strong> aus der Vorlesung oder meine eigene Lösung</li>
-        <li><span aria-hidden="true">🤖</span> <strong>KI-Erklärung</strong>, zum Nachvollziehen, geprüft von mir</li>
-        <li><span aria-hidden="true">❓</span> <strong>offen</strong>: Lücke oder Frage für die nächste Vorlesung</li>
+        <li><strong>Skript</strong> · Inhalte aus den Vorlesungsfolien mit Foliennummer</li>
+        <li><strong>Eigene Notiz</strong> · Mitschrift oder selbst erarbeitete Lösung</li>
+        <li><strong>KI-Erklärung</strong> · Erklärung zum Nachvollziehen, von mir geprüft</li>
+        <li><strong>Offene Frage</strong> · Lücke oder Frage für die nächste Vorlesung</li>
       </ul>
 
       <h2 id="so-kommt-die-seite">Wie diese Seite zu dir kommt</h2>
-      <p>Die Kapitel stehen nicht im HTML, sondern in Markdown-Dateien. JavaScript holt sie mit <code>fetch()</code> vom
-        Server, so wie in <a href="kapitel.html?nr=2#teil-1-html-wie-das-web-funktioniert">Vorlesung 02</a>:
-        Der Browser fragt, der Server antwortet. Probier beide Wege aus. Per Doppelklick gibt es keinen Server –
-        dafür liegt eine Ersatzkopie aller Kapitel in <code>js/inhalte.js</code>.</p>
+      <p>Die Animation zeigt, wie das Portfolio dasselbe Kapitel über einen lokalen Server oder direkt aus dem entpackten ZIP lädt.
+        Auf Vercel läuft derselbe HTTP-Abruf über HTTPS. Die Grundlagen stehen in
+        <a href="kapitel.html?nr=2#teil-1-html-wie-das-web-funktioniert">Vorlesung 02</a>.</p>
     </div>
 
     <!-- Animation: Anfrage und Antwort zwischen Browser und Server.
@@ -127,6 +126,28 @@
     </figure>
 
     <div class="prose">
+      <h2 id="oeffnen">Portfolio öffnen</h2>
+      <ul>
+        <li><strong>Aus dem ZIP:</strong> Entpacken und <code>index.html</code> doppelklicken. Im Dateimodus
+          (<code>file://</code>) lädt das Portfolio die Kapitel aus <code>js/inhalte.js</code>.</li>
+        <li><strong>Mit lokalem Server:</strong> Im entpackten Ordner <code>python3 -m http.server 8000</code>
+          im Systemterminal starten und <a href="http://localhost:8000/">localhost:8000</a> öffnen.
+          Im Netzwerk-Tab des Browsers sieht man, wie <code>fetch()</code> die Markdown-Datei abruft.</li>
+        <li><strong>Online:</strong> Den Vercel-Leselink verwenden. Vercel liefert die Seiten und Kapitel per HTTPS aus.</li>
+      </ul>
+      <p><a href="html-og.html">HTML-Grundversion ansehen</a> · <a href="ueber-mich.html#wege">Weitere Wege zum Portfolio</a></p>
+
+      <h2 id="werkzeugkasten">Werkzeuge im Portfolio</h2>
+      <ul>
+        <li><strong>Terminal (<code>&gt;_</code>):</strong> <code>help</code> zeigt die Befehle,
+          <code>open 3</code> öffnet Vorlesung 03 und <code>grep DOM</code> sucht in den Kapiteln.</li>
+        <li><strong>Atlas:</strong> Über <strong>Atlas</strong> rechts eine Frage wie „Was ist JSON?“ stellen.
+          Atlas sucht im Browser nach passenden Stellen in den Vorlesungskapiteln.</li>
+        <li><strong>Jean (<code>&lt;/&gt;</code>) und Seitenindex (<code>#</code>):</strong> Jean blendet HTML-Tags ein.
+          Der Index springt zu den Überschriften der aktuellen Seite.</li>
+        <li><strong>Farben und Pfeil nach oben:</strong> Das Farbschema wechseln oder zum Seitenanfang springen.</li>
+      </ul>
+
       <h2 id="technik">Wie die Seite gebaut ist</h2>
       <ul>
         <li><strong>HTML, CSS und JavaScript</strong>, ohne Framework und ohne Build-Schritt. Alles, was hier passiert,
@@ -145,7 +166,7 @@
           „Vorlesung NN – Rückblick“ mit Checkliste an.</li>
         <li><strong>Skript lesen, Übung machen:</strong> Zusammenfassung und Lösung kommen in die Vorlesungsdatei.</li>
         <li><strong>Fünf Fragen beantworten:</strong> Ein Formular schreibt meine Antworten als „Meine Learnings“ in die
-          Datei. Ein lokales Sprachmodell (Ollama) ergänzt drei 🤖-Kontrollfragen.</li>
+          Datei. Ein lokales Sprachmodell (Ollama) ergänzt drei KI-gestützte Kontrollfragen.</li>
         <li><strong>Prüfen und übernehmen:</strong> Die Änderungen landen auf einem eigenen Git-Branch. Erst nach meiner
           Durchsicht kommen sie per Merge ins Portfolio.</li>
       </ol>
