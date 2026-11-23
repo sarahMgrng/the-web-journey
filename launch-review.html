@@ -28,7 +28,22 @@
 <span class="review-pill">Incident: 404 kurz vor Demo</span><span class="review-pill">Status: Präsentation durchgeführt</span><span class="review-pill">Version: Professoren-Review</span></section>
 <div class="review-kpis"><div><strong>7</strong><small>Vorlesungsdateien im Portfolio</small></div><div><strong>1</strong><small>gemeldeter 404 vor der Präsentation</small></div><div><strong>PR #13</strong><small>am 23.11. um 14:22 MEZ gemergt</small></div></div>
 <div class="review-layout"><article>
-<section class="review-card" id="ablauf"><h2>01 · Was ist passiert?</h2>
+<section class="review-card" id="status-404">
+<h2>Incident Timeline · 15:15 Uhr</h2>
+<p>Eine visuelle Übersicht des beobachteten Vorfalls – keine nachträglich erfundenen Server-Logs:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.8rem;margin:1.2rem 0">
+<div style="border:1px solid #c24b40;border-radius:14px;padding:1rem;background:rgba(194,75,64,.09)">
+<div style="font:700 2rem ui-monospace,monospace;color:#d34d40">404</div>
+<strong>Vor der Präsentation</strong><p style="font-size:.85rem">Ressource nicht gefunden. Weniger als fünf Minuten vor Beginn bemerkt.</p></div>
+<div style="border:1px solid var(--farbe-linie);border-radius:14px;padding:1rem;background:var(--farbe-flaeche-2)">
+<div style="font:700 2rem ui-monospace,monospace">↻</div>
+<strong>Lokalen Stand aktualisiert</strong><p style="font-size:.85rem">Anpassung unter Zeitdruck; exakte Fehlerursache nicht aufgezeichnet.</p></div>
+<div style="border:1px solid #1a8d61;border-radius:14px;padding:1rem;background:rgba(26,141,97,.09)">
+<div style="font:700 2rem ui-monospace,monospace;color:#1a8d61">200</div>
+<strong>Nachkontrolle</strong><p style="font-size:.85rem">Startseite und Kapitel-Dateien wurden bei der gehosteten Abgabe wieder erfolgreich ausgeliefert.</p></div>
+</div>
+<p class="review-call"><strong>Bewertung:</strong> Präsentation erfolgreich durchgeführt, Release-Prozess verbesserungswürdig. Das spätere HTTP 200 beweist nicht die Ursache des ursprünglichen 404.</p>
+</section>\n<section class="review-card" id="ablauf"><h2>01 · Was ist passiert?</h2>
 <div class="review-step"><strong>Vor der Präsentation</strong><p>Kurz vor dem Start wurde ein HTTP-404-Fehler festgestellt. Der lokale Projektstand musste aktualisiert und erneut geöffnet werden. Die Fehlerquelle wurde im laufenden Zeitdruck nicht vollständig protokolliert.</p></div>
 <div class="review-step"><strong>Während der Präsentation</strong><p>Die Website, Kapitelübersicht und Entwicklungsumgebung konnten demonstriert werden. Ein weiterer kurzer Fehler wurde aufgefangen und die Darstellung fortgesetzt.</p></div>
 <div class="review-step"><strong>Nach der Präsentation</strong><p>Die sieben Vorlesungen waren auch beim erneuten direkten Öffnen der <code>index.html</code> sichtbar. Die lokale Variante konnte nachvollzogen werden.</p></div>
@@ -48,10 +63,10 @@
 </ol></section>
 <section class="review-card" id="weiter"><h2>04 · Ausblick: GIF und Scroll-Daumenkino</h2>
 <p>Ein GIF speichert Bildfolgen mit einer zeitlich festgelegten Wiedergabe. Soll dagegen der Finger auf dem Touchpad bzw. der Scrollfortschritt das jeweilige Bild wählen, braucht es eine scrollgesteuerte Bildfolge oder eine Canvas-/CSS-Animation. Die Website verwendet bereits eine scrollabhängige Canvas-Sequenz mit 120 Zeichenzuständen. Das neue <a href="scroll-lab.html">Scroll-Lab</a> demonstriert die technische Unterscheidung und bietet einen kleinen interaktiven Werkzeugkasten.</p>
-<p><a href="scroll-lab.html">Zum praktischen Daumenkino-Lab →</a></p></section>
+<p><a href="scroll-lab.html">Zum praktischen Daumenkino-Lab →</a> · <a href="html-og.html">Zur reinen HTML-OG-Version →</a></p></section>
 <section class="review-card" id="freigabe"><h2>05 · Abgabe und Rechte</h2><p>Dieses Protokoll ist Teil der getrennten Abgabeversion. Die Projektdateien selbst verleihen keine Administratorrechte: eine Zugangsprüfung muss vor der Auslieferung auf Hosting-Ebene stattfinden. Ein befristeter Ansichtslink gibt ausschließlich Einsicht, keine Schreibrechte. GitHub-Quellcode kann bei privatem Repository nur mit separater Berechtigung geöffnet werden.</p><p><a href="https://github.com/sarahMgrng/the-web-journey/issues/24">GitHub Incident #24</a> · <a href="https://github.com/sarahMgrng/the-web-journey/pull/13">Gemergter Release-PR #13</a></p></section>
 </article>
-<aside class="review-rail"><strong>Review-Navigation</strong><a href="#ablauf">Was ist passiert?</a><a href="#technik">Localhost &amp; 404</a><a href="#reflexion">Lessons Learned</a><a href="#weiter">Scroll-Lab</a><a href="#freigabe">Zugangsrechte</a><hr><small>Lesemodus · keine Bearbeitungsrechte. Ein Link ist kein Identitätsnachweis.</small></aside>
+<aside class="review-rail"><strong>Review-Navigation</strong><a href="#status-404">Incident-Status</a><a href="#ablauf">Was ist passiert?</a><a href="#technik">Localhost &amp; 404</a><a href="#reflexion">Lessons Learned</a><a href="#weiter">Scroll-Lab</a><a href="#freigabe">Zugangsrechte</a><hr><small>Lesemodus · keine Bearbeitungsrechte. Ein Link ist kein Identitätsnachweis.</small></aside>
 </div></main>
 <footer class="site-footer"><p>The Web Journey · DHBW Webprogrammierung · Abgabe-Review 23.11.2026</p></footer>
 </body></html>
