@@ -127,6 +127,27 @@
     </figure>
 
     <div class="prose">
+      <h2 id="oeffnen">Drei Wege, diese Seite zu öffnen</h2>
+      <ol>
+        <li><strong>Datei per Doppelklick</strong> – <code>index.html</code> aus dem entpackten Ordner. Adresse <code>file://…</code>.
+          Der Browser blockiert hier <code>fetch()</code>, deshalb liest die Seite die Vorlesungen aus der Kopie <code>js/inhalte.js</code>. Läuft offline.</li>
+        <li><strong>Eigener Webserver</strong> – im Projektordner <code>python3 -m http.server 5500</code>, dann <code>http://localhost:5500</code>.
+          Jetzt holt <code>fetch()</code> die Markdown-Dateien wie im echten Web. Im Terminal steht jede Anfrage als Zeile.</li>
+        <li><strong>Online über Vercel</strong> – dieselben Dateien, ausgeliefert über HTTPS von einem Server im Netz. Auch am Handy.</li>
+      </ol>
+      <p>Alle drei zeigen dieselbe Seite. Der Unterschied ist nur, <em>woher</em> die Daten kommen – genau das zeigt die Animation oben.</p>
+
+      <h2 id="werkzeuge">Die Werkzeuge am rechten Rand</h2>
+      <ul>
+        <li><strong>Terminal</strong> (<kbd>^</kbd> oder <code>&gt;_</code>) – echte Befehle wie in der Shell: <code>ls</code>, <code>cat</code>, <code>grep</code>, <code>curl -I</code>, <code>dom</code>. <code>help</code> zeigt alle.</li>
+        <li><strong>Atlas</strong> (<code>AI</code>, ganz oben) – der KI-Bot zum Portfolio. Frag ihn etwas zu den Vorlesungen („Was ist JSON?“); er sucht in allen sieben Kapiteln und verlinkt die Stelle.</li>
+        <li><strong>Jean</strong> (<code>&lt;/&gt;</code>) – Entwickler-Ansicht: Jede Überschrift zeigt ihr HTML-Tag, die Seite ist mit <code>&lt;body&gt;</code> gerahmt.</li>
+        <li><strong>Index</strong> (<code>#</code>) – alle <code>&lt;h2&gt;</code> dieser Seite als Sprungliste.</li>
+        <li><strong>Nach oben</strong> und <strong>Farbschemata</strong> – darunter, Standard ist Weiß und Orange.</li>
+      </ul>
+    </div>
+
+    <div class="prose">
       <h2 id="technik">Wie die Seite gebaut ist</h2>
       <ul>
         <li><strong>HTML, CSS und JavaScript</strong>, ohne Framework und ohne Build-Schritt. Alles, was hier passiert,
