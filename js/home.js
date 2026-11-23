@@ -75,6 +75,8 @@ for (const schritt of storySchritte) {
 // ---------- 3. Kapitel-Cards ----------
 
 // Erzeugt das HTML für EINE Card
+const VORLESUNGSTERMINE = ["05.10.", "12.10.", "19.10.", "26.10.", "02.11.", "09.11.", "16.11."];
+
 function erzeugeCard(vorlesung, index) {
   const istPlatzhalter = vorlesung.status === "platzhalter";
   const zusatzKlasse = istPlatzhalter ? " kapitel-card--platzhalter" : "";
@@ -84,14 +86,13 @@ function erzeugeCard(vorlesung, index) {
     <li class="reveal" style="--verzoegerung: ${index % 4}">
       <a class="kapitel-card${zusatzKlasse}" href="kapitel.html?nr=${vorlesung.nr}">
         <div class="kapitel-card__kopf">
-          <span class="kapitel-card__nr" aria-hidden="true">${zweistellig(vorlesung.nr)}</span>
+          <span class="kapitel-card__nr" aria-hidden="true">V${vorlesung.nr} ${VORLESUNGSTERMINE[vorlesung.nr - 1]}</span>
           ${statusBadge(vorlesung.status)}
         </div>
         <h3 class="kapitel-card__titel">
           <span class="visually-hidden">Vorlesung ${vorlesung.nr}: </span>${vorlesung.titel}
         </h3>
         ${vorlesung.beschreibung ? `<p class="kapitel-card__beschreibung">${vorlesung.beschreibung}</p>` : ""}
-        ${vorlesung.datum ? `<p class="kapitel-card__datum">${formatiereDatum(vorlesung.datum)}</p>` : ""}
       </a>
     </li>`;
 }
@@ -102,7 +103,13 @@ async function zeigeKapitelUebersicht() {
   try {
     const vorlesungen = await ladeAlleVorlesungen();
     // Aus jeder Vorlesung eine Card machen und alle zusammenfügen
-    liste.innerHTML = vorlesungen.map(erzeugeCard).join("");
+    liste.innerHTML = vorlesungen.map(erzeugeCard).join("") + `
+      <li class="reveal">
+        <div class="kapitel-card">
+          <h3 class="kapitel-card__titel">Portfolioprüfung 23.11.</h3>
+          <p class="kapitel-card__beschreibung">Zeitplan &amp; Hinweise · Update v3 vom 19.11., 11:00 Uhr</p>
+        </div>
+      </li>`;
     beobachteReveals(liste);   // die neuen Cards sollen auch einblenden
   } catch (fehler) {
     console.error(fehler);
