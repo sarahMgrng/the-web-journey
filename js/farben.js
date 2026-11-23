@@ -18,7 +18,7 @@ const FARBEN = [
 const WERKZEUGE = [
   { id: "terminal", zeichen: ">_",  name: "Terminal öffnen (Taste ^)" },
   { id: "atlas",    zeichen: "◎",   name: "Atlas – Bot zum Portfolio" },
-  { id: "jean",     zeichen: "</>", name: "Jean – HTML-Tags ein/aus" },
+  { id: "jean",     zeichen: "&lt;/&gt;", name: "Jean – HTML-Tags ein/aus" },
   { id: "index",    zeichen: "#",   name: "Index dieser Seite (alle <h2>)" },
   { id: "oben",     zeichen: "↑",   name: "Nach oben" },
 ];
@@ -106,7 +106,9 @@ function baueWerkzeugkasten() {
     knopf.addEventListener("click", () => werkzeug(knopf.dataset.tool, knopf));
   }
   const jeanKnopf = leiste.querySelector('[data-tool="jean"]');
-  jeanKnopf.setAttribute("aria-pressed", document.documentElement.classList.contains("jean"));
+  const jeanStatus = () => jeanKnopf.setAttribute("aria-pressed", document.documentElement.classList.contains("jean"));
+  jeanStatus();
+  window.addEventListener("load", jeanStatus);   // terminal.js setzt „jean“ erst nach diesem Skript
   let gespeichert = null;
   try { gespeichert = localStorage.getItem("farbe"); } catch { /* egal */ }
   setzeFarbe(gespeichert || document.documentElement.dataset.farbe || "weiss");
