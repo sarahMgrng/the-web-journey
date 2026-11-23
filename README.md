@@ -1,10 +1,18 @@
+> **ABGABEVERSION · 23.11.2026 – Portfolio 1 · Professorenansicht**
+>
+> Dieser Branch `abgabe/prof-2026-11-23` dokumentiert die Abgabe. Der unveränderte Präsentationsstand liegt gesichert in `archiv/launch-2026-11-23`. Alle weiteren Experimente sind als solche bezeichnet; sie waren **nicht automatisch Teil der Live-Präsentation**.
+>
+> **Schnellzugriff:** [Startseite](index.html) · [Vorlesungen](index.html#kapitel) · [Übungen](uebungen.html) · [Technischer Launch-Review 404](launch-review.html) · [Experiment Scroll-Daumenkino](scroll-lab.html) · [Issue #24](https://github.com/sarahMgrng/the-web-journey/issues/24).
+>
+> **Offline:** `index.html` im entpackten Projektordner doppelklicken. **Mit lokalem Webserver:** `start.command` auf dem Mac oder `python3 -m http.server 5500`. **Online:** Nur eine tatsächlich veröffentlichte und getestete URL ist ein öffentlicher Link; der GitHub-Branch ist nicht selbst ein Hostingdienst.
+
 # The Web Journey
 
 Interaktive Lernwebsite für das Modul **Webprogrammierung** (DHBW).
 Sie fasst sieben aufeinander aufbauende Vorlesungen zusammen (Portfolio 1). Portfolio 2 (Verteilte Systeme, SoSe 2027) hat oben rechts schon seinen Platz.
 Technischer Schwerpunkt ist **Scrollytelling**: Die Startseite erklärt die Technik und führt sie gleichzeitig vor.
 
-**Stand (22.11.):** Vorlesung 1–7 aus den Skripten zusammengefasst (Status `demo`, bis ich sie geprüft habe).
+**Stand (23.11., Abgabezweig):** Vorlesung 1–7 sind aus den Skripten zusammengefasst (Status `demo`, soweit noch nicht final inhaltlich geprüft). Die lokale Präsentation wurde durchgeführt. Der 404-Vorfall und die nicht vollständig gezeigten Nachtfeatures werden im [Launch-Review](launch-review.html) offengelegt.
 Dazu die Unterseiten Learnings, Übungen, Über das Portfolio, Über mich und die Startseite von Portfolio 2.
 
 ## Technik
@@ -41,9 +49,7 @@ Dann im Browser `http://localhost:5500` öffnen.
 
 ## Online: Vercel
 
-Die Seite ist eine reine statische Website (kein Build-Schritt). Vercel ist mit diesem Repo verbunden:
-Jeder Push auf `abgaben-3-semester` wird automatisch als Produktionsversion veröffentlicht,
-jeder andere Branch bekommt eine eigene Vorschau-Adresse.
+Die Seite ist eine reine statische Website (kein Build-Schritt). Ein Vercel-Projekt wird bei der gesonderten Veröffentlichung mit GitHub verbunden. Ohne bestätigtes Vercel-Projekt und einen erfolgreichen Deployment-Test ist die Website **nicht als öffentlich veröffentlicht anzusehen**. Die konkrete Zugangs-URL wird separat nach dem Test mitgeteilt.
 
 Einstellungen bei Vercel: Framework „Other“, kein Build Command, Output Directory = Projektordner (Standard).
 
@@ -98,3 +104,13 @@ the-web-journey/
 ## Orga
 
 `PITCH.md` (Sprechzettel + Prüfungsfragen) · `ABGABE.md` (Checkliste, Zweige, Mail) · `PROTOKOLL.md` (Entscheidungen, Verlauf, Archiv) · `tools/abgabe-zip.sh` (Abgabe-ZIP)
+
+## Abgabe, Präsentation und Nachtrag (23.11.2026)
+
+**Präsentation:** Die grundlegende interaktive Website wurde vorgeführt. Ein 404-Fehler trat kurz vor Beginn auf. Die Vorlesungsübersicht war nach Aktualisierung lokal abrufbar. Nicht alle Konzepte der Nachtiteration wurden gezeigt; insbesondere der ausgebaute rechte Werkzeugkasten war kein Bestandteil der Live-Demo.
+
+**Nachtrag für die Bewertung:** [Technischer Incident-Report als Website](launch-review.html); [experimentelles Scroll-Daumenkino mit Motion Inspector](scroll-lab.html). Das zweite ist ein **nachträgliches Experiment**, nicht als bereits präsentiert zu verstehen.
+
+**Sicherheit:** Die HTML-Dateien sind nicht durch ein Frontend-Passwort geschützt. Eine mögliche Professorenfreigabe erfolgt über die Zugriffskontrolle der Hostingplattform. Ein befristeter Ansichtslink ist kein Nachweis einer bestimmten E-Mail-Identität. Das GitHub-Repository bleibt privat, bis eine Freigabe explizit eingerichtet wird.
+
+**Archiv:** Der eingefrorene Präsentationsstand ist der GitHub-Branch `archiv/launch-2026-11-23`; alle Dokumentationsergänzungen liegen im gesonderten Branch `abgabe/prof-2026-11-23`.
