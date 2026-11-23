@@ -94,3 +94,7 @@ the-web-journey/
 - **Atlas** – der Bot zum Portfolio, zweiter Tab im Terminal. V1 sucht lokal in den sieben Kapiteln (TF-IDF) und verlinkt die Stelle. Optional mit Ollama: `js/atlas-config.js` (noch nicht verbunden).
 - **Jean** – Entwickler-Ansicht: Überschriften zeigen ihr Tag (`<h2 id="…">`), die Seite ist mit `<body>`/`</html>` gerahmt. Terminal: `jean on` / `jean off`.
 - **KopfüBar an Bord** – `aufgaben/19.10_aufgabe1_bar/bar.html` ist das Deck für alle Übungen; `aufgaben/bord.css` + `bord.js` setzen jeder Übung Kopfzeile, Stationsschild und Terminal auf. Der Übungscode bleibt unverändert.
+
+## Orga
+
+`PITCH.md` (Sprechzettel + Prüfungsfragen) · `ABGABE.md` (Checkliste, Zweige, Mail) · `PROTOKOLL.md` (Entscheidungen, Verlauf, Archiv) · `tools/abgabe-zip.sh` (Abgabe-ZIP)
