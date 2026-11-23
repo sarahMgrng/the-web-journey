@@ -14,6 +14,7 @@
   <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
   <link rel="stylesheet" href="css/farben.css">
   <link rel="stylesheet" href="css/terminal.css">
+  <link rel="stylesheet" href="css/incident.css">
   <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
   <script src="js/farben.js" defer></script>
   <!-- Terminal + Atlas: Taste ^ oder Klick auf ">_" -->
@@ -46,9 +47,75 @@
   </header>
 
   <main class="kapitel-seite" id="inhalt">
+
+    <!-- Incident 404: nachprüfbares Protokoll, keine erfundenen Server-Logs -->
+    <section class="incident-feature" id="incident-404" aria-labelledby="incident-title">
+      <div class="incident-overline"><span>● TECHNISCHES PROTOKOLL</span><span>23. NOVEMBER 2026 · PORTFOLIO 1</span></div>
+      <div class="incident-hero">
+        <div>
+          <p class="incident-kicker">SMG BUG FINDINGS / INCIDENT 001</p>
+          <h1 id="incident-title">Incident <span>404.</span><br>Launch erfolgreich.</h1>
+          <p class="incident-lead">Fünf Minuten vor der Präsentation: eine Seite verschwindet. Die Demo? Findet trotzdem statt. Willkommen zum Postmortem einer Website, die mehr über Webentwicklung erzählt als ein perfekter Launch.</p>
+          <div class="incident-pills">
+            <span>HTTP 404 · vor der Demo</span><span>Präsentation durchgeführt</span><span>Root Cause nicht belegt</span>
+          </div>
+        </div>
+        <div class="incident-signal" aria-label="Fehler gemeldet, später Seiten erfolgreich ausgeliefert">
+          <div class="incident-signal__error"><small>BEOBACHTET</small><strong>404</strong><span>Not Found</span></div>
+          <div class="incident-signal__arrow" aria-hidden="true">↘</div>
+          <div class="incident-signal__ok"><small>SPÄTER GEPRÜFT</small><strong>200</strong><span>OK</span></div>
+          <p>Kein Replay echter Logs.<br>Eine Visualisierung des dokumentierten Ablaufs.</p>
+        </div>
+      </div>
+      <dl class="incident-metrics">
+        <div><dt>Vorlesungsdateien</dt><dd>07</dd></div>
+        <div><dt>Gemeldeter 404</dt><dd>01</dd></div>
+        <div><dt>Release-Historie</dt><dd>PR #13</dd></div>
+      </dl>
+      <section class="incident-board" aria-labelledby="timeline-title">
+        <div class="incident-board__head"><div><p class="incident-kicker">THE INCIDENT</p><h2 id="timeline-title">15:15 Uhr. Noch fünf Minuten.</h2></div><span class="incident-live">● POSTMORTEM</span></div>
+        <ol class="incident-timeline">
+          <li class="incident-timeline__error"><span class="incident-time">01 / BEFORE</span><strong>404</strong><h3>Die Seite fehlt.</h3><p>Kurz vor der Präsentation wird ein HTTP-404 gemeldet. Welcher Pfad den Fehler konkret auslöste, wurde in der Situation nicht mitgeloggt.</p></li>
+          <li class="incident-timeline__check"><span class="incident-time">02 / RECOVER</span><strong>↻</strong><h3>Lokalen Stand öffnen.</h3><p>Projektstand aktualisiert, Start über den lokalen Fallback und die Demo fortgeführt. Ein Fix unter Zeitdruck ist noch keine Ursachendiagnose.</p></li>
+          <li class="incident-timeline__ok"><span class="incident-time">03 / VERIFY</span><strong>200</strong><h3>Das Portfolio läuft.</h3><p>Spätere Kontrolle: Startseite und Kapitel wurden wieder ausgeliefert. Das beweist die Wiederherstellung, nicht die ursprüngliche Fehlerursache.</p></li>
+        </ol>
+        <p class="incident-disclaimer"><b>Was wir wirklich wissen:</b> Die Präsentation hat stattgefunden. Nicht jedes geplante Feature wurde gezeigt. Die genaue 404-Ursache bleibt offen – und genau das gehört in einen guten Incident-Bericht.</p>
+      </section>
+      <div class="incident-explain">
+        <article>
+          <span class="incident-kicker">ROOT CAUSE ≠ GUESS</span>
+          <h2>Was ist passiert?</h2>
+          <p>Der Browser wollte eine Ressource laden, die an der angefragten Adresse nicht gefunden wurde. Ob es am lokalen Dateistand, am Pfad oder an einer veralteten Kopie lag, lässt sich ohne damalige Logs nicht eindeutig rekonstruieren.</p>
+          <p>Das Ergebnis zählt trotzdem: <strong>Fehler erkannt, Fallback genutzt, Präsentation weitergeführt, danach dokumentiert.</strong></p>
+        </article>
+        <article>
+          <span class="incident-kicker">SAME FILE. THREE WORLDS.</span>
+          <h2>Warum localhost nicht Vercel ist.</h2>
+          <ol class="incident-envs">
+            <li><code>file://</code><span>Eine HTML-Datei direkt öffnen; Inhalte-Fallback aus <code>js/inhalte.js</code>.</span></li>
+            <li><code>localhost</code><span>Der eigene Mac stellt Dateien über einen lokalen HTTP-Server bereit.</span></li>
+            <li><code>Vercel</code><span>Hosting liefert einen deployed Stand; Zugriff kann separat geschützt sein.</span></li>
+          </ol>
+        </article>
+      </div>
+      <div class="incident-lesson">
+        <div><span class="incident-kicker">LESSON LEARNED</span><p>Was 404 uns gelehrt hat: <strong>Reliable before impressive.</strong> Vor der Demo zuerst Pfade, Branch und Release-Stand prüfen. Dann die Konfettikanone.</p></div>
+        <a href="launch-review.html">Vollständiges Incident-Protokoll <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="incident-help" aria-label="Kontakt und Impressum">
+        <div><p class="incident-kicker">SMG CONSULTING · FRIENDLY ERROR DEPARTMENT</p><h2>Fehler gefunden?<br>Wir helfen gerne.</h2><p>Selbst wenn die Website gerade einen kleinen Spaziergang ohne ihre Dateien macht. Fragen zu Web, Code und dem digitalen Leben? SMG Consulting freut sich über eine Nachricht.</p></div>
+        <div class="incident-help__actions">
+          <a class="incident-help__primary" href="mailto:info@smg-consulting.org?subject=Hallo%20SMG%20%E2%80%93%20Frage%20zur%20Web%20Journey">SMG kontaktieren <span aria-hidden="true">↗</span></a>
+          <a href="https://hallo.smg-consulting.org/">SMG Consulting <span aria-hidden="true">↗</span></a>
+          <a href="impressum.html">Portfolio-Impressum <span aria-hidden="true">↗</span></a>
+          <a href="https://hallo.smg-consulting.org/impressum">SMG-Impressum <span aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
+    </section>
+
     <div class="prose">
       <p class="kapitel-kopf__nr">SMG BUG FINDINGS</p>
-      <h1>Bug-Report als Chat</h1>
+      <h2 id="bug-chat-intro">Bug-Report als Chat</h2>
       <p>Jedes Projekt hat Bugs. Hier sind meine – echt, aus diesem Portfolio, mit Fix. Gemeldet vom <strong>SMG Bugbot</strong>.</p>
 
       <h2 id="der-erste-bug">Die Analogie: der erste Bug</h2>
@@ -130,7 +197,7 @@
         <li>Jeder Fix kam als Pull Request mit Review – <a href="https://github.com/sarahMgrng/the-web-journey/tree/abgabe-final#arbeitsweise-human-in-the-loop">Human in the Loop</a>.</li>
         <li>Und jeder ist dokumentiert, damit er kein zweites Mal klemmt.</li>
       </ul>
-      <p class="gehostet">Gehostet von <strong>SMG Consulting</strong> · Bugbot und Fixes: SMG · <a href="impressum.html">Impressum</a></p>
+      <p class="gehostet">Betreut mit <strong>SMG Consulting</strong> · Hosting: Vercel · <a href="impressum.html">Portfolio-Impressum</a> · <a href="https://hallo.smg-consulting.org/impressum">SMG-Impressum</a></p>
     </div>
   </main>
 
@@ -165,6 +232,7 @@
       <a href="https://github.com/sarahMgrng">GitHub</a>
       <a href="ueber-mich.html#wege">Wege zum Portfolio</a>
       <a href="impressum.html">Impressum</a>
+      <a href="https://hallo.smg-consulting.org/">SMG Consulting</a>
       <a href="https://github.com/sarahMgrng/the-web-journey/tree/abgabe-final">Quellcode</a>
     </p>
   </footer>
