@@ -14,10 +14,9 @@
 const revealBeobachter = new IntersectionObserver(
   function (eintraege) {
     for (const eintrag of eintraege) {
-      if (eintrag.isIntersecting) {
-        eintrag.target.classList.add("is-visible");
-        revealBeobachter.unobserve(eintrag.target);   // nur einmal einblenden
-      }
+      // In beide Richtungen: rein → einblenden, raus → zurücksetzen.
+      // So spielt die Animation beim Zurückscrollen und nach „Zurück“ im Browser wieder.
+      eintrag.target.classList.toggle("is-visible", eintrag.isIntersecting);
     }
   },
   // Erst auslösen, wenn das Element 10 % über dem unteren Rand ist
@@ -243,3 +242,11 @@ if (appleBuehne && appleCanvas) {
 
   aktualisiere();
 }
+
+
+// ---------- Robust bei „Zurück“ im Browser ----------
+// Kommt die Seite aus dem Back-Forward-Cache, feuert kein Scroll-Ereignis.
+// Ein künstliches "scroll" zeichnet Canvas und Sticky-Grafik passend zur Position neu.
+window.addEventListener("pageshow", () => {
+  requestAnimationFrame(() => window.dispatchEvent(new Event("scroll")));
+});

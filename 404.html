@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de" data-farbe="weiss">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 · Seite nicht gefunden · The Web Journey</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <!-- Absolute Pfade: Vercel zeigt diese Seite für JEDE falsche Adresse, egal wie tief sie liegt -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/seiten.css">
+  <link rel="stylesheet" href="/css/farben.css">
+  <link rel="stylesheet" href="/css/terminal.css">
+  <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
+  <script src="/js/farben.js" defer></script>
+  <style>
+    .fehler { max-width: 760px; margin: 0 auto; padding: 3rem var(--rand, 1.25rem) 6rem; }
+    .fehler__code { font: 800 clamp(5rem, 18vw, 10rem)/1 var(--schrift); letter-spacing: -.06em; margin: 0;
+      background: var(--titel-verlauf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .fehler__tag { font: 600 .85rem ui-monospace, Menlo, monospace; color: var(--farbe-akzent); }
+    .fehler__notiz { font-family: "Bradley Hand", "Noteworthy", "Segoe Print", "Comic Sans MS", cursive;
+      color: var(--farbe-akzent); font-size: 1.15rem; transform: rotate(-2deg); display: inline-block; }
+    .fehler ol li { margin: .5rem 0; line-height: 1.6; }
+    .fehler pre { background: var(--farbe-code-bg); color: var(--code-text); padding: 1rem 1.2rem; border-radius: 12px; overflow: auto; font-size: .85rem; }
+    .fehler__wege { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    .fehler__wege a { padding: .55rem 1rem; border-radius: 999px; border: 1px solid var(--farbe-linie); color: var(--farbe-text); text-decoration: none; background: var(--farbe-flaeche); }
+    .fehler__wege a:first-child { background: var(--farbe-akzent); color: #fff; border-color: transparent; }
+  </style>
+</head>
+<body>
+  <main class="fehler" id="inhalt">
+    <p class="fehler__tag">HTTP/1.1 404 Not Found</p>
+    <h1 class="fehler__code">404</h1>
+    <h2 id="was-ist-passiert">Diese Seite ist gerade auf Weltreise.</h2>
+    <p>Der Server hat gesucht, wirklich. Unter dieser Adresse liegt aber keine Datei. <span class="fehler__notiz">← kein Grund zur Panik, nur ein Pfad!</span></p>
+
+    <h2 id="was-404-bedeutet">Was ein 404 eigentlich bedeutet</h2>
+    <ol>
+      <li>Der <strong>Browser</strong> schickt eine Anfrage: <code>GET /diese-seite.html</code></li>
+      <li>Der <strong>Server</strong> (hier Vercel) sucht im Projektordner nach genau dieser Datei.</li>
+      <li>Findet er sie nicht, antwortet er mit dem Statuscode <strong>404</strong> – und liefert stattdessen diese Seite aus.</li>
+    </ol>
+    <pre><code>$ curl -I https://…/gibt-es-nicht.html
+HTTP/2 404
+content-type: text/html; charset=utf-8</code></pre>
+    <p>Typische Ursachen: ein Tippfehler in der Adresse, eine umbenannte Datei (bei mir einmal: <code>index.html</code> → <code>1_index.html</code> – und plötzlich waren alle Links kaputt) oder ein Link auf eine Seite, die erst in Iteration 2 kommt.
+      Wie das kurz vor meiner Präsentation passiert ist, steht im <a href="/launch-review.html">Launch-Review</a>.</p>
+
+    <h2 id="weiter">Wie es weitergeht</h2>
+    <div class="fehler__wege">
+      <a href="/index.html">Zur Startseite</a>
+      <a href="/abgabe.html">Abgabe-Übersicht</a>
+      <a href="/index.html#kapitel">Vorlesungen</a>
+      <a href="/uebungen.html">Übungen</a>
+      <a href="/launch-review.html">Der echte 404 vom 23.11.</a>
+    </div>
+  </main>
+</body>
+</html>

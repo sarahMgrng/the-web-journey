@@ -61,8 +61,19 @@ function zeigeVorlesung(vorlesung) {
   }
 
   artikel.innerHTML = html;
+  markiereHandnotizen(artikel);
   setzeSprungmarken();
   macheCodeAusfuehrbar();
+}
+
+
+// ---------- 3. Handnotizen ----------
+// Absätze, die mit ✏️ beginnen, sind meine eigenen Notizen von den Folien.
+// Sie erscheinen in Handschrift – so wie Herr Noll seine Folien von Hand kommentiert.
+function markiereHandnotizen(bereich) {
+  for (const absatz of bereich.querySelectorAll(".prose p, .prose li")) {
+    if (absatz.textContent.trim().startsWith("✏️")) absatz.classList.add("handnotiz");
+  }
 }
 
 

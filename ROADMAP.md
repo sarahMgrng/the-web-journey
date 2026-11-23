@@ -35,6 +35,10 @@ Stand: 23.11.2026 (Abgabe Portfolio 1)
 - [x] Präsentation am 23.11.; Präsentationsstand gesichert im Branch `archiv/launch-2026-11-23`
 - [x] `html-og.html`: dieselbe Basis als reines HTML ohne CSS/JS (Vergleich file:// · localhost · gehostet)
 - [x] Launch-Review: 404 kurz vor der Präsentation offen dokumentiert (`launch-review.html`)
+- [x] Werkzeugkasten auf jeder Seite (Terminal, Atlas, Jean, Seiten-Index, nach oben + Farben), Standard Weiß & Orange
+- [x] Eigene 404-Seite: erklärt den Statuscode, mit Wegen zurück
+- [x] Handnotizen (✏️) in Handschrift, h2-Tags als Seitenindex präsenter
+- [x] Animationen laufen in beide Richtungen, robust bei „Zurück“ im Browser
 - [x] Human in the Loop: jede Änderung als Pull Request, Review und Merge durch Sarah
 - [x] Leitfaden für die Abgabe (`abgabe.html`, `PROF_HANDBOOK.md`)
 - [x] Abgabe-ZIP per Skript (`tools/abgabe-zip.sh`)
@@ -52,7 +56,6 @@ Stand: 23.11.2026 (Abgabe Portfolio 1)
 - [ ] Vorlesungen selbst gegenlesen und von `demo` auf `fertig` setzen
 - [ ] Datum von V07 ergänzen, Daten V05–V06 prüfen
 - [ ] Offene Übungen: Kreative Überschriften, Pull Quotes (V06), Tabellenreihen, Akkordeon (V07), optionale HTML2-Übungen
-- [ ] Demo 04: Einblenden bei jedem Hinscrollen neu abspielen
 - [ ] Test in Safari und Firefox
 - [ ] Atlas mit Ollama verbinden (Konfiguration in `js/atlas-config.js` vorbereitet)
 

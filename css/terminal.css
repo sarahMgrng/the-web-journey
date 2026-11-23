@@ -206,12 +206,17 @@
 .jean .prose h3::before {
   display: block;
   margin-bottom: 0.15rem;
-  font: 500 0.7rem var(--schrift-code, ui-monospace, monospace);
+  width: fit-content;
+  margin-bottom: 0.35rem;
+  padding: 0.1rem 0.5rem;
+  font: 600 0.82rem var(--schrift-code, ui-monospace, monospace);
   letter-spacing: 0;
   text-transform: none;
-  color: var(--farbe-zweit);
-  -webkit-text-fill-color: var(--farbe-zweit);
-  opacity: 0.85;
+  color: var(--farbe-akzent);
+  -webkit-text-fill-color: var(--farbe-akzent);
+  background: var(--farbe-akzent-hell);
+  border-radius: 6px;
+  opacity: 1;
 }
 
 .jean main h2::before    { content: "<h2>"; }
