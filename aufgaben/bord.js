@@ -92,7 +92,10 @@
     zurueck.href = zu("19.10_aufgabe1_bar/bar.html") + "#stationen";
     zurueck.textContent = "← Zurück an Deck";
     zurueck.addEventListener("click", (e) => {
-      if (history.length > 1 && document.referrer) { e.preventDefault(); history.back(); }
+      // Nur zurückblättern, wenn die vorige Seite zu diesem Portfolio gehört – sonst fester Link an Deck
+      let eigen = false;
+      try { eigen = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (_) {}
+      if (history.length > 1 && eigen) { e.preventDefault(); history.back(); }
     });
     kabine.before(zurueck);
 
