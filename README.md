@@ -2,7 +2,7 @@
 >
 > Dieser Branch `abgabe/prof-2026-11-23` dokumentiert die Abgabe. Der unveränderte Präsentationsstand liegt gesichert in `archiv/launch-2026-11-23`. Alle weiteren Experimente sind als solche bezeichnet; sie waren **nicht automatisch Teil der Live-Präsentation**.
 >
-> **Schnellzugriff:** [Startseite](index.html) · [Vorlesungen](index.html#kapitel) · [Übungen](uebungen.html) · [Technischer Launch-Review 404](launch-review.html) · [Experiment Scroll-Daumenkino](scroll-lab.html) · [Issue #24](https://github.com/sarahMgrng/the-web-journey/issues/24).
+> **Schnellzugriff:** [Abgabe-Einstieg](abgabe.html) · [Startseite](index.html) · [Vorlesungen](index.html#kapitel) · [Übungen](uebungen.html) · [Technischer Launch-Review 404](launch-review.html) · [Experiment Scroll-Daumenkino](scroll-lab.html) · [Issue #24](https://github.com/sarahMgrng/the-web-journey/issues/24).
 >
 > **Offline:** `index.html` im entpackten Projektordner doppelklicken. **Mit lokalem Webserver:** `start.command` auf dem Mac oder `python3 -m http.server 5500`. **Online:** Nur eine tatsächlich veröffentlichte und getestete URL ist ein öffentlicher Link; der GitHub-Branch ist nicht selbst ein Hostingdienst.
 
@@ -49,7 +49,7 @@ Dann im Browser `http://localhost:5500` öffnen.
 
 ## Online: Vercel
 
-Die Seite ist eine reine statische Website (kein Build-Schritt). Ein Vercel-Projekt wird bei der gesonderten Veröffentlichung mit GitHub verbunden. Ohne bestätigtes Vercel-Projekt und einen erfolgreichen Deployment-Test ist die Website **nicht als öffentlich veröffentlicht anzusehen**. Die konkrete Zugangs-URL wird separat nach dem Test mitgeteilt.
+Die Seite ist eine reine statische Website (kein Build-Schritt). Für den Abgabezweig wurde das Vercel-Projekt **`the-web-journey-prof`** im Team `pappuccino` erstellt. Vercel Authentication ist für sämtliche Deployments aktiv; eine zeitlich befristete, lesbare URL wird separat mitgeteilt. Startseite, Dokumentationsseiten, JavaScript, CSS und alle sieben Markdown-Vorlesungen wurden am 23.11.2026 per HTTP erfolgreich abgerufen. Dies ist ein Dateiverfügbarkeitscheck, kein vollständiger interaktiver Browsertest. Die öffentliche kanonische Projektadresse ohne Freigabe erfordert eine Vercel-Anmeldung.
 
 Einstellungen bei Vercel: Framework „Other“, kein Build Command, Output Directory = Projektordner (Standard).
 
@@ -114,3 +114,5 @@ the-web-journey/
 **Sicherheit:** Die HTML-Dateien sind nicht durch ein Frontend-Passwort geschützt. Eine mögliche Professorenfreigabe erfolgt über die Zugriffskontrolle der Hostingplattform. Ein befristeter Ansichtslink ist kein Nachweis einer bestimmten E-Mail-Identität. Das GitHub-Repository bleibt privat, bis eine Freigabe explizit eingerichtet wird.
 
 **Archiv:** Der eingefrorene Präsentationsstand ist der GitHub-Branch `archiv/launch-2026-11-23`; alle Dokumentationsergänzungen liegen im gesonderten Branch `abgabe/prof-2026-11-23`.
+
+**Veröffentlichungsprüfung:** Die HTML-Startseite für Bewertende ist [abgabe.html](abgabe.html), da Vercel die rohe `README.md` nicht als öffentlich abrufbare Seite ausliefert (direkter HTTP-404). Ein Freigabelink wurde für sieben Tage erzeugt und läuft am **30.11.2026 um ca. 15:53 Uhr MEZ** ab; eine zusätzliche Kontrolle ist für 16:00 Uhr geplant. **Das Hostingprojekt wird durch den automatischen Ablauf des Freigabelinks nicht automatisch gelöscht.**
