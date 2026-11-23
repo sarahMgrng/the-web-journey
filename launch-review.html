@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de" data-farbe="hell">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Launch Review 404 · The Web Journey</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/chapter.css"><link rel="stylesheet" href="css/farben.css">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}a{color:var(--farbe-akzent)}.review-shell{max-width:1050px;margin:0 auto;padding:3rem 1.3rem 7rem}.review-eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.75rem;font-weight:700;color:var(--farbe-akzent)}
+.review-hero h1{font-size:clamp(2.4rem,7vw,5rem);letter-spacing:-.055em;line-height:1.06;margin:.5rem 0 1rem}.review-lead{font-size:clamp(1.06rem,2vw,1.3rem);max-width:740px;color:var(--farbe-text-leise);line-height:1.6}
+.review-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}.review-kpis div,.review-card{border:1px solid var(--farbe-linie);border-radius:20px;background:var(--farbe-flaeche);padding:1.35rem}
+.review-kpis strong{display:block;font-size:1.25rem}.review-kpis small{color:var(--farbe-text-leise)}.review-layout{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:2rem;align-items:start}
+.review-card{margin:0 0 1.3rem}.review-card h2{margin:0 0 1rem;font-size:1.4rem}.review-card p,.review-card li{line-height:1.7}.review-card li{margin:.6rem 0}.review-card code{background:var(--farbe-flaeche-2);padding:.15em .35em;border-radius:5px;overflow-wrap:anywhere}
+.review-rail{position:sticky;top:5rem;border:1px solid var(--farbe-linie);border-radius:18px;padding:1.2rem;background:var(--farbe-flaeche)}.review-rail a{display:block;margin:.75rem 0}
+.review-pill{display:inline-block;border:1px solid var(--farbe-linie);border-radius:99px;padding:.45rem .8rem;margin:.25rem .3rem .25rem 0;font-size:.85rem}.review-step{border-left:3px solid var(--farbe-akzent);padding:.25rem 0 .25rem 1rem;margin:1.1rem 0}
+.review-call{background:var(--farbe-akzent-hell);padding:1rem 1.2rem;border-radius:13px}
+@media(max-width:750px){.review-layout{display:block}.review-rail{position:static;margin:0 0 1.2rem}.review-kpis{grid-template-columns:1fr}.review-shell{padding-top:1.7rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script>try{let f=localStorage.getItem("farbe");if(f&&f!=="nacht")document.documentElement.dataset.farbe=f;else if(f==="nacht")delete document.documentElement.dataset.farbe}catch(e){}</script>
+<script src="js/farben.js" defer></script>
+</head>
+<body>
+<header class="site-header"><a class="site-header__logo" href="index.html">The Web Journey</a><nav aria-label="Navigation"><a href="index.html">Start</a><a href="ueber.html">Portfolio</a><a href="scroll-lab.html">Scroll-Lab</a></nav></header>
+<main class="review-shell" id="main">
+<section class="review-hero"><p class="review-eyebrow">Technisches Protokoll · 23. November 2026 · Portfolio 1</p><h1>Incident 404.<br>Launch erfolgreich.</h1>
+<p class="review-lead">Ein ehrlicher Rückblick auf den Fünf-Minuten-Vorfall vor der Präsentation, den Unterschied zwischen lokaler Website und Webhosting – und auf die Features, die zwar entwickelt, aber nicht vollständig gezeigt wurden.</p>
+<span class="review-pill">Incident: 404 kurz vor Demo</span><span class="review-pill">Status: Präsentation durchgeführt</span><span class="review-pill">Version: Professoren-Review</span></section>
+<div class="review-kpis"><div><strong>7</strong><small>Vorlesungsdateien im Portfolio</small></div><div><strong>1</strong><small>gemeldeter 404 vor der Präsentation</small></div><div><strong>PR #13</strong><small>am 23.11. um 14:22 MEZ gemergt</small></div></div>
+<div class="review-layout"><article>
+<section class="review-card" id="ablauf"><h2>01 · Was ist passiert?</h2>
+<div class="review-step"><strong>Vor der Präsentation</strong><p>Kurz vor dem Start wurde ein HTTP-404-Fehler festgestellt. Der lokale Projektstand musste aktualisiert und erneut geöffnet werden. Die Fehlerquelle wurde im laufenden Zeitdruck nicht vollständig protokolliert.</p></div>
+<div class="review-step"><strong>Während der Präsentation</strong><p>Die Website, Kapitelübersicht und Entwicklungsumgebung konnten demonstriert werden. Ein weiterer kurzer Fehler wurde aufgefangen und die Darstellung fortgesetzt.</p></div>
+<div class="review-step"><strong>Nach der Präsentation</strong><p>Die sieben Vorlesungen waren auch beim erneuten direkten Öffnen der <code>index.html</code> sichtbar. Die lokale Variante konnte nachvollzogen werden.</p></div>
+<p class="review-call"><strong>Wichtig:</strong> Die Präsentation zeigte eine funktionierende, reduzierte Version. Nicht alle Elemente der vorausgehenden Nachtiteration – insbesondere die stärkere rechte Entwickler-Werkzeugleiste – wurden vorgeführt. Das gehört zur ehrlichen Bewertung des Umfangs.</p>
+</section>
+<section class="review-card" id="technik"><h2>02 · Drei Laufzeitumgebungen</h2><ol>
+<li><strong>Direkt öffnen (<code>file://</code>):</strong> Der Browser liest die lokal eingebundene Ersatzdatei <code>js/inhalte.js</code>. Das Portfolio bleibt ohne Webserver startbar.</li>
+<li><strong>Lokaler Webserver (<code>http://localhost:5500</code>):</strong> Ein Python-Prozess auf dem Mac beantwortet HTTP-Anfragen. <code>fetch()</code> liest die Markdown-Dateien. <em>Keine Verbindung zu Vercel erforderlich.</em></li>
+<li><strong>Hosting (z. B. Vercel):</strong> Ein externer Webserver stellt die Dateien öffentlich oder zugangsgeschützt zur Verfügung. GitHub speichert und versioniert den Quellcode; es ist nicht selbst der lokale Server.</li>
+</ol><p>Der konkrete 404-Pfad wurde nicht aufgezeichnet. Eine veraltete lokale Kopie, ein falscher Pfad oder ein fehlender Dateistand sind mögliche Ursachen, aber keine gesicherte Diagnose.</p>
+</section>
+<section class="review-card" id="reflexion"><h2>03 · Was ich gelernt habe</h2><ol>
+<li><strong>Eine Datei existiert nicht automatisch in jeder Umgebung.</strong> Ein erfolgreicher Git-Merge aktualisiert nicht unmittelbar den lokalen Ordner. Dazu ist ein Pull nötig.</li>
+<li><strong>Offline muss bewusst unterstützt werden.</strong> Nach Änderungen an den Vorlesungsdateien wird die Ersatzkopie mit <code>python3 tools/inhalte-buendeln.py</code> erzeugt.</li>
+<li><strong>Code Freeze schützt eine Präsentation.</strong> Neue Features kurz vor dem Launch erhöhen das Risiko, ohne dass die Live-Demo proportional besser wird.</li>
+<li><strong>Ein Feature kann existieren und trotzdem nicht gezeigt worden sein.</strong> Die zentralen Animationen sind im Code, die erweiterten Design-Tools blieben Teil des Ausblicks.</li>
+</ol></section>
+<section class="review-card" id="weiter"><h2>04 · Ausblick: GIF und Scroll-Daumenkino</h2>
+<p>Ein GIF speichert Bildfolgen mit einer zeitlich festgelegten Wiedergabe. Soll dagegen der Finger auf dem Touchpad bzw. der Scrollfortschritt das jeweilige Bild wählen, braucht es eine scrollgesteuerte Bildfolge oder eine Canvas-/CSS-Animation. Die Website verwendet bereits eine scrollabhängige Canvas-Sequenz mit 120 Zeichenzuständen. Das neue <a href="scroll-lab.html">Scroll-Lab</a> demonstriert die technische Unterscheidung und bietet einen kleinen interaktiven Werkzeugkasten.</p>
+<p><a href="scroll-lab.html">Zum praktischen Daumenkino-Lab →</a></p></section>
+<section class="review-card" id="freigabe"><h2>05 · Abgabe und Rechte</h2><p>Dieses Protokoll ist Teil der getrennten Abgabeversion. Die Projektdateien selbst verleihen keine Administratorrechte: eine Zugangsprüfung muss vor der Auslieferung auf Hosting-Ebene stattfinden. Ein befristeter Ansichtslink gibt ausschließlich Einsicht, keine Schreibrechte. GitHub-Quellcode kann bei privatem Repository nur mit separater Berechtigung geöffnet werden.</p><p><a href="https://github.com/sarahMgrng/the-web-journey/issues/24">GitHub Incident #24</a> · <a href="https://github.com/sarahMgrng/the-web-journey/pull/13">Gemergter Release-PR #13</a></p></section>
+</article>
+<aside class="review-rail"><strong>Review-Navigation</strong><a href="#ablauf">Was ist passiert?</a><a href="#technik">Localhost &amp; 404</a><a href="#reflexion">Lessons Learned</a><a href="#weiter">Scroll-Lab</a><a href="#freigabe">Zugangsrechte</a><hr><small>Lesemodus · keine Bearbeitungsrechte. Ein Link ist kein Identitätsnachweis.</small></aside>
+</div></main>
+<footer class="site-footer"><p>The Web Journey · DHBW Webprogrammierung · Abgabe-Review 23.11.2026</p></footer>
+</body></html>
