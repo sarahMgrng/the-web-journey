@@ -40,6 +40,33 @@ function baueFarbwahl() {
   for (const knopf of leiste.querySelectorAll("button")) {
     knopf.addEventListener("click", () => setzeFarbe(knopf.dataset.wert));
   }
+  const werkzeuge = document.createElement("details");
+  werkzeuge.innerHTML = '<summary>Werkzeuge</summary><button type="button">Farben zurücksetzen</button>';
+  const farbvariablen = [
+    ["Akzent", "--farbe-akzent-fuellung"],
+    ["Zweitfarbe", "--farbe-zweit"],
+  ];
+  const stil = document.documentElement.style;
+  for (const [name, variable] of farbvariablen) {
+    const label = document.createElement("label");
+    label.textContent = name + " ";
+    const input = document.createElement("input");
+    input.type = "color";
+    const aktualisiere = () => {
+      const farbe = getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
+      if (/^#[0-9a-f]{6}$/i.test(farbe)) input.value = farbe;
+    };
+    input.addEventListener("input", () => stil.setProperty(variable, input.value));
+    werkzeuge.querySelector("button").addEventListener("click", () => {
+      stil.removeProperty(variable);
+      aktualisiere();
+    });
+    leiste.addEventListener("click", aktualisiere);
+    label.append(input);
+    werkzeuge.append(label);
+    aktualisiere();
+  }
+  leiste.append(werkzeuge);
   setzeFarbe(document.documentElement.dataset.farbe || "hell"); // Rückfall = Standard „hell“, wie im <html>-Tag
 }
 
