@@ -40,7 +40,7 @@ function baueFarbwahl() {
   for (const knopf of leiste.querySelectorAll("button")) {
     knopf.addEventListener("click", () => setzeFarbe(knopf.dataset.wert));
   }
-  setzeFarbe(document.documentElement.dataset.farbe || "nacht");
+  setzeFarbe(document.documentElement.dataset.farbe || "hell"); // Rückfall = Standard „hell“, wie im <html>-Tag
 }
 
 baueFarbwahl();
