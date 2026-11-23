@@ -13,7 +13,7 @@ happy: 0
 - [x] Stand vom 22.11. auf Branch `finale-abgabe` gesichert
 - [x] Demo 05: Centerpiece-Platzhalter „Reise von index.html“
 - [ ] Demo 05 im Browser angesehen und abgenommen (Sarah)
-- [ ] Doku-Dateien zurück auf README.md, STATUS.md, ROADMAP.md
+- [x] Doku-Dateien zurück auf README.md, STATUS.md, ROADMAP.md
 - [ ] Aufräumen: 99_Archiv, 08.md, veraltete Kommentare
 - [ ] Ein Farbschema festlegen, Farbwähler raus
 - [ ] Vorlesung ↔ Übung in beide Richtungen verknüpft

@@ -1,7 +1,18 @@
-# Status – Stand 22.11.2026
+# Status – Stand 23.11.2026, 01:15
 
 Kurze Übergabe: Wo stehen wir, was fehlt, wie geht es weiter.
-Langfristige Planung: [ROADMAP.md](ROADMAP.md).
+Langfristige Planung: [ROADMAP.md](ROADMAP.md) · Tagesplan Abgabe: [ABGABE.md](ABGABE.md)
+
+## Übergabe 23.11., 01:15 (Jean → Sarah, Bastien, Kimi)
+
+- **Branch:** Alles liegt auf `finale-abgabe` (Vercel-Vorschau). `abgaben-3-semester` (Liveseite) ist noch der Stand vom 20.10.
+  Merge erst, wenn Sarah Demo 05 im Browser abgenommen hat (Frist 13:30 in ABGABE.md).
+- **Neu:** Demo 05 „Von index.html bis auf deinen Bildschirm“ (Centerpiece-Platzhalter: file:// · localhost · Vercel · Teams),
+  `ABGABE.md` + `tools/countdown.py` (Erinnerungen bis 19:00), Doku-Dateien heißen wieder README/STATUS/ROADMAP.
+- **Getestet:** 15 HTML-Seiten, alle lokalen Links und Sprungmarken ok. countdown.py zu 13 Uhrzeiten simuliert.
+- **Nicht getestet:** Demo 05 im echten Browser (Claudes Werkzeuge erreichten localhost nicht), Vercel-Vorschau.
+- **Offen:** siehe ABGABE.md – Farbschema, Aufräumen, Vorlesung ↔ Übung, Learnings, Quellen/KI, Merge, Prof einladen.
+- **Team und Rollen:** `~/Desktop/Web-Prog_3S/TEAM_BLAUPAUSE.md` (bewusst außerhalb des Repos).
 
 ## Update 22.11.2026 (vor der Präsentation am 23.11.)
 

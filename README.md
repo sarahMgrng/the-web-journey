@@ -87,3 +87,5 @@ the-web-journey/
 - [ARCHITECTURE.md](ARCHITECTURE.md) – Aufbau und technische Entscheidungen
 - [CONTENT_GUIDE.md](CONTENT_GUIDE.md) – Vorlesungen ergänzen, Animationen anpassen
 - [ROADMAP.md](ROADMAP.md) – Stand, offene Aufgaben, spätere Erweiterungen
+- [STATUS.md](STATUS.md) – aktueller Arbeitsstand und Übergabe
+- [ABGABE.md](ABGABE.md) – Plan für Präsentation und Abgabe am 23.11. (mit `tools/countdown.py`)
