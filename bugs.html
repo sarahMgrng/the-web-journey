@@ -75,50 +75,50 @@
     <section class="chat" aria-label="Bug-Chat">
       <article class="chat__tag" id="bug-01">
         <p class="chat__trenner"><span>Bug 01 · Launch</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>#404 · Montag, kurz vor 15:15</strong><br>Die Startseite antwortet mit <code>404 Not Found</code>. Präsentation in wenigen Minuten.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Lokaler Fallback über <code>start.command</code>, Präsentation lief. Ursache ohne damalige Logs nicht sicher – ehrlich dokumentiert im Launch-Review. · <a href="launch-review.html">ansehen →</a></p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>#404 · Montag, kurz vor 15:15</strong><br>Die Startseite antwortet mit <code>404 Not Found</code>. Präsentation in wenigen Minuten.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Lokaler Fallback über <code>start.command</code>, Präsentation lief. Ursache ohne damalige Logs nicht sicher – ehrlich dokumentiert im Launch-Review. · <a href="launch-review.html">ansehen →</a></p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Die Motte des Abends: zur falschen Zeit im falschen Relais.</p></div>
       </article>
       <article class="chat__tag" id="bug-02">
         <p class="chat__trenner"><span>Bug 02 · Dateien</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Umbenennung</strong><br>Alle Links tot. Jemand hat <code>index.html</code> in <code>1_index.html</code> umbenannt – für eine hübschere Ordnerreihenfolge.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Dateinamen sind Adressen. Regel in den Projektregeln: HTML-Dateien werden nie umbenannt.</p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Umbenennung</strong><br>Alle Links tot. Jemand hat <code>index.html</code> in <code>1_index.html</code> umbenannt – für eine hübschere Ordnerreihenfolge.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Dateinamen sind Adressen. Regel in den Projektregeln: HTML-Dateien werden nie umbenannt.</p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Schönere Sortierung, null erreichbare Seiten. Klassischer Trade-off.</p></div>
       </article>
       <article class="chat__tag" id="bug-03">
         <p class="chat__trenner"><span>Bug 03 · Browser</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>file:// vs. fetch()</strong><br>Doppelklick auf <code>index.html</code>: Kapitel leer. Der Browser blockiert <code>fetch()</code> über <code>file://</code>.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Ersatzkopie <code>js/inhalte.js</code> – bei <code>file://</code> liest die Seite dort, über HTTP direkt die Markdown-Dateien. · <a href="uebungen.html">ansehen →</a></p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>file:// vs. fetch()</strong><br>Doppelklick auf <code>index.html</code>: Kapitel leer. Der Browser blockiert <code>fetch()</code> über <code>file://</code>.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Ersatzkopie <code>js/inhalte.js</code> – bei <code>file://</code> liest die Seite dort, über HTTP direkt die Markdown-Dateien. · <a href="uebungen.html">ansehen →</a></p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Es funktioniert auf meinem Rechner. Und jetzt auch auf deinem.</p></div>
       </article>
       <article class="chat__tag" id="bug-04">
         <p class="chat__trenner"><span>Bug 04 · HTML</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>&lt;/&gt; als Knopftext</strong><br>Der Jean-Knopf im Werkzeugkasten ist leer. <code>innerHTML = "&lt;/&gt;"</code> – der Parser liest ein schließendes Tag ohne Namen und wirft es weg.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Escapen: <code>&amp;lt;/&amp;gt;</code>. Gefunden per Screenshot im Headless-Chrome.</p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>&lt;/&gt; als Knopftext</strong><br>Der Jean-Knopf im Werkzeugkasten ist leer. <code>innerHTML = "&lt;/&gt;"</code> – der Parser liest ein schließendes Tag ohne Namen und wirft es weg.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Escapen: <code>&amp;lt;/&amp;gt;</code>. Gefunden per Screenshot im Headless-Chrome.</p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Der Browser hat den Knopf nicht kaputt gemacht. Er hat ihn nur sehr wörtlich genommen.</p></div>
       </article>
       <article class="chat__tag" id="bug-05">
         <p class="chat__trenner"><span>Bug 05 · CSS</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Spezifität</strong><br>Die neuen Werkzeug-Knöpfe bleiben winzig. <code>.farbwahl button</code> (0,1,1) schlägt <code>.werkzeug</code> (0,1,0).</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Selektor auf <code>.farbwahl .werkzeug</code> (0,2,0) angehoben.</p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Spezifität</strong><br>Die neuen Werkzeug-Knöpfe bleiben winzig. <code>.farbwahl button</code> (0,1,1) schlägt <code>.werkzeug</code> (0,1,0).</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Selektor auf <code>.farbwahl .werkzeug</code> (0,2,0) angehoben.</p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Cascading heißt: Wer spezifischer ist, gewinnt. Wie in jedem Meeting.</p></div>
       </article>
       <article class="chat__tag" id="bug-06">
         <p class="chat__trenner"><span>Bug 06 · JavaScript</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Leere Kabine</strong><br>Übung „Alterskontrolle“: <code>alert()</code> erscheint, danach eine leere graue Seite.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Kein Code der Übung geändert – der Bord-Rahmen zeigt jetzt den Code und einen Knopf für die nächste Runde. · <a href="aufgaben/12.10_Aufg2/index.html">ansehen →</a></p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Leere Kabine</strong><br>Übung „Alterskontrolle“: <code>alert()</code> erscheint, danach eine leere graue Seite.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Kein Code der Übung geändert – der Bord-Rahmen zeigt jetzt den Code und einen Knopf für die nächste Runde. · <a href="aufgaben/12.10_Aufg2/index.html">ansehen →</a></p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Ein sehr minimalistisches Frontend. Zu minimalistisch.</p></div>
       </article>
       <article class="chat__tag" id="bug-07">
         <p class="chat__trenner"><span>Bug 07 · Git</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Merge löscht den Branch</strong><br>PR gemergt, GitHub löscht <code>abgabe-final</code> automatisch. Der Link in der Abgabe-Mail zeigt ins Leere, der letzte Commit fehlt im Merge.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Branch mit dem finalen Commit wiederhergestellt; der Rest kommt als eigener Pull Request.</p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Merge löscht den Branch</strong><br>PR gemergt, GitHub löscht <code>abgabe-final</code> automatisch. Der Link in der Abgabe-Mail zeigt ins Leere, der letzte Commit fehlt im Merge.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Branch mit dem finalen Commit wiederhergestellt; der Rest kommt als eigener Pull Request.</p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Git vergisst nichts. Man muss nur wissen, wo man nachschaut.</p></div>
       </article>
       <article class="chat__tag" id="bug-08">
         <p class="chat__trenner"><span>Bug 08 · Hosting</span></p>
-        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Login statt Portfolio</strong><br>Die Vercel-Adresse leitet auf eine Anmeldung um – der Prof hätte eine Login-Seite gesehen.</p><small>gefunden ✓✓</small></div>
-        <div class="msg msg--ich"><b>Sarah</b><p>Befristeter Share-Link auf das Deployment; Zugriffsschutz bleibt auf Hosting-Ebene.</p><small>gefixt ✓✓</small></div>
+        <div class="msg msg--bot"><b>SMG Bugbot</b><p><strong>Login statt Portfolio</strong><br>Die Vercel-Adresse leitet auf eine Anmeldung um – der Prof hätte eine Login-Seite gesehen.</p><small>gefunden</small></div>
+        <div class="msg msg--ich"><b>Sarah</b><p>Befristeter Share-Link auf das Deployment; Zugriffsschutz bleibt auf Hosting-Ebene.</p><small>gefixt</small></div>
         <div class="msg msg--bot msg--hand"><p>Sicherheit funktioniert. Leider auch gegen den Prüfer.</p></div>
       </article>
     </section>
@@ -130,7 +130,7 @@
         <li>Jeder Fix kam als Pull Request mit Review – <a href="https://github.com/sarahMgrng/the-web-journey/tree/abgabe-final#arbeitsweise-human-in-the-loop">Human in the Loop</a>.</li>
         <li>Und jeder ist dokumentiert, damit er kein zweites Mal klemmt.</li>
       </ul>
-      <p class="gehostet">Gehostet von <strong>SMG Consulting</strong> · Bugbot und Fixes: SMG · <a href="impressum.html">Impressum</a></p>
+      <p class="gehostet">Gehostet von <a href="https://hallo.smg-consulting.org/"><strong>SMG Consulting</strong></a> · Bugbot und Fixes: SMG · <a href="impressum.html">Impressum</a></p>
     </div>
   </main>
 
