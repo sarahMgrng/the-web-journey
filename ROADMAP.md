@@ -1,38 +1,68 @@
-# Roadmap
+# Roadmap – The Web Journey
 
-> Aktueller Arbeitsstand und nächste Schritte: [STATUS.md](STATUS.md)
+Stand: 23.11.2026 (Abgabe Portfolio 1)
 
-## ✅ MVP v0.1 – Technisches Fundament
+## ✅ v0.1 – Fundament (Oktober)
 
-- [x] Animierte Startseite (Hero mit Einstiegs- und Scroll-Animation)
-- [x] Scrollytelling-Demos: Fade-in, Sticky Section, Bewegen & Skalieren, Vergleich statisch/gesteuert
-- [x] Erklärung der Techniken mit Code-Beispielen
-- [x] Acht Kapitel-Cards aus Markdown-Dateien
-- [x] Wiederverwendbares Kapitel-Template mit Navigation (01–08, vor/zurück, zurück zur Übersicht)
-- [x] Content-Schema + Vorlage, zwei Demo-Vorlesungen
+- [x] Git-Repository, ein Ordner pro Übung im Aufgaben-Repo
+- [x] Kapitel-Template: eine Markdown-Datei pro Vorlesung, `kapitel.html?nr=X`
+- [x] Startseite mit Hero und Scrollytelling-Demos (Fade-in, Sticky Section, Bewegen & Skalieren, Vergleich)
+- [x] Erklärung jeder Technik mit Code-Beispiel
 - [x] Responsive, Tastaturbedienung, `prefers-reduced-motion`
-- [x] Dokumentation
+- [x] Vorlesungen 01–03 aus Skript + handschriftlichen Notizen, Herkunft gekennzeichnet (📘 ✏️ 🤖 ❓)
+- [x] Übungen 12.10. (Aufgaben 1–3), 19.10. KopfüBar mit Ordnern, Bohnen zählen (4 Testfälle)
 
-## Offene Aufgaben
+## ✅ v0.2 – Struktur & Automatisierung (Oktober)
 
-- [ ] Klären: Ist eine selbst programmierte Website statt WordPress als Portfolio in Ordnung?
-- [x] Git-Repository anlegen und ersten Stand einchecken
-- [ ] Geprüfte Inhalte für Vorlesung 1 und 2 einpflegen (Demo-Inhalte ersetzen)
-- [ ] Echte Titel der Vorlesungen eintragen (Daten von 1 und 2 sind eingetragen)
-- [x] Vorlesungen 1–7 aus den Skripten zusammengefasst (Entwurf)
-- [x] Umschalter Portfolio 1 / Portfolio 2, Seiten „Über mich“ und „Über das Portfolio“
-- [x] marked lokal speichern (`js/vendor/`), damit die Seite bei der Präsentation auch offline läuft
-- [ ] Demo 04 (Vergleich): Einblenden soll bei jedem Hinscrollen wieder abspielen, nicht nur beim ersten Mal
-- [ ] Test in Safari, Firefox und auf einem echten Smartphone
-- [x] Veröffentlichung über Vercel (verbunden mit GitHub)
-- [x] Farbschemata über CSS-Variablen, Standard „Hell“
-- [ ] Startseite: „Reise einer Website“ als scrollgesteuertes System (Aufhänger: Apple-Produktseiten)
-- [ ] Übungs-Labor mit Code + Terminal
+- [x] Unterseiten Learnings, Übungen, Über das Portfolio, Sprungmarken im Kapitel
+- [x] Ausführbare JS-Beispiele („▶ Ausführen“ + Ausgabe-Fenster)
+- [x] Animation „Anfrage und Antwort“ (Browser → Server → Seite)
+- [x] **n8n-Workflow „Vorlesungs-Rückblick“**: Mo 18:00 → GitHub-Issue mit Checkliste
+- [x] **n8n-Workflow „Learnings eintragen“**: Formular → Ollama (Kontrollfragen) → eigener Branch → Review → Merge
+- [x] Übung 26.10. Währungsrechner
 
-## Spätere Erweiterungen (nicht Teil des MVP)
+## ✅ v1.0 – Abgabe (November)
 
-- Interaktive Knowledge Map
-- Interaktive Demos innerhalb der Kapitel
-- Inhaltsverzeichnis / Fortschrittsanzeige auf Kapitelseiten
-- Automatisierter Import aus dem Claude Project
-- Aufwendigere Animationen (keine 3D-Effekte geplant)
+- [x] Vorlesungen 04–07 aus allen Skripten zusammengefasst, JS-Beispiele mit Node und im Browser getestet
+- [x] Design überarbeitet (Feedback 19.10.): fünf Farbschemata über CSS-Variablen, Standard „Hell“
+- [x] Apple-Aufhänger: Laptop klappt beim Scrollen auf (Bildsequenz im `<canvas>`)
+- [x] Portfolio-1/2-Umschalter, Seite „Über mich“
+- [x] Offline-fähig: `marked` lokal, Start per Doppelklick über `js/inhalte.js`, `start.command` für localhost
+- [x] Terminal auf jeder Seite, Bot **Atlas** (lokale Suche in allen Kapiteln), Entwickler-Ansicht **Jean**
+- [x] Deck „KopfüBar an Bord“ für alle Übungen
+- [x] Review aus Sicht des Prüfers: 21 Seiten über Server und per Doppelklick, Smartphone – keine toten Links
+- [x] Hosting über Vercel: eigenes Abgabe-Projekt, geschützt durch Vercel Authentication, befristeter Leselink
+- [x] Präsentation am 23.11.; Präsentationsstand gesichert im Branch `archiv/launch-2026-11-23`
+- [x] `html-og.html`: dieselbe Basis als reines HTML ohne CSS/JS (Vergleich file:// · localhost · gehostet)
+- [x] Launch-Review: 404 kurz vor der Präsentation offen dokumentiert (`launch-review.html`)
+- [x] Werkzeugkasten auf jeder Seite (Terminal, Atlas, Jean, Seiten-Index, nach oben + Farben), Standard Weiß & Orange
+- [x] Eigene 404-Seite: erklärt den Statuscode, mit Wegen zurück
+- [x] Handnotizen (✏️) in Handschrift, h2-Tags als Seitenindex präsenter
+- [x] Animationen laufen in beide Richtungen, robust bei „Zurück“ im Browser
+- [x] Human in the Loop: jede Änderung als Pull Request, Review und Merge durch Sarah
+- [x] Leitfaden für die Abgabe (`abgabe.html`, `PROF_HANDBOOK.md`)
+- [x] Abgabe-ZIP per Skript (`tools/abgabe-zip.sh`)
+
+## 🧪 Nachtrag nach der Präsentation
+
+- [x] Experiment Scroll-Daumenkino (`scroll-lab.html`) – ausdrücklich als Nachtrag gekennzeichnet
+
+## 🔜 Offen / nächste Iteration
+
+- [ ] Kapitelübersicht am Vorlesungsplan ausrichten + editierbare Akzentfarben (Branch `kapitel-nach-vorlesungsplan`, noch nicht übernommen)
+
+- [ ] Eigene Learnings für V01, V02, V04–V07 über das n8n-Formular eintragen (V03 vorhanden)
+- [ ] Abgabe V05: Klasse „Kontakte“ lösen und ins Aufgaben-Repo
+- [ ] Vorlesungen selbst gegenlesen und von `demo` auf `fertig` setzen
+- [ ] Datum von V07 ergänzen, Daten V05–V06 prüfen
+- [ ] Offene Übungen: Kreative Überschriften, Pull Quotes (V06), Tabellenreihen, Akkordeon (V07), optionale HTML2-Übungen
+- [ ] Test in Safari und Firefox
+- [ ] Atlas mit Ollama verbinden (Konfiguration in `js/atlas-config.js` vorbereitet)
+
+## 💡 Später (Portfolio 2 und danach)
+
+- „Reise einer Website“ als scrollgesteuerte Geschichte: Browser → DNS → Server → DOM, mit Code
+- Übungs-Labor: Übungen mit Code + Terminal direkt auf der Seite ausführen
+- Live-Bühnen: eine interaktive Demo pro Vorlesung
+- Knowledge Map und Fortschrittsanzeige
+- Portfolio 2 „Verteilte Systeme“ (SoSe 2027) im selben Gerüst

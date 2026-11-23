@@ -117,6 +117,47 @@
   --terminal-bg: #111113;
 }
 
+/* ---------- 0. Weiß – Weiß & Orange (STANDARD seit 23.11.) ---------- */
+:root[data-farbe="weiss"] {
+  color-scheme: light;
+  --farbe-hintergrund: #ffffff;
+  --farbe-flaeche: #fbfaf8;
+  --farbe-flaeche-2: #f3efe9;
+  --farbe-text: #1d1d1f;
+  --farbe-text-leise: #6e6e73;
+  --farbe-linie: #d2d2d7;
+  --farbe-akzent: #c2410c;
+  --farbe-akzent-fuellung: #ea580c;
+  --farbe-akzent-hell: rgba(234, 88, 12, 0.10);
+  --farbe-zweit: #1d1d1f;
+  --farbe-zweit-hell: rgba(29, 29, 31, 0.08);
+  --farbe-fehler: #c0392b;
+  --farbe-fehler-hell: #fff1f1;
+  --farbe-hinweis-hell: #fff8e6;
+  --farbe-code-bg: #1d1d1f;
+  --verlauf: linear-gradient(120deg, #ea580c 0%, #f59e0b 100%);
+  --leuchten: 0 0 0 1px rgba(234, 88, 12, 0.25), 0 24px 48px -20px rgba(0, 0, 0, 0.25);
+  --schatten: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.18);
+  --glow-1: rgba(234, 88, 12, 0.06);
+  --glow-2: rgba(245, 158, 11, 0.04);
+  --raster: rgba(0, 0, 0, 0.03);
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --titel-verlauf: linear-gradient(120deg, #1d1d1f 30%, #c2410c 70%, #ea580c 95%);
+  --kapitel-verlauf: linear-gradient(120deg, #1d1d1f 45%, #c2410c 100%);
+  --titel-schatten: rgba(234, 88, 12, 0.12);
+  --akzent-glow: rgba(234, 88, 12, 0.35);
+  --auf-zweit: #ffffff;
+  --h3: #1d1d1f;
+  --code-inline: #b4235a;
+  --code-text: #f5f5f7;
+  --stark: #1d1d1f;
+  --hinweis-text: #6b4e00;
+  --hinweis-rand: #f3dc9c;
+  --platzhalter-nr: #c7c7cc;
+  --browser-seite: linear-gradient(180deg, #ffffff, #fbf7f2);
+  --terminal-bg: #111113;
+}
+
 /* ---------- 5. Papier – Creme, Koralle & Tannengrün ---------- */
 :root[data-farbe="papier"] {
   color-scheme: light;
@@ -197,9 +238,50 @@
 .farbwahl [data-wert="nacht"]    { --muster: linear-gradient(135deg, #0f1020 50%, #a78bfa 50%); }
 .farbwahl [data-wert="terminal"] { --muster: linear-gradient(135deg, #0d1117 50%, #3fb950 50%); }
 .farbwahl [data-wert="tiefsee"]  { --muster: linear-gradient(135deg, #071a1f 50%, #ff8a65 50%); }
+.farbwahl [data-wert="weiss"]    { --muster: linear-gradient(135deg, #ffffff 50%, #ea580c 50%); }
 .farbwahl [data-wert="hell"]     { --muster: linear-gradient(135deg, #f5f5f7 50%, #0071e3 50%); }
 .farbwahl [data-wert="papier"]   { --muster: linear-gradient(135deg, #faf6f0 50%, #c2410c 50%); }
 
 @media (max-width: 640px) {
   .farbwahl span { display: none; }
+}
+
+/* ---------- Werkzeugkasten (ersetzt die reine Farbleiste, 23.11.) ---------- */
+.werkzeugkasten {
+  gap: 0.55rem;
+  padding: 0.45rem 0.55rem 0.45rem 0.95rem;
+}
+.werkzeugkasten__titel { font: 600 0.7rem var(--schrift-code, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.werkzeugkasten__tools, .werkzeugkasten__farben { display: flex; gap: 0.4rem; align-items: center; }
+.werkzeugkasten__trenner { width: 1px; height: 1.8rem; background: var(--farbe-linie); }
+.farbwahl.werkzeugkasten [data-wert] { width: 2.15rem; height: 2.15rem; }
+.farbwahl .werkzeug {
+  width: 2.15rem; height: 2.15rem; padding: 0; cursor: pointer;
+  display: grid; place-items: center;
+  font: 700 0.78rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--farbe-text);
+  background: var(--farbe-flaeche);
+  border: 1px solid var(--farbe-linie);
+  border-radius: 50%;
+  transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.farbwahl .werkzeug:hover, .farbwahl .werkzeug:focus-visible { transform: translateY(-2px); background: var(--farbe-akzent); color: #fff; border-color: transparent; }
+.farbwahl .werkzeug[aria-pressed="true"], .farbwahl .werkzeug[aria-expanded="true"] { background: var(--farbe-akzent-hell); color: var(--farbe-akzent); border-color: var(--farbe-akzent); }
+
+.werkzeug-index {
+  position: fixed; right: 1rem; bottom: 4.6rem; z-index: 61;
+  width: min(26rem, calc(100vw - 2rem)); max-height: 55vh; overflow: auto;
+  padding: 0.8rem; border-radius: 16px;
+  background: var(--farbe-flaeche); border: 1px solid var(--farbe-linie); box-shadow: var(--schatten);
+  font-size: 0.9rem;
+}
+.werkzeug-index p { margin: 0 0 .5rem; color: var(--farbe-text-leise); }
+.werkzeug-index a { display: grid; gap: .1rem; padding: .45rem .55rem; border-radius: 10px; color: var(--farbe-text); text-decoration: none; }
+.werkzeug-index a:hover { background: var(--farbe-akzent-hell); }
+.werkzeug-index code { font-size: .72rem; color: var(--farbe-akzent); }
+
+@media (max-width: 720px) {
+  .werkzeugkasten__titel, .werkzeugkasten__trenner { display: none; }
+  .werkzeugkasten { flex-wrap: wrap; justify-content: flex-end; max-width: calc(100vw - 2rem); border-radius: 22px; }
+  .farbwahl .werkzeug, .farbwahl.werkzeugkasten [data-wert] { width: 1.9rem; height: 1.9rem; }
 }

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de" data-farbe="weiss">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Scroll-Daumenkino · The Web Journey</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/farben.css">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}.lab{max-width:1250px;margin:auto;padding:2.5rem 1.25rem 5rem}
+.lab h1{font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:-.06em;line-height:1.06;margin:.5rem 0 1rem}.lab .lead{max-width:750px;color:var(--farbe-text-leise);font-size:1.13rem;line-height:1.6}
+.eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--farbe-akzent);font-weight:700}
+.lab-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:1.4rem;align-items:start}
+.lab-frame{min-height:300vh;position:relative}.lab-sticky{position:sticky;top:14vh;min-height:62vh;border:1px solid var(--farbe-linie);border-radius:24px;background:var(--farbe-flaeche);box-shadow:var(--schatten);padding:1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.lab-sticky canvas{width:100%;max-width:700px;display:block;aspect-ratio:3/2}.lab-sticky p{text-align:center;color:var(--farbe-text-leise)}
+.lab-toolbox{position:sticky;top:6rem;padding:1.3rem;border-radius:20px;background:var(--farbe-flaeche);border:1px solid var(--farbe-linie)}
+.lab-toolbox h2{margin:.2rem 0 1.2rem;font-size:1.25rem}.lab-toolbox label{display:block;font-size:.88rem;font-weight:650;margin:1rem 0 .4rem}.lab-toolbox input[type=range]{width:100%;accent-color:var(--farbe-akzent)}.lab-toolbox select,.lab-toolbox button{font:inherit;width:100%;border:1px solid var(--farbe-linie);background:var(--farbe-flaeche-2);color:var(--farbe-text);border-radius:10px;padding:.65rem;cursor:pointer}
+.lab-toolbox button[aria-pressed=true]{outline:2px solid var(--farbe-akzent)}.lab-toolbox output{font-family:monospace;color:var(--farbe-akzent)}.lab-tools-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem}
+.lab-card{background:var(--farbe-flaeche);border:1px solid var(--farbe-linie);border-radius:19px;padding:1.4rem;margin:1.5rem 0;line-height:1.7}
+.lab-card h2{margin:0 0 .5rem;font-size:1.35rem}.lab-card code{background:var(--farbe-flaeche-2);padding:.1rem .35rem;border-radius:5px}
+.lab-card pre{padding:1.2rem;background:var(--farbe-code-bg);color:var(--farbe-code-text,#fff);overflow-x:auto;border-radius:12px;font-size:.83rem}
+.pulse{display:inline-block;width:2rem;height:2rem;background:var(--farbe-akzent);border-radius:6px;animation:pulse 1.8s steps(6,end) infinite alternate;vertical-align:middle}
+@keyframes pulse{to{transform:translateX(100px) rotate(90deg)}}
+.lab-status{font-family:monospace;font-size:.85rem;color:var(--farbe-text-leise)}.lab-note{font-size:.85rem;color:var(--farbe-text-leise)}
+@media(max-width:820px){.lab-grid{grid-template-columns:1fr;display:flex;flex-direction:column}.lab-toolbox{order:0;position:relative;top:auto;width:100%}.lab-frame{order:1;min-height:235vh;width:100%}.lab-sticky{top:8vh;min-height:60vh}.lab{padding-top:1.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pulse{animation:none}}
+</style>
+<script>try{let f=localStorage.getItem("farbe");if(f&&f!=="nacht")document.documentElement.dataset.farbe=f;else if(f==="nacht")delete document.documentElement.dataset.farbe}catch(e){}</script>
+<script src="js/farben.js" defer></script>
+</head>
+<body><header class="site-header"><a href="index.html" class="site-header__logo">The Web Journey</a><nav aria-label="Navigation"><a href="index.html">Start</a><a href="launch-review.html">Incident 404</a><a href="ueber.html">Portfolio</a></nav></header>
+<main class="lab"><p class="eyebrow">Experiment · Animationen · Browser</p><h1>Das Daumenkino<br>folgt deinem Finger.</h1>
+<p class="lead">GIFs speichern Einzelbilder und spielen sie mit festgelegter Zeit ab. Hier gibt stattdessen die Scrollposition das aktuelle Bild vor. Ein kleines, originales Canvas-Experiment – ohne Framework und ohne externes Video.</p>
+<div class="lab-grid">
+<section class="lab-frame" id="scroll-strecke" aria-label="Scrollgeste steuert Bildnummer"><div class="lab-sticky"><canvas id="flip" width="720" height="480" role="img" aria-label="Gezeichnetes Daumenkino: farbige Papierseiten schlagen abhängig von der Scrollposition um."></canvas>
+<p id="status" class="lab-status" aria-live="off">Bild 1 von 24 · Scroll 0%</p><p class="lab-note">Scrollen oder am Touchpad wischen. Beim Zurückscrollen läuft die Bewegung rückwärts.</p></div></section>
+<aside class="lab-toolbox"><p class="eyebrow">Werkzeugkasten · v0.1</p><h2>Motion Inspector</h2>
+<label for="theme">Darstellungsmodus</label><select id="theme"><option value="hell">Hell · Blau</option><option value="nacht">Nacht · Violett</option><option value="terminal">Terminal · Grün</option><option value="tiefsee">Tiefsee · Koralle</option><option value="papier">Papier · Creme</option></select>
+<label for="frames">Auflösung der Animation</label><select id="frames"><option value="12">12 Bilder</option><option value="24" selected>24 Bilder</option><option value="60">60 Bilder</option><option value="120">120 Bilder</option></select>
+<label for="scrub">Bild manuell wählen</label><input id="scrub" type="range" min="0" max="23" value="0"><output id="value" for="scrub">1 / 24</output>
+<div class="lab-tools-row"><button id="follow" type="button" aria-pressed="true">Scroll: an</button><button id="less" type="button" aria-pressed="false">Motion: an</button></div>
+<p class="lab-note">Die Regler verändern die laufende Demo tatsächlich. Weder Konten noch Datenbanken werden benötigt.</p>
+<button type="button" id="reset">↺ Zurücksetzen</button></aside>
+</div>
+<section class="lab-card"><h2>GIF versus scrollgesteuerte Sequenz</h2>
+<p><strong>Zeitgesteuert wie ein GIF:</strong> Rechts läuft eine CSS-Animation selbstständig ab – unabhängig vom Scrollen. <span class="pulse" aria-hidden="true"></span></p>
+<p><strong>Scrollgesteuert wie ein Daumenkino:</strong> Die Canvas-Zeichnung darüber verwendet <code>requestAnimationFrame()</code> und wählt anhand des Fortschritts ein Bild zwischen 1 und 12/24/60/120. Die tatsächlich gezogenen Bilder sind nicht als GIF gespeichert. Das erlaubt rückwärts, Pause und manuelles Springen.</p>
+<p>Ein echtes GIF mit fest eingebauten Zeiten lässt sich nicht zuverlässig bildgenau durch native HTML-Mittel scrubben. Für fertige Motive könnte man stattdessen ein Sprite-Sheet, eine Bildsequenz oder ein Video mit expliziter Zeitsteuerung einsetzen. Für eine kleine, einfache Demonstration genügt Canvas.</p></section>
+<section class="lab-card"><h2>Die entscheidende Formel</h2><pre><code>anteil = clamp(-element.top / scrollweg, 0, 1)
+bild = floor(anteil * (anzahlBilder - 1))
+requestAnimationFrame(zeichnen)</code></pre><p>Bei 0 % Scrollfortschritt erscheint das erste Bild, bei 100 % das letzte. Das bleibt ohne zusätzlichen Server sowohl über <code>file://</code> als auch über <code>localhost</code> nutzbar.</p>
+<p><a href="launch-review.html">← Zurück zum technischen Launch-Protokoll</a></p></section>
+</main><footer class="site-footer"><p>The Web Journey · Experiment nach der Präsentation · 23.11.2026</p></footer>
+<script>
+(()=>{"use strict";
+const canvas=document.getElementById("flip"),ctx=canvas.getContext("2d");
+const track=document.getElementById("scroll-strecke"),status=document.getElementById("status");
+const scrub=document.getElementById("scrub"),out=document.getElementById("value");
+const countSelect=document.getElementById("frames"),theme=document.getElementById("theme");
+const follow=document.getElementById("follow"),less=document.getElementById("less"),reset=document.getElementById("reset");
+let count=24,frame=0,following=true,lessMotion=matchMedia("(prefers-reduced-motion: reduce)").matches,pending=false;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+theme.value=document.documentElement.dataset.farbe||"nacht";
+function color(name,fallback){return getComputedStyle(document.documentElement).getPropertyValue(name).trim()||fallback}
+function draw(n){
+ const w=canvas.width,h=canvas.height,progress=count>1?n/(count-1):0,theta=progress*Math.PI;
+ ctx.clearRect(0,0,w,h);
+ const accent=color("--farbe-akzent","#0071e3"),text=color("--farbe-text","#222"),paper=color("--farbe-flaeche-2","#eee");
+ ctx.fillStyle=paper;ctx.beginPath();ctx.roundRect(95,55,530,365,20);ctx.fill();
+ ctx.fillStyle="rgba(0,0,0,.12)";ctx.fillRect(128,82,4,312);
+ for(let i=5;i>=0;i--){const x=140+i*7;ctx.fillStyle=i%2?accent:paper;ctx.globalAlpha=.1+.05*i;ctx.fillRect(x,85,400,300)}ctx.globalAlpha=1;
+ const width=Math.max(8,450*Math.abs(Math.cos(theta))),cx=360+Math.sin(theta)*50;
+ ctx.fillStyle=accent;ctx.globalAlpha=.65;ctx.beginPath();ctx.moveTo(160,85);ctx.lineTo(cx+width/2,70);ctx.lineTo(cx+width/2,380);ctx.lineTo(160,390);ctx.closePath();ctx.fill();ctx.globalAlpha=1;
+ ctx.strokeStyle=text;ctx.globalAlpha=.27;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(160,85);ctx.lineTo(160,390);ctx.stroke();ctx.globalAlpha=1;
+ ctx.fillStyle=text;ctx.font="700 38px system-ui";ctx.textAlign="center";ctx.fillText("WEB JOURNEY",360,215);
+ ctx.font="500 22px monospace";ctx.fillText("Frame "+String(n+1).padStart(3,"0")+" / "+count,360,255);
+ const p=Math.round(progress*100);
+ status.textContent="Bild "+(n+1)+" von "+count+" · Scroll "+p+"%";
+ out.value=(n+1)+" / "+count;
+ scrub.value=n;
+}
+function show(n){frame=clamp(Math.round(n),0,count-1);draw(frame)}
+function fromScroll(){pending=false;if(!following)return;const box=track.getBoundingClientRect();const distance=Math.max(1,box.height-innerHeight);const p=clamp(-box.top/distance,0,1);show(lessMotion?0:p*(count-1))}
+function schedule(){if(!pending){pending=true;requestAnimationFrame(fromScroll)}}
+addEventListener("scroll",schedule,{passive:true});addEventListener("resize",schedule,{passive:true});
+countSelect.addEventListener("change",()=>{const p=frame/Math.max(1,count-1);count=Number(countSelect.value);scrub.max=count-1;show(p*(count-1));schedule()});
+theme.addEventListener("change",()=>{if(typeof setzeFarbe==="function")setzeFarbe(theme.value);else document.documentElement.dataset.farbe=theme.value;draw(frame)});
+scrub.addEventListener("input",()=>{following=false;follow.setAttribute("aria-pressed","false");follow.textContent="Scroll: aus";show(Number(scrub.value))});
+follow.addEventListener("click",()=>{following=!following;follow.setAttribute("aria-pressed",String(following));follow.textContent=following?"Scroll: an":"Scroll: aus";if(following)schedule()});
+less.addEventListener("click",()=>{lessMotion=!lessMotion;less.setAttribute("aria-pressed",String(lessMotion));less.textContent=lessMotion?"Motion: aus":"Motion: an";schedule()});
+reset.addEventListener("click",()=>{count=24;countSelect.value="24";scrub.max=23;following=true;lessMotion=false;follow.textContent="Scroll: an";follow.setAttribute("aria-pressed","true");less.textContent="Motion: an";less.setAttribute("aria-pressed","false");schedule()});
+draw(0);schedule();
+})();
+</script></body></html>

@@ -1,10 +1,18 @@
+> **ABGABEVERSION · 23.11.2026 – Portfolio 1 · Professorenansicht**
+>
+> Dieser Branch `abgabe/prof-2026-11-23` dokumentiert die Abgabe. Der unveränderte Präsentationsstand liegt gesichert in `archiv/launch-2026-11-23`. Alle weiteren Experimente sind als solche bezeichnet; sie waren **nicht automatisch Teil der Live-Präsentation**.
+>
+> **Schnellzugriff:** [HTML OG (ohne CSS/JS)](html-og.html) · [Mac- und Professorenleitfaden](PROF_HANDBOOK.md) · [Abgabe-Einstieg](abgabe.html) · [Startseite](index.html) · [Vorlesungen](index.html#kapitel) · [Übungen](uebungen.html) · [Technischer Launch-Review 404](launch-review.html) · [Experiment Scroll-Daumenkino](scroll-lab.html) · [Issue #24](https://github.com/sarahMgrng/the-web-journey/issues/24).
+>
+> **Offline:** `index.html` im entpackten Projektordner doppelklicken. **Mit lokalem Webserver:** `start.command` auf dem Mac oder `python3 -m http.server 5500`. **Online:** Das getrennte Vercel-Projekt `the-web-journey-prof` wurde für die Abgabe veröffentlicht und ist durch Vercel Authentication geschützt. Ein befristeter Ansichtslink wird separat weitergegeben; der GitHub-Branch ist nicht selbst eine Website.
+
 # The Web Journey
 
 Interaktive Lernwebsite für das Modul **Webprogrammierung** (DHBW).
 Sie fasst sieben aufeinander aufbauende Vorlesungen zusammen (Portfolio 1). Portfolio 2 (Verteilte Systeme, SoSe 2027) hat oben rechts schon seinen Platz.
 Technischer Schwerpunkt ist **Scrollytelling**: Die Startseite erklärt die Technik und führt sie gleichzeitig vor.
 
-**Stand (22.11.):** Vorlesung 1–7 aus den Skripten zusammengefasst (Status `demo`, bis ich sie geprüft habe).
+**Stand (23.11., Abgabezweig):** Vorlesung 1–7 sind aus den Skripten zusammengefasst (Status `demo`, soweit noch nicht final inhaltlich geprüft). Die lokale Präsentation wurde durchgeführt. Der 404-Vorfall und die nicht vollständig gezeigten Nachtfeatures werden im [Launch-Review](launch-review.html) offengelegt.
 Dazu die Unterseiten Learnings, Übungen, Über das Portfolio, Über mich und die Startseite von Portfolio 2.
 
 ## Technik
@@ -41,9 +49,7 @@ Dann im Browser `http://localhost:5500` öffnen.
 
 ## Online: Vercel
 
-Die Seite ist eine reine statische Website (kein Build-Schritt). Vercel ist mit diesem Repo verbunden:
-Jeder Push auf `abgaben-3-semester` wird automatisch als Produktionsversion veröffentlicht,
-jeder andere Branch bekommt eine eigene Vorschau-Adresse.
+Die Seite ist eine reine statische Website (kein Build-Schritt). Für den Abgabezweig wurde das Vercel-Projekt **`the-web-journey-prof`** im Team `pappuccino` erstellt. Vercel Authentication ist für sämtliche Deployments aktiv; eine zeitlich befristete, lesbare URL wird separat mitgeteilt. Startseite, Dokumentationsseiten, JavaScript, CSS und alle sieben Markdown-Vorlesungen wurden am 23.11.2026 per HTTP erfolgreich abgerufen. Dies ist ein Dateiverfügbarkeitscheck, kein vollständiger interaktiver Browsertest. Die öffentliche kanonische Projektadresse ohne Freigabe erfordert eine Vercel-Anmeldung.
 
 Einstellungen bei Vercel: Framework „Other“, kein Build Command, Output Directory = Projektordner (Standard).
 
@@ -95,6 +101,75 @@ the-web-journey/
 - **Jean** – Entwickler-Ansicht: Überschriften zeigen ihr Tag (`<h2 id="…">`), die Seite ist mit `<body>`/`</html>` gerahmt. Terminal: `jean on` / `jean off`.
 - **KopfüBar an Bord** – `aufgaben/19.10_aufgabe1_bar/bar.html` ist das Deck für alle Übungen; `aufgaben/bord.css` + `bord.js` setzen jeder Übung Kopfzeile, Stationsschild und Terminal auf. Der Übungscode bleibt unverändert.
 
-## Orga
+## Arbeitsweise: Human in the Loop
 
-`PITCH.md` (Sprechzettel + Prüfungsfragen) · `ABGABE.md` (Checkliste, Zweige, Mail) · `PROTOKOLL.md` (Entscheidungen, Verlauf, Archiv) · `tools/abgabe-zip.sh` (Abgabe-ZIP)
+KI und Automatisierung bereiten vor – **entschieden und übernommen wird nur durch mich**. Kein Inhalt kommt ungeprüft auf die Seite.
+
+1. **Vorbereiten** – Claude, Cursor oder der n8n-Workflow arbeiten **nie direkt** auf dem Hauptzweig, sondern immer auf einem eigenen Branch.
+2. **Pull Request** – jede Änderung kommt als Pull Request mit Beschreibung und Prüfliste.
+3. **Review durch Sarah** – ich lese den Diff, öffne die Vercel-Vorschau des Branches und klicke die Seite durch.
+4. **Merge durch Sarah** – erst mein Merge bringt die Änderung auf `abgaben-3-semester`; Vercel veröffentlicht dann automatisch.
+5. **Nachvollziehbar** – Commits, Pull Requests und Issues zeigen, wer was vorgeschlagen und wer es freigegeben hat. Ältere Stände bleiben als `archiv/…`-Branches erhalten.
+
+```
+Vorschlag (KI / n8n) ─► eigener Branch ─► Pull Request ─► Review Sarah ─► Merge Sarah ─► Vercel live
+                                                │
+                                                └─ abgelehnt / Änderungswunsch ─► zurück an den Branch
+```
+
+Die finale Abgabe selbst ist genauso entstanden: als Pull Request `abgabe-final` → `abgaben-3-semester`, gemergt von mir.
+
+## Automatisierung mit n8n
+
+Auf meinem eigenen Server läuft **n8n**. Zwei Workflows begleiten jede Vorlesung:
+
+1. **„Vorlesungs-Rückblick“** – jeden Montag, 18:00: legt im Repository ein GitHub-Issue *„Vorlesung NN – Rückblick“* mit Checkliste an (Skript lesen, Übung, Learnings).
+2. **„Learnings eintragen“** – passwortgeschütztes Formular mit fünf Leitfragen. Die Antworten landen als Abschnitt *„Meine Learnings“* in der Markdown-Datei der Vorlesung; ein **lokales Sprachmodell (Ollama)** ergänzt drei 🤖-Kontrollfragen.
+
+Der Workflow schreibt nie direkt auf den Hauptstand, sondern auf einen eigenen Branch. Erst nach meiner Durchsicht kommt der Text per Merge ins Portfolio – das ist zugleich der Schutz, weil Markdown als HTML eingefügt wird.
+
+```
+Vorlesung ─► Mo 18:00 n8n ─► GitHub-Issue (Checkliste)
+                │
+                ▼
+      Formular (5 Fragen) ─► Ollama (+3 Kontrollfragen) ─► Branch ─► Review ─► Merge ─► Website
+```
+
+## Einsatz von KI
+
+| Werkzeug | Wofür |
+| --- | --- |
+| Claude | Skripte zusammenfassen (Entwurf), Code-Review, Fehlersuche, Dokumentation |
+| Cursor | Arbeiten im Code mit festen Projektregeln (kein Framework, Herkunft kennzeichnen) |
+| ChatGPT | Erklärungen und Lösungsweg „Bohnen zählen“ |
+| Ollama (lokal, über n8n) | Kontrollfragen zu meinen Learnings |
+
+Jeder Absatz im Portfolio ist nach Herkunft markiert: 📘 Skript · ✏️ eigene Notiz / Lösung · 🤖 KI-Erklärung · ❓ offene Frage.
+Prüfung und Verantwortung für alle Inhalte liegen bei mir.
+
+## Roadmap
+
+Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Abgabe-ZIP bauen: `bash tools/abgabe-zip.sh`
+
+## Abgabe, Präsentation und Nachtrag (23.11.2026)
+
+**Präsentation:** Die grundlegende interaktive Website wurde vorgeführt. Ein 404-Fehler trat kurz vor Beginn auf. Die Vorlesungsübersicht war nach Aktualisierung lokal abrufbar. Nicht alle Konzepte der Nachtiteration wurden gezeigt; insbesondere der ausgebaute rechte Werkzeugkasten war kein Bestandteil der Live-Demo.
+
+**Nachtrag für die Bewertung:** [Technischer Incident-Report als Website](launch-review.html); [experimentelles Scroll-Daumenkino mit Motion Inspector](scroll-lab.html). Das zweite ist ein **nachträgliches Experiment**, nicht als bereits präsentiert zu verstehen.
+
+**Sicherheit:** Die HTML-Dateien sind nicht durch ein Frontend-Passwort geschützt. Eine mögliche Professorenfreigabe erfolgt über die Zugriffskontrolle der Hostingplattform. Ein befristeter Ansichtslink ist kein Nachweis einer bestimmten E-Mail-Identität. Das GitHub-Repository bleibt privat, bis eine Freigabe explizit eingerichtet wird.
+
+**Archiv:** Der eingefrorene Präsentationsstand ist der GitHub-Branch `archiv/launch-2026-11-23`; alle Dokumentationsergänzungen liegen im gesonderten Branch `abgabe/prof-2026-11-23`.
+
+**Veröffentlichungsprüfung:** Die HTML-Startseite für Bewertende ist [abgabe.html](abgabe.html), da Vercel die rohe `README.md` nicht als öffentlich abrufbare Seite ausliefert (direkter HTTP-404). Ein Freigabelink wurde für sieben Tage erzeugt und läuft am **30.11.2026 um ca. 15:53 Uhr MEZ** ab; eine zusätzliche Kontrolle ist für 16:00 Uhr geplant. **Das Hostingprojekt wird durch den automatischen Ablauf des Freigabelinks nicht automatisch gelöscht.**
+
+## Drei Ansichtspfade – gleiche Website, unterschiedliche Ausführung
+
+| Einstieg | Dateien | HTTP-Server | didaktischer Fokus |
+|---|---|---|---|
+| `html-og.html` | HTML ohne eigenes CSS und JS | nein | Semantisches HTML, native Browser-Funktionen |
+| `index.html` per Doppelklick | HTML + CSS + JS + gebündelte Inhalte | nein | Offline-Fallback und Browser-Sicherheitsregeln |
+| `http://localhost:5500` | dieselbe Website, Markdown via fetch | Python auf dem Mac | HTTP/Server-Anfragen |
+| Vercel-Adresse | dieselbe Website, Markdown via fetch | externer Server | Veröffentlichung / befristete Zugriffsberechtigung |
+
+Im ZIP liegt `PROF_HANDBOOK.md` mit einer geordneten Anleitung. Das Projekt-Tag lautet **SMG · Webprog · The Web Journey**; das ist **ein** Portfolio mit dokumentierter Versionsgeschichte, nicht mehrere Abgaben.

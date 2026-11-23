@@ -348,3 +348,14 @@
     grid-column: 1;
   }
 }
+
+/* ---------- Handnotizen (✏️) – wie Nolls handschriftliche Kommentare auf den Folien ---------- */
+.prose .handnotiz {
+  font-family: "Bradley Hand", "Noteworthy", "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 1.08em;
+  line-height: 1.55;
+  color: var(--farbe-akzent);
+  padding-left: 0.9rem;
+  border-left: 2px dashed var(--farbe-akzent);
+}
+.prose .handnotiz strong, .prose .handnotiz code { color: inherit; }
