@@ -101,9 +101,37 @@ the-web-journey/
 - **Jean** – Entwickler-Ansicht: Überschriften zeigen ihr Tag (`<h2 id="…">`), die Seite ist mit `<body>`/`</html>` gerahmt. Terminal: `jean on` / `jean off`.
 - **KopfüBar an Bord** – `aufgaben/19.10_aufgabe1_bar/bar.html` ist das Deck für alle Übungen; `aufgaben/bord.css` + `bord.js` setzen jeder Übung Kopfzeile, Stationsschild und Terminal auf. Der Übungscode bleibt unverändert.
 
-## Orga
+## Automatisierung mit n8n
 
-`PITCH.md` (Sprechzettel + Prüfungsfragen) · `ABGABE.md` (Checkliste, Zweige, Mail) · `PROTOKOLL.md` (Entscheidungen, Verlauf, Archiv) · `tools/abgabe-zip.sh` (Abgabe-ZIP)
+Auf meinem eigenen Server läuft **n8n**. Zwei Workflows begleiten jede Vorlesung:
+
+1. **„Vorlesungs-Rückblick“** – jeden Montag, 18:00: legt im Repository ein GitHub-Issue *„Vorlesung NN – Rückblick“* mit Checkliste an (Skript lesen, Übung, Learnings).
+2. **„Learnings eintragen“** – passwortgeschütztes Formular mit fünf Leitfragen. Die Antworten landen als Abschnitt *„Meine Learnings“* in der Markdown-Datei der Vorlesung; ein **lokales Sprachmodell (Ollama)** ergänzt drei 🤖-Kontrollfragen.
+
+Der Workflow schreibt nie direkt auf den Hauptstand, sondern auf einen eigenen Branch. Erst nach meiner Durchsicht kommt der Text per Merge ins Portfolio – das ist zugleich der Schutz, weil Markdown als HTML eingefügt wird.
+
+```
+Vorlesung ─► Mo 18:00 n8n ─► GitHub-Issue (Checkliste)
+                │
+                ▼
+      Formular (5 Fragen) ─► Ollama (+3 Kontrollfragen) ─► Branch ─► Review ─► Merge ─► Website
+```
+
+## Einsatz von KI
+
+| Werkzeug | Wofür |
+| --- | --- |
+| Claude | Skripte zusammenfassen (Entwurf), Code-Review, Fehlersuche, Dokumentation |
+| Cursor | Arbeiten im Code mit festen Projektregeln (kein Framework, Herkunft kennzeichnen) |
+| ChatGPT | Erklärungen und Lösungsweg „Bohnen zählen“ |
+| Ollama (lokal, über n8n) | Kontrollfragen zu meinen Learnings |
+
+Jeder Absatz im Portfolio ist nach Herkunft markiert: 📘 Skript · ✏️ eigene Notiz / Lösung · 🤖 KI-Erklärung · ❓ offene Frage.
+Prüfung und Verantwortung für alle Inhalte liegen bei mir.
+
+## Roadmap
+
+Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Abgabe-ZIP bauen: `bash tools/abgabe-zip.sh`
 
 ## Abgabe, Präsentation und Nachtrag (23.11.2026)
 
