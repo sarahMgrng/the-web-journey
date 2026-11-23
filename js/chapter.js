@@ -37,7 +37,7 @@ function zeigeVorlesung(vorlesung) {
   // Kopfbereich: Nummer, Titel, Datum, Status, Kurzbeschreibung
   let html = `
     <header class="kapitel-kopf">
-      <p class="eyebrow">Vorlesung ${zweistellig(vorlesung.nr)}</p>
+      <p class="eyebrow">${moodleName(vorlesung)} · Vorlesung ${zweistellig(vorlesung.nr)}</p>
       <h1>${vorlesung.titel}</h1>
       <div class="kapitel-kopf__meta">
         ${vorlesung.datum ? `<span>${formatiereDatum(vorlesung.datum)}</span>` : ""}

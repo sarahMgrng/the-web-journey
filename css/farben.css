@@ -199,29 +199,31 @@
   --terminal-bg: #141c1a;
 }
 
-/* ---------- Farbwähler (unten rechts) ---------- */
+/* ---------- Werkzeugkasten am rechten Seitenrand ---------- */
 .farbwahl {
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+  inset-inline-end: max(0.65rem, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 60;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.6rem 0.4rem 0.9rem;
+  flex-direction: column;
+  padding: 0.55rem;
   font: 600 0.75rem var(--schrift);
   color: var(--farbe-text-leise);
   background: var(--header-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--farbe-linie);
-  border-radius: 999px;
+  border-radius: 22px;
   box-shadow: var(--schatten);
 }
 
 .farbwahl button {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2.25rem;
+  height: 2.25rem;
   padding: 0;
   cursor: pointer;
   background: var(--muster);
@@ -242,35 +244,55 @@
 .farbwahl [data-wert="hell"]     { --muster: linear-gradient(135deg, #f5f5f7 50%, #0071e3 50%); }
 .farbwahl [data-wert="papier"]   { --muster: linear-gradient(135deg, #faf6f0 50%, #c2410c 50%); }
 
-@media (max-width: 640px) {
-  .farbwahl span { display: none; }
+.werkzeugkasten__inhalt, .werkzeugkasten__tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-/* ---------- Werkzeugkasten (ersetzt die reine Farbleiste, 23.11.) ---------- */
-.werkzeugkasten {
-  gap: 0.55rem;
-  padding: 0.45rem 0.55rem 0.45rem 0.95rem;
+.werkzeugkasten__farben {
+  display: grid;
+  grid-template-columns: repeat(2, 2.25rem);
+  gap: 0.35rem;
 }
-.werkzeugkasten__titel { font: 600 0.7rem var(--schrift-code, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; }
-.werkzeugkasten__tools, .werkzeugkasten__farben { display: flex; gap: 0.4rem; align-items: center; }
-.werkzeugkasten__trenner { width: 1px; height: 1.8rem; background: var(--farbe-linie); }
-.farbwahl.werkzeugkasten [data-wert] { width: 2.15rem; height: 2.15rem; }
+
+.werkzeugkasten__trenner {
+  width: 100%;
+  height: 1px;
+  background: var(--farbe-linie);
+}
+
 .farbwahl .werkzeug {
-  width: 2.15rem; height: 2.15rem; padding: 0; cursor: pointer;
-  display: grid; place-items: center;
-  font: 700 0.78rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  font: 700 0.95rem var(--schrift-code, ui-monospace, monospace);
   color: var(--farbe-text);
   background: var(--farbe-flaeche);
   border: 1px solid var(--farbe-linie);
-  border-radius: 50%;
-  transition: transform .15s ease, background .15s ease, color .15s ease;
 }
-.farbwahl .werkzeug:hover, .farbwahl .werkzeug:focus-visible { transform: translateY(-2px); background: var(--farbe-akzent); color: #fff; border-color: transparent; }
-.farbwahl .werkzeug[aria-pressed="true"], .farbwahl .werkzeug[aria-expanded="true"] { background: var(--farbe-akzent-hell); color: var(--farbe-akzent); border-color: var(--farbe-akzent); }
+
+.farbwahl .werkzeugkasten__atlas {
+  width: 3.65rem;
+  border-radius: 14px;
+  background: var(--farbe-akzent-hell);
+  color: var(--farbe-akzent);
+  border-color: var(--farbe-akzent);
+}
+
+.farbwahl .werkzeugkasten__schalter { display: none; }
+.farbwahl button:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
+.farbwahl .werkzeug:hover, .farbwahl .werkzeug[aria-pressed="true"], .farbwahl .werkzeug[aria-expanded="true"] {
+  background: var(--farbe-akzent-hell);
+  color: var(--farbe-akzent);
+  border-color: var(--farbe-akzent);
+}
 
 .werkzeug-index {
-  position: fixed; right: 1rem; bottom: 4.6rem; z-index: 61;
-  width: min(26rem, calc(100vw - 2rem)); max-height: 55vh; overflow: auto;
+  position: fixed; right: 7rem; top: 50%; transform: translateY(-50%); z-index: 61;
+  width: min(26rem, calc(100vw - 8rem)); max-height: 55vh; overflow: auto;
   padding: 0.8rem; border-radius: 16px;
   background: var(--farbe-flaeche); border: 1px solid var(--farbe-linie); box-shadow: var(--schatten);
   font-size: 0.9rem;
@@ -280,8 +302,26 @@
 .werkzeug-index a:hover { background: var(--farbe-akzent-hell); }
 .werkzeug-index code { font-size: .72rem; color: var(--farbe-akzent); }
 
-@media (max-width: 720px) {
-  .werkzeugkasten__titel, .werkzeugkasten__trenner { display: none; }
-  .werkzeugkasten { flex-wrap: wrap; justify-content: flex-end; max-width: calc(100vw - 2rem); border-radius: 22px; }
-  .farbwahl .werkzeug, .farbwahl.werkzeugkasten [data-wert] { width: 1.9rem; height: 1.9rem; }
+@media (min-width: 901px) and (min-height: 621px) {
+  body:has(.werkzeugkasten) { padding-inline-end: 6.5rem; }
+}
+
+@media (max-width: 900px), (max-height: 620px) {
+  .werkzeugkasten {
+    top: auto;
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    transform: none;
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+  }
+
+  .farbwahl .werkzeugkasten__schalter { display: grid; }
+  .werkzeugkasten__schalter[aria-expanded="false"] + .werkzeugkasten__inhalt { display: none; }
+  .werkzeug-index {
+    top: auto;
+    bottom: 1rem;
+    transform: none;
+  }
+
+  body:has(.werkzeugkasten) { padding-bottom: 7rem; }
 }

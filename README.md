@@ -149,7 +149,7 @@ Prüfung und Verantwortung für alle Inhalte liegen bei mir.
 
 ## Roadmap
 
-Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Abgabe-ZIP bauen: `bash tools/abgabe-zip.sh`
+Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Verlauf: [GESCHICHTE.md](GESCHICHTE.md) · Abgabe-ZIP bauen: `bash tools/abgabe-zip.sh`
 
 ## Abgabe, Präsentation und Nachtrag (23.11.2026)
 
