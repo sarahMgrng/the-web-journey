@@ -7,6 +7,8 @@ Jede Änderung läuft als Pull Request mit Review und Merge durch Sarah (Human i
 
 ## Versuch 2 · Iteration 2 – gestartet 24.11.2026, 00:10
 
+- 00:20 Papino: SMG verlinkt, Portfolio erklärt, Atlas in die Seitenleiste (`17b8e68`)
+
 Branch `v2/iteration-2` · Pull Request als Entwurf · **wartet auf Änderungen von Papino**
 
 Geplant (Issues):
