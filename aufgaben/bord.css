@@ -331,3 +331,12 @@ a.station:hover {
 .jean .deck-held h1::before { content: "<h1>"; }
 .jean .kabine h2::before,
 .jean .deck-titel::before   { content: "<h2>"; }
+
+/* Zurück-Knopf + leere Kabine (23.11.) */
+.bord-zurueck { display: inline-block; margin: .75rem auto 0; padding: .4rem .9rem; border-radius: 999px;
+  font: 600 .85rem system-ui, sans-serif; text-decoration: none; color: #fff; background: #c2410c; }
+.bord-zurueck:hover { background: #9a3412; }
+.bord-leer { max-width: 640px; margin: 1.5rem auto; padding: 1.25rem; border-radius: 14px; background: #fff;
+  border: 1px solid #e5e5e5; font: 1rem/1.6 system-ui, sans-serif; color: #1d1d1f; }
+.bord-leer pre { background: #1d1d1f; color: #f5f5f7; padding: .9rem 1rem; border-radius: 10px; overflow: auto; font-size: .85rem; }
+.bord-leer button { padding: .5rem 1rem; border: 0; border-radius: 999px; background: #c2410c; color: #fff; font-weight: 600; cursor: pointer; }
