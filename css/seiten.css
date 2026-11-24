@@ -458,3 +458,6 @@
 .themen-liste .eintrag {
   margin: 0;
 }
+
+/* KI-Hinweis unter dem Lead der Learnings-Seite (24.11.) */
+.ki-hinweis { margin-top: 1rem; font-size: 0.9rem; color: var(--farbe-text-leise); }
