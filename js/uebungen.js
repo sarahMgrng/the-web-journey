@@ -50,7 +50,7 @@ function zeigeUebungen(vorlesungen) {
     <ol class="uebungs-liste">
       ${uebungen.map(u => `
         <li class="eintrag eintrag--kompakt">
-          <p class="eyebrow">Vorlesung ${zweistellig(u.vorlesung.nr)} · ${u.vorlesung.titel}</p>
+          <p class="eyebrow">Vorlesung ${zweistellig(u.vorlesung.nr)} · ${maskiere(u.vorlesung.titel)}</p>
           <h2>${maskiere(u.titel)} ${u.abgabe ? '<span class="badge">Abgabe</span>' : ""} ${u.offen ? '<span class="badge badge--platzhalter">offen</span>' : ""}</h2>
           <p class="eintrag__links">
             <a href="kapitel.html?nr=${u.vorlesung.nr}#${u.anker}">Aufgabe &amp; Lösung</a>

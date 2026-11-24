@@ -2,6 +2,7 @@
 <html lang="de" data-farbe="weiss">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>Scroll-Daumenkino · The Web Journey</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/farben.css">
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}.lab{max-width:1250px;margin:auto;padding:2.5rem 1.25rem 5rem}
@@ -15,7 +16,7 @@
 .lab-toolbox button[aria-pressed=true]{outline:2px solid var(--farbe-akzent)}.lab-toolbox output{font-family:monospace;color:var(--farbe-akzent)}.lab-tools-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem}
 .lab-card{background:var(--farbe-flaeche);border:1px solid var(--farbe-linie);border-radius:19px;padding:1.4rem;margin:1.5rem 0;line-height:1.7}
 .lab-card h2{margin:0 0 .5rem;font-size:1.35rem}.lab-card code{background:var(--farbe-flaeche-2);padding:.1rem .35rem;border-radius:5px}
-.lab-card pre{padding:1.2rem;background:var(--farbe-code-bg);color:var(--farbe-code-text,#fff);overflow-x:auto;border-radius:12px;font-size:.83rem}
+.lab-card pre code{background:none;padding:0;color:inherit}.lab-card pre{padding:1.2rem;background:var(--farbe-code-bg);color:var(--farbe-code-text,#fff);overflow-x:auto;border-radius:12px;font-size:.83rem}
 .pulse{display:inline-block;width:2rem;height:2rem;background:var(--farbe-akzent);border-radius:6px;animation:pulse 1.8s steps(6,end) infinite alternate;vertical-align:middle}
 @keyframes pulse{to{transform:translateX(100px) rotate(90deg)}}
 .lab-status{font-family:monospace;font-size:.85rem;color:var(--farbe-text-leise)}.lab-note{font-size:.85rem;color:var(--farbe-text-leise)}
@@ -47,7 +48,19 @@
 bild = floor(anteil * (anzahlBilder - 1))
 requestAnimationFrame(zeichnen)</code></pre><p>Bei 0 % Scrollfortschritt erscheint das erste Bild, bei 100 % das letzte. Das bleibt ohne zusätzlichen Server sowohl über <code>file://</code> als auch über <code>localhost</code> nutzbar.</p>
 <p><a href="launch-review.html">← Zurück zum technischen Launch-Protokoll</a></p></section>
-</main><footer class="site-footer"><p>The Web Journey · Experiment nach der Präsentation · 23.11.2026</p></footer>
+</main><footer class="site-footer">
+  <p>The Web Journey · Portfolio 1 im Modul Web-Programmierung · DHBW Mannheim · Sarah Gehring</p>
+  <p>Experiment nach der Präsentation · 23.11.2026</p>
+  <p class="site-footer__links">
+    <a href="https://hallo.smg-consulting.org/" rel="author">Über mich</a>
+    <a href="ueber.html">Über das Portfolio</a>
+    <a href="https://github.com/sarahMgrng">GitHub</a>
+    <a href="ueber-mich.html#wege">Wege zum Portfolio</a>
+    <a href="bugs.html">Bug Findings</a>
+    <a href="ueber-mich.html#impressum">Impressum</a>
+    <a href="https://github.com/sarahMgrng/the-web-journey">Quellcode</a>
+  </p>
+</footer>
 <script>
 (()=>{"use strict";
 const canvas=document.getElementById("flip"),ctx=canvas.getContext("2d");
