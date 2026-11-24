@@ -34,7 +34,7 @@ function zeigeLearnings(vorlesungen) {
     .map(v => `
       <article class="eintrag">
         <p class="eyebrow">${moodleName(v)} · Vorlesung ${zweistellig(v.nr)}</p>
-        <h2><a href="kapitel.html?nr=${v.nr}#${alsAnker(LEARNINGS_TITEL)}">${v.titel}</a></h2>
+        <h2 id="learnings-${zweistellig(v.nr)}"><a href="kapitel.html?nr=${v.nr}#${alsAnker(LEARNINGS_TITEL)}">${v.titel}</a></h2>
         <div class="prose">${marked.parse(abschnitt(v.inhalt, LEARNINGS_TITEL))}</div>
       </article>`)
     .join("");
