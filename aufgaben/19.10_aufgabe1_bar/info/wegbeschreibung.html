@@ -1,10 +1,26 @@
-<html>
+<html lang="de">
   <head>
   <!-- Bord-Rahmen der KopfüBar (eigene Regeln unten gewinnen) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../bord.css">
     <meta charset="UTF-8">
-    <title>Kopf&uuml;Bar Wegbeschreibung</title>
+    <title>KopfüBar · Anfahrt, Impressum &amp; Datenschutz</title>
+    <meta name="description" content="Fiktive Wegbeschreibung in Webville, echte SMG-Anbieterangaben und Datenschutzhinweise zum Portfolio.">
+    <style>
+      .bar-legal { max-width:760px; margin:2rem auto 1rem; padding:1.3rem 1.5rem;
+        border:1px solid #b8c9d6; border-radius:16px; background:#f6fafc; color:#182b3a;
+        font:normal 1rem/1.6 system-ui,-apple-system,sans-serif; }
+      .bar-legal h2 {margin:.2rem 0 .7rem;font-size:1.35rem}
+      .bar-legal h3 {margin:1rem 0 .3rem;font-size:1.03rem}
+      .bar-legal p {margin:.45rem 0 1rem}
+      .bar-legal a {color:#005baa;text-underline-offset:3px;overflow-wrap:anywhere}
+      .bar-legal address {font-style:normal}
+      .bar-legal__links {display:flex;gap:1rem;flex-wrap:wrap}
+      @media(prefers-color-scheme:dark) {
+        .bar-legal {background:#162634;color:#e8f1f7;border-color:#4b6577}
+        .bar-legal a {color:#89c7ff}
+      }
+    </style>
   </head>
   <body>
     <h1>Wegbeschreibung</h1>
@@ -18,25 +34,25 @@
     <p>
       Hier kommen Sie wieder <a href="../bar.html"> zurück </a>. 
      </p> 
-    <hr>
-    <h2 id="impressum">Impressum &amp; Datenschutz dieser Website</h2>
-    <p><em>Die KopfüBar in Webville ist eine Übungsaufgabe (nach „HTML und CSS von Kopf bis Fuß“). Für diese Website gilt:</em></p>
-    <p><strong>Sarah Gehring</strong> · SMG Consulting (Freiberuflerin)<br>
-      K3 20, 68159 Mannheim, Deutschland<br>
-      E-Mail: <a href="mailto:info@smg-consulting.org">info@smg-consulting.org</a><br>
-      Website: <a href="https://hallo.smg-consulting.org/">hallo.smg-consulting.org</a> · <a href="https://hallo.smg-consulting.org/impressum">Impressum SMG Consulting</a></p>
-    <p>Inhaltlich verantwortlich (§ 18 Abs. 2 MStV): Sarah Gehring, Anschrift wie oben.<br>
-      Studienprojekt im Modul Web-Programmierung, Kurs IMBIT-B25, DHBW Mannheim, WiSe 2026/27. Nicht-kommerzielle Lernwebsite im Rahmen einer Portfolioprüfung.</p>
-    <h3>Datenschutz (DSGVO)</h3>
-    <ul>
-      <li><strong>Verantwortlich:</strong> Sarah Gehring, Kontakt siehe oben.</li>
-      <li><strong>Hosting:</strong> Die Website wird über Vercel Inc. (USA) ausgeliefert. Beim Aufruf verarbeitet Vercel technisch notwendige Zugriffsdaten (u. a. IP-Adresse, Zeitpunkt, aufgerufene Seite, Browser-Kennung), um die Seite auszuliefern und abzusichern (Art. 6 Abs. 1 lit. f DSGVO). Beim Zugang über einen geschützten Freigabe-Link kann Vercel dafür ein technisch notwendiges Cookie setzen. Details: <a href="https://vercel.com/legal/privacy-policy">Datenschutzerklärung von Vercel</a>.</li>
-      <li><strong>Keine Analyse, kein Tracking:</strong> keine Werbe- oder Statistik-Cookies, keine externen Schriften oder Skripte.</li>
-      <li><strong>Im eigenen Browser:</strong> Farbwahl und Ansicht werden im <code>localStorage</code> deines Browsers gespeichert und nicht übertragen. Der Assistent „Atlas“ sucht lokal im Browser; Eingaben verlassen den Browser nicht.</li>
-      <li><strong>Externe Links:</strong> GitHub und hallo.smg-consulting.org sind eigene Angebote mit eigenen Datenschutzhinweisen.</li>
-      <li><strong>Deine Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch (Art. 15–21 DSGVO) sowie Beschwerde bei einer Datenschutz-Aufsichtsbehörde (Art. 77 DSGVO). Anfragen an <a href="mailto:info@smg-consulting.org">info@smg-consulting.org</a>.</li>
-    </ul>
-    <p><a href="../../../impressum.html">Portfolio-Impressum</a> · <a href="https://hallo.smg-consulting.org/">Über mich – SMG Consulting</a></p>
+    <section class="bar-legal" id="rechtliches" aria-labelledby="bar-rechtstitel">
+      <h2 id="bar-rechtstitel">Reale Menschen. Fiktive Bar.</h2>
+      <p>Webville und diese Wegbeschreibung gehören zur HTML-Übung der KopfüBar – das ist <strong>keine echte Anfahrt</strong> zu einem Restaurant oder einer öffentlich zugänglichen Bar.</p>
+      <h3 id="bar-impressum">Anbieterin &amp; Kontakt</h3>
+      <address>
+        Sarah Gehring · <strong>SMG Consulting</strong> (freiberuflich)<br>
+        Geschäftliche Anbieteranschrift: K3 20, 68159 Mannheim, Deutschland<br>
+        <a href="mailto:info@smg-consulting.org">info@smg-consulting.org</a>
+      </address>
+      <p>Diese Anschrift ist der geschäftliche Kontakt von SMG Consulting, <strong>nicht</strong> der Standort der fiktiven KopfüBar.</p>
+      <h3 id="bar-datenschutz">Datenschutz / DSGVO</h3>
+      <p>Diese Wegbeschreibung enthält kein Formular und fragt keine personenbezogenen Daten ab. Beim Abruf der gehosteten Portfolioseite können technische Verbindungsdaten durch das Hosting bei Vercel verarbeitet werden. Für die Farbwahl kann eine lokale Browsereinstellung gespeichert werden. Die Datenschutzhinweise der separaten SMG-Website beschreiben nicht automatisch das Vercel-Hosting dieses Portfolios.</p>
+      <nav class="bar-legal__links" aria-label="Rechtliches und Kontakt">
+        <a href="../../../impressum.html#datenschutz">Portfolio: Impressum &amp; Datenschutz</a>
+        <a href="../../../ueber-mich.html#kontakt">Über Sarah Gehring</a>
+        <a href="https://hallo.smg-consulting.org/">SMG Consulting</a>
+        <a href="https://hallo.smg-consulting.org/impressum">SMG: offizielles Impressum</a>
+      </nav>
+    </section>
     <script src="../../bord.js"></script>
 </body>
 </html>

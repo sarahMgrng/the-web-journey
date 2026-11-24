@@ -36,7 +36,7 @@
     <nav class="bord-nav" aria-label="Bordnavigation">
       <a href="${zu("19.10_aufgabe1_bar/bar.html")}#stationen">Alle Stationen</a>
       <a href="${zu("19.10_aufgabe1_bar/getraenke/elixir.html")}">Elixiere</a>
-      <a href="${zu("19.10_aufgabe1_bar/info/wegbeschreibung.html")}">Anfahrt</a>
+      <a href="${zu("19.10_aufgabe1_bar/info/wegbeschreibung.html")}">Anfahrt &amp; Rechtliches</a>
       <a href="${new URL("uebungen.html", WURZEL).href}">Übungen im Portfolio</a>
       <a href="${new URL("index.html", WURZEL).href}">↩ Portfolio</a>
     </nav>`;
@@ -104,6 +104,8 @@
     fuss.className = "bord-fuss";
     fuss.innerHTML = `Der Code dieser Station ist meine Lösung aus der Vorlesung – unverändert, nur in den Bord-Rahmen gesetzt.
       Original: <a href="https://github.com/sarahMgrng/wp-aufgaben-3-semester">wp-aufgaben-3-semester</a> ·
+      <a href="${new URL("impressum.html#datenschutz", WURZEL).href}">Impressum &amp; Datenschutz</a> ·
+      <a href="https://hallo.smg-consulting.org/">SMG Consulting</a> ·
       Terminal: Taste <kbd>^</kbd>`;
     document.body.append(fuss);
   }
