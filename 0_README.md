@@ -2,7 +2,7 @@
 >
 > Dieser Branch `abgabe/prof-2026-11-23` dokumentiert die Abgabe. Der unveränderte Präsentationsstand liegt gesichert in `archiv/launch-2026-11-23`. Alle weiteren Experimente sind als solche bezeichnet; sie waren **nicht automatisch Teil der Live-Präsentation**.
 >
-> **Schnellzugriff:** [HTML OG (ohne CSS/JS)](html-og.html) · [Mac- und Professorenleitfaden](PROF_HANDBOOK.md) · [Abgabe-Einstieg](abgabe.html) · [Startseite](index.html) · [Vorlesungen](index.html#kapitel) · [Übungen](uebungen.html) · [Technischer Launch-Review 404](launch-review.html) · [Experiment Scroll-Daumenkino](scroll-lab.html) · [Issue #24](https://github.com/sarahMgrng/the-web-journey/issues/24).
+> **Schnellzugriff:** [HTML OG (ohne CSS/JS)](html-og.html) · [Mac- und Professorenleitfaden](3_PROF_HANDBOOK.md) · [Abgabe-Einstieg](abgabe.html) · [Startseite](index.html) · [Vorlesungen](index.html#kapitel) · [Übungen](uebungen.html) · [Technischer Launch-Review 404](launch-review.html) · [Experiment Scroll-Daumenkino](scroll-lab.html) · [Issue #24](https://github.com/sarahMgrng/the-web-journey/issues/24).
 >
 > **Offline:** `index.html` im entpackten Projektordner doppelklicken. **Mit lokalem Webserver:** `start.command` auf dem Mac oder `python3 -m http.server 5500`. **Online:** Das getrennte Vercel-Projekt `the-web-journey-prof` wurde für die Abgabe veröffentlicht und ist durch Vercel Authentication geschützt. Ein befristeter Ansichtslink wird separat weitergegeben; der GitHub-Branch ist nicht selbst eine Website.
 
@@ -90,9 +90,9 @@ the-web-journey/
 
 ## Dokumentation
 
-- [ARCHITECTURE.md](ARCHITECTURE.md) – Aufbau und technische Entscheidungen
-- [CONTENT_GUIDE.md](CONTENT_GUIDE.md) – Vorlesungen ergänzen, Animationen anpassen
-- [ROADMAP.md](ROADMAP.md) – Stand, offene Aufgaben, spätere Erweiterungen
+- [2_ARCHITECTURE.md](2_ARCHITECTURE.md) – Aufbau und technische Entscheidungen
+- [2.1_CONTENT_GUIDE.md](2.1_CONTENT_GUIDE.md) – Vorlesungen ergänzen, Animationen anpassen
+- [0.1_PROTOKOLL.md](0.1_PROTOKOLL.md) – Roadmap und Verlauf: Projektstart, Launch, Incident, Abgabe
 
 ## Terminal, Atlas & „Jean“ (V1, 23.11.2026)
 
@@ -149,7 +149,7 @@ Prüfung und Verantwortung für alle Inhalte liegen bei mir.
 
 ## Roadmap
 
-Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Verlauf: [GESCHICHTE.md](GESCHICHTE.md) · Abgabe-ZIP bauen: `bash tools/abgabe-zip.sh`
+Roadmap und Verlauf: [0.1_PROTOKOLL.md](0.1_PROTOKOLL.md) · Abgabe-ZIP bauen: `bash tools/abgabe-zip.sh`
 
 ## Abgabe, Präsentation und Nachtrag (23.11.2026)
 
@@ -161,7 +161,7 @@ Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Verlauf: [GESCHICHTE.md
 
 **Archiv:** Der eingefrorene Präsentationsstand ist der GitHub-Branch `archiv/launch-2026-11-23`; alle Dokumentationsergänzungen liegen im gesonderten Branch `abgabe/prof-2026-11-23`.
 
-**Veröffentlichungsprüfung:** Die HTML-Startseite für Bewertende ist [abgabe.html](abgabe.html), da Vercel die rohe `README.md` nicht als öffentlich abrufbare Seite ausliefert (direkter HTTP-404). Ein Freigabelink wurde für sieben Tage erzeugt und läuft am **30.11.2026 um ca. 15:53 Uhr MEZ** ab; eine zusätzliche Kontrolle ist für 16:00 Uhr geplant. **Das Hostingprojekt wird durch den automatischen Ablauf des Freigabelinks nicht automatisch gelöscht.**
+**Veröffentlichungsprüfung:** Die HTML-Startseite für Bewertende ist [abgabe.html](abgabe.html), da Vercel die rohe `0_README.md` nicht als öffentlich abrufbare Seite ausliefert (direkter HTTP-404). Ein Freigabelink wurde für sieben Tage erzeugt und läuft am **30.11.2026 um ca. 15:53 Uhr MEZ** ab; eine zusätzliche Kontrolle ist für 16:00 Uhr geplant. **Das Hostingprojekt wird durch den automatischen Ablauf des Freigabelinks nicht automatisch gelöscht.**
 
 ## Drei Ansichtspfade – gleiche Website, unterschiedliche Ausführung
 
@@ -172,4 +172,4 @@ Erledigte und offene Punkte: [ROADMAP.md](ROADMAP.md) · Verlauf: [GESCHICHTE.md
 | `http://localhost:5500` | dieselbe Website, Markdown via fetch | Python auf dem Mac | HTTP/Server-Anfragen |
 | Vercel-Adresse | dieselbe Website, Markdown via fetch | externer Server | Veröffentlichung / befristete Zugriffsberechtigung |
 
-Im ZIP liegt `PROF_HANDBOOK.md` mit einer geordneten Anleitung. Das Projekt-Tag lautet **SMG · Webprog · The Web Journey**; das ist **ein** Portfolio mit dokumentierter Versionsgeschichte, nicht mehrere Abgaben.
+Im ZIP liegt `3_PROF_HANDBOOK.md` mit einer geordneten Anleitung. Das Projekt-Tag lautet **SMG · Webprog · The Web Journey**; das ist **ein** Portfolio mit dokumentierter Versionsgeschichte, nicht mehrere Abgaben.

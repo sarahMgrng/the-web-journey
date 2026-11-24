@@ -156,7 +156,7 @@ function fuehreAus(quelltext) {
   console.log = (...werte) => zeilen.push("> " + werte.map(w => formatiereWert(w)).join(" "));
 
   try {
-    new Function(quelltext)();   // Code als eigene Funktion ausführen (nur eigene Inhalte, siehe ARCHITECTURE.md)
+    new Function(quelltext)();   // Code als eigene Funktion ausführen (nur eigene Inhalte, siehe 2_ARCHITECTURE.md)
   } catch (fehler) {
     zeilen.push(`✖ ${fehler.name}: ${fehler.message}`);
   } finally {

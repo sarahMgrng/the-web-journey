@@ -13,7 +13,7 @@ dateien=(
   index.html kapitel.html learnings.html uebungen.html
   ueber.html ueber-mich.html verteilte-systeme.html
   abgabe.html launch-review.html scroll-lab.html html-og.html 404.html impressum.html bugs.html
-  README.md ARCHITECTURE.md CONTENT_GUIDE.md PROF_HANDBOOK.md ROADMAP.md GESCHICHTE.md
+  0_README.md 0.1_PROTOKOLL.md 2_ARCHITECTURE.md 2.1_CONTENT_GUIDE.md 3_PROF_HANDBOOK.md
   css js content aufgaben
   start.command tools/inhalte-buendeln.py
 )
