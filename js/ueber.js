@@ -16,7 +16,7 @@ const SCHRITT_DAUER = 1400;   // Millisekunden pro Schritt
 // Pro Weg: was bei jedem Schritt erklärt und ins Log geschrieben wird
 const ABLAUF = {
   server: {
-    adresse: "localhost:8000",
+    adresse: "localhost:5500",
     schritte: [
       { text: "① Der Browser schickt eine HTTP-Anfrage: „Ich brauche content/vorlesungen/03.md.“" },
       { text: "② Der Server sucht die Datei in seinem Ordner – und findet sie." },
@@ -53,7 +53,7 @@ function spieleAb(weg) {
   buehne.dataset.weg = weg;
   buehne.dataset.schritt = "0";
   adresse.textContent = ablauf.adresse;
-  log.textContent = weg === "server" ? "$ python3 -m http.server 8000\nServing HTTP on :: port 8000 …" : "Konsole (F12)";
+  log.textContent = weg === "server" ? "$ python3 -m http.server 5500\nServing HTTP on :: port 5500 …" : "Konsole (F12)";
   erklaerung.textContent = "";
 
   for (const knopf of document.querySelectorAll(".anfrage__knopf")) {

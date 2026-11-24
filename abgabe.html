@@ -1,11 +1,13 @@
 <!doctype html><html lang="de" data-farbe="weiss"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Abgabe · The Web Journey</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/farben.css">
 <style>*{box-sizing:border-box}.guide{max-width:1020px;margin:auto;padding:3rem 1.25rem 6rem}.guide h1{font-size:clamp(2.5rem,6vw,4.6rem);letter-spacing:-.055em;line-height:1.08;margin:.6rem 0}.guide .lead{max-width:730px;font-size:1.15rem;line-height:1.6;color:var(--farbe-text-leise)}.guide-kicker{color:var(--farbe-akzent);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:700}.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:2rem 0}.guide-card{border:1px solid var(--farbe-linie);border-radius:20px;background:var(--farbe-flaeche);padding:1.3rem}.guide-card a{font-size:1.15rem;font-weight:700;color:var(--farbe-akzent)}.guide-card p{line-height:1.65}.guide-card small{color:var(--farbe-text-leise)}.guide-section{padding:1.7rem 0;border-top:1px solid var(--farbe-linie)}.guide-section li{line-height:1.7;margin:.55rem 0}.guide-section code{background:var(--farbe-flaeche-2);padding:.1em .35em;border-radius:5px}.guide-section a{color:var(--farbe-akzent)}.guide-note{background:var(--farbe-flaeche);border:1px solid var(--farbe-linie);border-radius:14px;padding:1rem 1.3rem}@media(max-width:720px){.guide-grid{grid-template-columns:1fr}.guide{padding-top:1.5rem}}</style>
 <script>try{let f=localStorage.getItem("farbe");if(f&&f!=="nacht")document.documentElement.dataset.farbe=f;else if(f==="nacht")delete document.documentElement.dataset.farbe}catch(e){}</script><script src="js/farben.js" defer></script></head>
 <body><header class="site-header"><a class="site-header__logo" href="index.html">The Web Journey</a><nav aria-label="Navigation"><a href="index.html">Start</a><a href="ueber.html">Portfolio</a><a href="launch-review.html">Review</a></nav></header>
 <main class="guide"><p class="guide-kicker">SMG · Webprog · The Web Journey · DHBW · 23.11.2026</p><h1>Abgabeversion.<br>Willkommen an Bord.</h1>
 <p class="lead">Diese Seite dient als Einstieg für die Bewertung von Portfolio 1. Die Live-Präsentation fand am 23. November 2026 statt; die beiden technischen Nachträge sind ausdrücklich als spätere Reflexionen gekennzeichnet.</p>
-<div class="guide-grid">\n<div class="guide-card"><small>00 · HTML-Basis</small><p><a href="html-og.html">HTML OG – ohne CSS und JavaScript</a></p><p>Bewusst einfache, semantische HTML-Seite: der Ausgangspunkt vor Gestaltung und interaktivem Portfolio.</p></div>
+<div class="guide-grid">
+<div class="guide-card"><small>00 · HTML-Basis</small><p><a href="html-og.html">HTML OG – ohne CSS und JavaScript</a></p><p>Bewusst einfache, semantische HTML-Seite: der Ausgangspunkt vor Gestaltung und interaktivem Portfolio.</p></div>
 <div class="guide-card"><small>01 · Inhalt</small><p><a href="index.html#kapitel">Sieben Vorlesungen</a></p><p>Eine zentrale Kapitelübersicht, gemeinsame Markdown-Quelle, Lernziele, Übungen und Reflexionen.</p></div>
 <div class="guide-card"><small>02 · Anwendung</small><p><a href="index.html#scrollytelling">Scrollytelling auf der Startseite</a></p><p>Das Schwerpunkt-Thema: Animationen, Interaktionen und Scroll-Progression im Browser.</p></div>
 <div class="guide-card"><small>03 · Praxis</small><p><a href="uebungen.html">Übungen und Live-Aufgaben</a></p><p>Die Übungen sind über das Portfolio verlinkt; der Originalcode liegt im getrennten Aufgaben-Repository.</p></div>
@@ -14,11 +16,23 @@
 <div class="guide-card"><small>06 · Entwicklung</small><p><a href="https://github.com/sarahMgrng/the-web-journey">Quellcode auf GitHub (Abgabestand)</a></p><p>Versionierung und Pull Requests. Das Repository ist privat und benötigt eine separate GitHub-Berechtigung.</p></div>
 </div>
 <section class="guide-section"><h2>So wird die Website technisch geöffnet</h2><ol>
-<li><strong>HTML OG:</strong> <code>html-og.html</code> per Doppelklick öffnen – reine HTML-Semantik ohne CSS/JS als Vergleich.</li>\n<li><strong>Online:</strong> Über einen befristeten Freigabelink auf Vercel; kein lokales Terminal notwendig.</li>
+<li><strong>HTML OG:</strong> <code>html-og.html</code> per Doppelklick öffnen – reine HTML-Semantik ohne CSS/JS als Vergleich.</li>
+<li><strong>Online:</strong> Über einen befristeten Freigabelink auf Vercel; kein lokales Terminal notwendig.</li>
 <li><strong>Offline:</strong> Das Projekt als vollständige ZIP entpacken und <code>index.html</code> doppelklicken. Die Vorlesungsinhalte stehen gebündelt in <code>js/inhalte.js</code>.</li>
 <li><strong>Lokaler Webserver:</strong> Im Terminal zum entpackten Projektordner wechseln und <code>python3 -m http.server 5500</code> ausführen. Danach <code>http://localhost:5500</code> aufrufen. Auf macOS alternativ <code>bash start.command</code>.</li>
 </ol></section>
 <section class="guide-section"><h2>Was wurde gezeigt – und was nicht?</h2><p>Präsentiert wurde eine funktionierende Kernversion mit Website, Vorlesungsübersicht und Entwicklungsumgebung. Kurz vor dem Start trat ein 404-Fehler auf; während der Live-Demo gab es einen weiteren kurzen Fehler. Beide wurden praktisch abgefangen. Der ausgedehnte rechte Werkzeugkasten und das eigene Scroll-Daumenkino wurden <strong>nicht als Bestandteil der Präsentation</strong> gezeigt; das Scroll-Lab ist ein ausdrücklich gekennzeichneter Nachtrag.</p></section>
 <section class="guide-section"><h2>Versionierung und Sicherheit</h2><p>Der Präsentationsstand ist als GitHub-Branch <code>archiv/launch-2026-11-23</code> eingefroren; die dokumentierte Abgabeversion liegt auf <code>abgabe/prof-2026-11-23</code>. Der Hostingzugang ist durch Vercel Authentication geschützt und wurde für die Bewertung mit einem befristeten Leselink freigegeben. Ein Leselink gibt weder Administrator- noch Schreibrechte und prüft nicht die E-Mail-Identität einer besuchenden Person.</p><p class="guide-note"><strong>Abgabekontext:</strong> Vorlesungsinhalte sind nach Quelle markiert (Skript, eigene Notiz, KI-Erklärung, offene Frage).</p></section>
 <section class="guide-section"><h2>Dokumentation</h2><p>Die ausführliche <code>0_README.md</code>, <code>2_ARCHITECTURE.md</code>, <code>2.1_CONTENT_GUIDE.md</code> und die <code>0.1_PROTOKOLL.md</code> befinden sich im GitHub-Repository bzw. der Abgabe-ZIP. Eine direkte Webadresse auf <code>0_README.md</code> ist auf Vercel nicht als gültige Seite freigegeben; daher ist diese HTML-Übersicht die empfohlene Einstiegsseite.</p><p><a href="https://github.com/sarahMgrng/the-web-journey/issues/24">Technischer Eintrag #24</a> · <a href="https://github.com/sarahMgrng/the-web-journey/pull/13">Release-PR #13</a></p></section>
-</main><footer class="site-footer"><p>The Web Journey · Portfolio 1 · Webprogrammierung · DHBW</p></footer></body></html>
+</main><footer class="site-footer">
+  <p>The Web Journey · Portfolio 1 im Modul Web-Programmierung · DHBW Mannheim · Sarah Gehring</p>
+  <p class="site-footer__links">
+    <a href="https://hallo.smg-consulting.org/" rel="author">Über mich</a>
+    <a href="ueber.html">Über das Portfolio</a>
+    <a href="https://github.com/sarahMgrng">GitHub</a>
+    <a href="ueber-mich.html#wege">Wege zum Portfolio</a>
+    <a href="bugs.html">Bug Findings</a>
+    <a href="ueber-mich.html#impressum">Impressum</a>
+    <a href="https://github.com/sarahMgrng/the-web-journey">Quellcode</a>
+  </p>
+</footer></body></html>
