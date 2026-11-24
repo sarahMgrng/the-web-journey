@@ -1,102 +1,13 @@
 <!DOCTYPE html>
-<html lang="de" data-farbe="weiss">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
   <title>Impressum · The Web Journey</title>
-  <meta name="description" content="Impressum, Hosting und Hinweis zu KI-generierten Inhalten.">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ff9f0a'%3E%3E_%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/chapter.css">
-  <link rel="stylesheet" href="css/seiten.css">
-
-  <!-- Farbschema: Standard ist "hell" (siehe <html data-farbe>). Eine eigene Wahl im Farbwähler wird sofort übernommen, damit nichts flackert. -->
-  <link rel="stylesheet" href="css/farben.css">
-  <link rel="stylesheet" href="css/terminal.css">
-  <script>try { const f = localStorage.getItem("farbe"); if (f === "nacht") delete document.documentElement.dataset.farbe; else if (f) document.documentElement.dataset.farbe = f; } catch (e) {}</script>
-  <script src="js/farben.js" defer></script>
-  <!-- Terminal + Atlas: Taste ^ oder Klick auf ">_" -->
-  <script src="js/atlas-config.js" defer></script>
-  <script src="js/terminal.js" defer></script>
+  <meta http-equiv="refresh" content="0; url=ueber-mich.html#impressum">
+  <script>location.replace("ueber-mich.html" + (location.hash || "#impressum"));</script>
 </head>
 <body>
-  <a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-  <!-- Umschalter Portfolio 1 / Portfolio 2 (ein Schnitt in der Mitte) -->
-  <nav class="portfolio-wahl" aria-label="Portfolio wählen">
-    <a class="portfolio-wahl__seite portfolio-wahl__seite--eins" href="index.html" aria-current="true">
-      <span class="portfolio-wahl__nr">1</span> Web-Programmierung <small>WiSe 2026/27</small>
-    </a>
-    <a class="portfolio-wahl__seite portfolio-wahl__seite--zwei" href="verteilte-systeme.html">
-      Verteilte Systeme <small>SoSe 2027</small> <span class="portfolio-wahl__nr">2</span>
-    </a>
-  </nav>
-
-  <header class="site-header">
-    <a class="site-header__logo" href="index.html">The Web Journey</a>
-    <nav aria-label="Hauptnavigation">
-      <a href="index.html#scrollytelling">Schwerpunkt</a>
-      <a href="index.html#kapitel">Vorlesungen</a>
-      <a href="uebungen.html">Übungen</a>
-      <a href="learnings.html">Learnings</a>
-      <a href="ueber.html">Portfolio</a>
-      <a href="https://hallo.smg-consulting.org/" rel="author">Über mich</a>
-    </nav>
-  </header>
-
-  <main class="kapitel-seite" id="inhalt">
-    <div class="prose">
-      <p class="kapitel-kopf__nr">IMPRESSUM</p>
-      <h1>Impressum</h1>
-
-      <h2 id="verantwortlich">Verantwortlich</h2>
-      <p><strong>Sarah Gehring · SMG Consulting</strong> (Freiberuflerin)<br>
-        K3 20 · 68159 Mannheim · Deutschland<br>
-        E-Mail: <a href="mailto:info@smg-consulting.org">info@smg-consulting.org</a><br>
-        <a href="https://hallo.smg-consulting.org/impressum">Offizielles SMG-Impressum und Anbieterangaben</a></p>
-      <p><strong>Projekt:</strong> IMBIT_B25_webProg_smg · Studienprojekt im Modul Web-Programmierung,
-        Kurs IMBIT-B25, DHBW Mannheim, WiSe 2026/27.</p>
-      <p>Dies ist eine nicht-kommerzielle Lernwebsite im Rahmen einer Portfolioprüfung.</p>
-
-      <h2 id="hosting">Hosting</h2>
-      <p>Die Website wird über <a href="https://vercel.com">Vercel</a> ausgeliefert, betreut von <a href="https://hallo.smg-consulting.org/"><strong>SMG Consulting</strong></a> (<a href="https://hallo.smg-consulting.org/impressum">Impressum SMG</a>).
-        Der Quellcode liegt auf <a href="https://github.com/sarahMgrng/the-web-journey/tree/abgabe-final">GitHub</a>.</p>
-
-      <p>Fragen zur Technik oder Hilfe bei einem 404? <a href="https://hallo.smg-consulting.org/">SMG Consulting</a> hilft gerne. Kontakt: <a href="mailto:info@smg-consulting.org">info@smg-consulting.org</a> · <a href="https://hallo.smg-consulting.org/impressum">Rechtliche Anbieterangaben von SMG Consulting</a>.</p>
-
-      <h2 id="datenschutz">Datenschutzhinweise zu diesem Portfolio</h2>
-      <p><strong>Verantwortliche und Kontakt:</strong> Sarah Gehring, geschäftliche Anschrift und E-Mail wie oben. Fragen zum Umgang mit personenbezogenen Daten und deinen Rechten können an <a href="mailto:info@smg-consulting.org">info@smg-consulting.org</a> gerichtet werden.</p>
-      <p><strong>Hosting:</strong> Dieses Portfolio läuft bei Vercel und nicht auf dem privaten SMG-Webserver. Beim Abruf können technische Verbindungsdaten zur Auslieferung und Absicherung der Website verarbeitet werden. Die konkreten Speicherfristen und Hosting-Einstellungen müssen vor einer allgemeinen öffentlichen Freigabe gesondert verifiziert werden. Die Datenschutzhinweise der SMG-Hauptseite gelten nicht automatisch für das Vercel-Hosting.</p>
-      <p><strong>Lokale Einstellungen:</strong> Eine selbst gewählte Farbansicht wird, falls verwendet, im <code>localStorage</code> dieses Browsers gespeichert. Diese Informationsseite hat kein Kontaktformular. Bei Kontakt über den E-Mail-Link wird das jeweilige Mailprogramm geöffnet.</p>
-      <p><strong>Datenschutzrechte:</strong> Du kannst nach den gesetzlichen Voraussetzungen insbesondere Auskunft, Berichtigung, Löschung oder Einschränkung verlangen und dich an eine Datenschutzaufsichtsbehörde wenden. <a href="https://hallo.smg-consulting.org/impressum#datenschutz">Separate Datenschutzhinweise für die SMG-Hauptwebsite</a>.</p>
-      <h2 id="ki-hinweis">Hinweis zu KI-generierten Inhalten</h2>
-      <p>Teile der Texte sind mit KI-Unterstützung entstanden und mit 🤖 gekennzeichnet. Zusammenfassungen sind als 📘 Skript,
-        eigene Notizen als ✏️ und offene Punkte als ❓ markiert.</p>
-      <p><strong>KI-generierte Texte werden ohne Gewähr wiedergegeben; eine Übernahme als geprüfte Quelle ist ausgeschlossen.</strong>
-        Für verbindliche Inhalte gelten die Skripte der Vorlesung.</p>
-
-      <h2 id="quellen">Quellen und Rechte</h2>
-      <ul>
-        <li>Vorlesungsinhalte: Skripte „Web-Programmierung“, Prof. Stefan Noll, DHBW Mannheim – zusammengefasst, nicht kopiert.</li>
-        <li>Übung „KopfüBar“ und „Sternback“: nach <em>HTML und CSS von Kopf bis Fuß</em> (O’Reilly), wie im Skript verwendet.</li>
-        <li>Scroll-Animation „Laptop klappt auf“: Idee nach CSS-Tricks.</li>
-        <li>Bibliothek <a href="https://marked.js.org/">marked</a> (MIT-Lizenz).</li>
-      </ul>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <p>The Web Journey · Portfolio 1 im Modul Web-Programmierung · DHBW Mannheim · Sarah Gehring</p>
-    <p class="site-footer__links">
-      <a href="https://hallo.smg-consulting.org/" rel="author">Über mich</a>
-      <a href="ueber.html">Über das Portfolio</a>
-      <a href="https://github.com/sarahMgrng">GitHub</a>
-      <a href="ueber-mich.html#wege">Wege zum Portfolio</a>
-      <a href="bugs.html">Bug Findings</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="https://github.com/sarahMgrng/the-web-journey/tree/abgabe-final">Quellcode</a>
-    </p>
-  </footer>
+  <p>Impressum und Datenschutz stehen jetzt unter <a href="ueber-mich.html#impressum">Über mich</a>.</p>
 </body>
 </html>

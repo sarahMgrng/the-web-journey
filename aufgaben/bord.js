@@ -92,7 +92,10 @@
     zurueck.href = zu("19.10_aufgabe1_bar/bar.html") + "#stationen";
     zurueck.textContent = "← Zurück an Deck";
     zurueck.addEventListener("click", (e) => {
-      if (history.length > 1 && document.referrer) { e.preventDefault(); history.back(); }
+      // Nur zurückblättern, wenn die vorige Seite zu diesem Portfolio gehört – sonst fester Link an Deck
+      let eigen = false;
+      try { eigen = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (_) {}
+      if (history.length > 1 && eigen) { e.preventDefault(); history.back(); }
     });
     kabine.before(zurueck);
 
@@ -101,7 +104,7 @@
     fuss.className = "bord-fuss";
     fuss.innerHTML = `Der Code dieser Station ist meine Lösung aus der Vorlesung – unverändert, nur in den Bord-Rahmen gesetzt.
       Original: <a href="https://github.com/sarahMgrng/wp-aufgaben-3-semester">wp-aufgaben-3-semester</a> ·
-      <a href="${new URL("impressum.html#datenschutz", WURZEL).href}">Impressum &amp; Datenschutz</a> ·
+      <a href="${new URL("ueber-mich.html#datenschutz", WURZEL).href}">Impressum &amp; Datenschutz</a> ·
       <a href="https://hallo.smg-consulting.org/">SMG Consulting</a> ·
       Terminal: Taste <kbd>^</kbd>`;
     document.body.append(fuss);
